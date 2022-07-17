@@ -1,7 +1,7 @@
 package com.suremoon.game.door.kernel;
 
 public interface GRectDoItf {
-    // ·µ»ØÖµÓÃÓÚÈ·¶¨ÊÇ·ñÐèÒª¼ÌÐø¼ÆËãÏÂÒ»¸öGRect£¬Èç¹ûÎªfalse µÄ»°Ôò»áÖ±½ÓÍË³ö
+    // 返回值用于确定是否需要继续计算下一个GRect，如果为false 的话则会直接退出
     boolean ActionReturnShouldContinue(GRectItf gRect);
 }
 

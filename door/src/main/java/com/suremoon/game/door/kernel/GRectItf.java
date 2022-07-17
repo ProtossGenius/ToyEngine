@@ -8,17 +8,17 @@ import java.awt.*;
 
 public interface GRectItf extends CalcAble, SerializeAble {
     /**
-     * @return ×ª»»³ÉawtµÄRect
+     * @return 转换成awt的Rect
      */
     Rectangle toRect();
 
     /**
-     * @return »ñµÃGRectµÄ´óÐ¡
+     * @return 获得GRect的大小
      */
     Dimension getSize();
 
     /**
-     * @param size GRectµÄ´óÐ¡
+     * @param size GRect的大小
      */
     void setSize(Point size);
 
@@ -27,25 +27,25 @@ public interface GRectItf extends CalcAble, SerializeAble {
     }
 
     void setSize(int width, int height) ;
-    /**Í¨¹ýÔö¼ÓÖµµÄ·½Ê½Ê¹Ö®ÒÆ¶¯,Í¬Ê±¸üÐÂÔÚ¹ÜÀíÆ÷ÖÐµÄÎ»ÖÃ
-     * @param cg ÒÆ¶¯ÏòÁ¿
+    /**通过增加值的方式使之移动,同时更新在管理器中的位置
+     * @param cg 移动向量
      */
     void moveAdd(PointF cg);
 
     /**
-     * @return ×óÉÏ½ÇµÄÎ»ÖÃ
+     * @return 左上角的位置
      */
     PointF getPos();
 
 
-    /**ÉèÖÃÂä½ÅÎ»ÖÃ
-     * @param x ºá×ø±ê
-     * @param y ×Ý×ø±ê
+    /**设置落脚位置
+     * @param x 横坐标
+     * @param y 纵坐标
      */
     void setPutPos(double x, double y);
 
-    /** ÉèÖÃÂä½ÅÎ»ÖÃ
-     * @param pos Î»ÖÃ
+    /** 设置落脚位置
+     * @param pos 位置
      */
     default void setPutPos(Point pos) {
         setPutPos(pos.x, pos.y);
@@ -55,9 +55,9 @@ public interface GRectItf extends CalcAble, SerializeAble {
         setPutPos(pos.X, pos.Y);
     }
 
-    /** ÉèÖÃ×óÉÏ½ÇÎ»ÖÃ£¬ÇÒ¸üÐÂÆäÔÚmanagerÖÐµÄÎ»ÖÃ
-     * @param x ºá×ø±ê
-     * @param y ×Ý×ø±ê
+    /** 设置左上角位置，且更新其在manager中的位置
+     * @param x 横坐标
+     * @param y 纵坐标
      */
     void setPos(double x, double y);
 
@@ -70,7 +70,7 @@ public interface GRectItf extends CalcAble, SerializeAble {
     }
 
     /**
-     * ½öÉèÖÃÎ»ÖÃ
+     * 仅设置位置
      */
     void setPosWithoutUpdateManager(double x, double y);
     default void setPosWithoutUpdateManager(Point pos){
@@ -80,12 +80,12 @@ public interface GRectItf extends CalcAble, SerializeAble {
     }
 
     /**
-     * @return »ñµÃºá×ø±ê
+     * @return 获得横坐标
      */
     int getX();
 
     /**
-     * @return »ñµÃ×Ý×ø±ê
+     * @return 获得纵坐标
      */
     int getY();
 
@@ -94,22 +94,22 @@ public interface GRectItf extends CalcAble, SerializeAble {
     int getHeight();
 
     /**
-     * @return »ñµÃ½ÅËùÔÚµÄ×ø±ê
+     * @return 获得脚所在的坐标
      */
     PointF getFootPos();
 
     /**
-     * @param footPos ½ÅÔÚ¾ØÐÎÖÐµÄÏà¶ÔÎ»ÖÃ
+     * @param footPos 脚在矩形中的相对位置
      */
     void setFootPosPro(PointF footPos);
 
     /**
-     * @return ½ÅÔÚ¾ØÐÎÖÐµÄÏà¶ÔÎ»ÖÃ
+     * @return 脚在矩形中的相对位置
      */
     PointF getFootPosPro();
 
     /**
-     * @param grm ÉèÖÃËùÔÚµÄ¹ÜÀíÆ÷
+     * @param grm 设置所在的管理器
      */
     void setGRectMgr(GRectMgrItf grm);
 
@@ -117,13 +117,13 @@ public interface GRectItf extends CalcAble, SerializeAble {
     PointF getDirect();
 
 
-    /**¶ªÆúµÄµ¥Î»»á±»´Ó¼ÆËã¶ÓÁÐ¼°¹ÜÀíÆ÷ÖÐ¶ªÆú
-     * @param isDrop ÊÇ·ñÒª¶ªÆú¸Ãµ¥Î»
+    /**丢弃的单位会被从计算队列及管理器中丢弃
+     * @param isDrop 是否要丢弃该单位
      */
     void setDrop(boolean isDrop);
 
     /**
-     * @return ÊÇ·ñÒª¶ªÆú¸Ãµ¥Î»
+     * @return 是否要丢弃该单位
      */
     boolean isDrop();
 

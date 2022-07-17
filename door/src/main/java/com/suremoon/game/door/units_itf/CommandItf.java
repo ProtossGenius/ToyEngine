@@ -13,14 +13,14 @@ import java.awt.*;
 public interface CommandItf extends AGMessageable, AGTypeInf, SerializeAble {
 
     /**
-     * ÉèÖÃÃüÁîµÄÓµÓÐÕß
-     * @param u ÓµÓÐÕß
-     * @return ×ÔÉí
+     * 设置命令的拥有者
+     * @param u 拥有者
+     * @return 自身
      */
     CommandItf setOwner(UnitItf u);
 
     /**
-     * @return ÊÇ·ñÊÇ×·¼ÓµÄÃüÁî
+     * @return 是否是追加的命令
      */
     boolean isAppendCmd();
 

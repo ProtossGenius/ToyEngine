@@ -6,17 +6,17 @@ import com.suremoon.game.door.units_itf.UnitItf;
 
 public interface WorldItf extends Runnable, CommandFactory, EffectFactory, StateFactory, TerrainFactory, UnitFactory, BuffFactory {
     /**
-     * @return ÊÀ½çËùÓÐµÄGameMap
+     * @return 世界所有的GameMap
      */
     GameMapItf getGameMap();
 
     /**
-     * @return ÊÀ½çÃû
+     * @return 世界名
      */
     String worldName();
 
     /**
-     * @return Ë÷Òý
+     * @return 索引
      */
     int getWorldIndex();
 
@@ -27,12 +27,12 @@ public interface WorldItf extends Runnable, CommandFactory, EffectFactory, State
     void setStatus(Status status);
 
     /**
-     * ±£´æÊÀ½ç×´Ì¬¡£
+     * 保存世界状态。
      */
     void save();
 
     /**
-     *  ÍÆËÍGRectµ½¼ÆËã¶ÓÁÐÖÐ
+     *  推送GRect到计算队列中
      */
     void pushGRectToCalcQueue(GRectItf gRect);
 

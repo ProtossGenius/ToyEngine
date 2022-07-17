@@ -1,8 +1,8 @@
 package com.suremoon.game.door.client;
 
 /**
- * StateAction Ä¿Ç°Ö÷ÒªÓÃÓÚ¼¼ÄÜµÄÖ¸Ê¾Æ÷£¬ÔÚÄ³Ð©°´¼üµÄÇé¿öÏÂ³ö·¢¼¼ÄÜÖ¸Ê¾Æ÷¡£
- * ½«À´¿ÉÄÜÓÃÓÚÆäËüµÄ²¿·Ö¡£
+ * StateAction 目前主要用于技能的指示器，在某些按键的情况下出发技能指示器。
+ * 将来可能用于其它的部分。
  */
 public class StateAction {
     public static final int NOTHING = 0, POINTER = 1;

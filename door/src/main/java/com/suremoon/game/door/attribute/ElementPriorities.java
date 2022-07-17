@@ -1,24 +1,24 @@
 package com.suremoon.game.door.attribute;
 
 /**
- * ÔªËØÊôÐÔ
+ * 元素属性
  */
 public class ElementPriorities {
-    // ½ð
+    // 金
     public double metal;
-    // Ä¾
+    // 木
     public double wood;
-    // Ë®
+    // 水
     public double water;
-    //»ð
+    //火
     public double fire;
-    //ÍÁ
+    //土
     public double earth;
-    // À×
+    // 雷
     public double thunder;
-    // ·ç
+    // 风
     public double wind;
-    // ±ù
+    // 冰
     public double ice;
 
     public ElementPriorities(double metal, double wood, double water, double fire, double earth, double thunder, double wind, double ice) {

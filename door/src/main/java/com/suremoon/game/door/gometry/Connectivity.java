@@ -1,20 +1,20 @@
 package com.suremoon.game.door.gometry;
 
 /**
- * TODO: Ö®ºó¸Ä³É¶àÐÐ¶¯µÈ¼¶µÄÁ¬Í¨Í¼¡££¨Èç£¬Â½ÐÐ/Ë®ÐÐ/É³ÐÐ/ÑÒ½¬ÐÐ×ßµÈ£©
+ * TODO: 之后改成多行动等级的连通图。（如，陆行/水行/沙行/岩浆行走等）
  */
 public class Connectivity {
     /**
-     * Ïà¶Ô±ê¼ÇµãµÄ¾àÀë
+     * 相对标记点的距离
      */
     public int blockPos;
     public int branchFlag;
     /**
-     * ¿ÉÍ¨ÐÐÐÔ
+     * 可通行性
      */
     public boolean walkable;
     /**
-     * Á¬Í¨¿é±àºÅ
+     * 连通块编号
      */
     public int No;
     public boolean canWalk(){

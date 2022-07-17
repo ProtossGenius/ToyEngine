@@ -6,7 +6,7 @@ import java.awt.*;
 
 public interface GameScreenItf {
     /**
-     * @param focusPoint ÆÁÄ»½¹µã£¨ÉãÏñ»úÎ»ÖÃ£©
+     * @param focusPoint 屏幕焦点（摄像机位置）
      */
     void setFocusPoint(Point focusPoint);
 
@@ -15,57 +15,57 @@ public interface GameScreenItf {
     }
 
     /**
-     * ÒÆ¶¯ÆÁÄ»
+     * 移动屏幕
      */
     void screenMove();
 
     /**
-     * ÏÔÊ¾µØÍ¼
-     * @param gp »­°å
+     * 显示地图
+     * @param gp 画板
      */
     void showMap(Graphics gp);
     /**
      * @return
-     * {Íæ¼Ò×ÔÉí}£¬
-     * {ÈËÎï¶ÔÏó£¬ComboUnit},
-     * {Ð§¹û¶ÔÏó£¬ }
+     * {玩家自身}，
+     * {人物对象，ComboUnit},
+     * {效果对象， }
      * }
      */
     AGMessage[][] getShowers();
 
     /**
-     * @return ÆÁÄ»¾ØÐÎ
+     * @return 屏幕矩形
      */
     Rectangle getScreenRect();
 
     /**
-     * @param moveLength ÆÁÄ»ÒÆ¶¯µÄ²½³¤
+     * @param moveLength 屏幕移动的步长
      */
     void setMoveLength(int moveLength);
 
     /**
-     * @return ÆÁÄ»½¹µã
+     * @return 屏幕焦点
      */
     Point getFocusPoint();
 
     /**
-     * @param lastPoint Êó±êµÄ×îºóÎ»ÖÃ
+     * @param lastPoint 鼠标的最后位置
      */
     void setLastPoint(Point lastPoint);
 
     /**
-     * ÒÆ¶¯ÆÁÄ»µÈ
+     * 移动屏幕等
      */
     void doCalc();
 
     /**
-     * @param gm ËùÊôµÄMap
+     * @param gm 所属的Map
      */
     void setGameMap(GameMapItf gm);
 
 
     /**
-     * @return ÓµÓÐµÄGameMap
+     * @return 拥有的GameMap
      */
     GameMapItf getGameMap();
 }

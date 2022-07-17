@@ -105,7 +105,7 @@ public class PointF implements SerializeAble {
 
     /**
      *
-     * @param pf Ä¿±êµã
+     * @param pf 目标点
      * @return a Point whose X * X + Y * Y == 1, if dis is zero then return DIRECTION_ZERO
      */
     public PointF getDirection(PointF pf){

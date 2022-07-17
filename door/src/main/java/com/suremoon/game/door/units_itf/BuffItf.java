@@ -6,14 +6,14 @@ import com.suremoon.game.door.nils.NullBuff;
 public interface BuffItf extends CalcAble {
 
     /**
-     * ÉèÖÃBuffµÄÓµÓÐÕß
+     * 设置Buff的拥有者
      * @param u Unit
-     * @return ×ÔÉí
+     * @return 自身
      */
     BuffItf setOwner(UnitItf u);
 
     /**
-     * @return Õâ¸öbuffÊÇ·ñÒÀ¾ÉÓÐÐ§£¬Èç¹ûÊ§Ð§µÄ»°½«ÒÆ³ý¸ÃBuff¡£
+     * @return 这个buff是否依旧有效，如果失效的话将移除该Buff。
      */
     boolean isAlive();
     BuffItf Null = new NullBuff();

@@ -6,15 +6,15 @@ import com.suremoon.game.door.units_itf.CommandItf;
 
 /**
  * Created by Water Moon on 2018/4/18.
- * µ¥Î»ÃüÁîµÄÐÐÎª
+ * 单位命令的行为
  */
 public interface CmdActionItf extends SerializeAble {
 
     /**
-     * @param cmd ÃüÁî£¬°üº¬ËùÊôµ¥Î»
-     * @param world ÊÀ½ç
-     * @param worldMgr ÊÀ½ç¹ÜÀí
-     * @return ÊÇ·ñÍê³É£¨ÊÇ·ñÉ¾³ý¸ÃÃüÁî£©
+     * @param cmd 命令，包含所属单位
+     * @param world 世界
+     * @param worldMgr 世界管理
+     * @return 是否完成（是否删除该命令）
      */
     boolean actionDo(CommandItf cmd, WorldItf world, WorldMgrItf worldMgr);
 

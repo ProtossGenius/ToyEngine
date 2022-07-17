@@ -8,20 +8,20 @@ import com.suremoon.game.door.kernel.manager.UnitMgrItf;
 import java.awt.*;
 
 /**
- *  ÓÎÏ·µØÍ¼½Ó¿Ú
+ *  游戏地图接口
  */
 public interface GameMapItf {
 
-    /** ¸ü»»µØÍ¼ÐÅÏ¢£¬Õâ¸ö·½·¨Ö÷ÒªÊÇÔÚµØÍ¼±à¼­Æ÷ÀïÓÃµ½
-     * @param mapInfo µØÍ¼ÐÅÏ¢
+    /** 更换地图信息，这个方法主要是在地图编辑器里用到
+     * @param mapInfo 地图信息
      */
     void changeMap(MapInformation mapInfo);
 
     /**
      * @param value
-     * µØÍ¼ÊÇÓÉËÄÐÐÈýÁÐµÄÍ¼Æ¬ËùÃèÊöµÄ£¬ÔÚ´æ´¢µÄÊ±ºò»á°ÑËü´æ´¢ÎªÒ»¸öÊý×Ö
+     * 地图是由四行三列的图片所描述的，在存储的时候会把它存储为一个数字
      * @return
-     * ½«´æ´¢µÄÊý×Ö±ä¸ü³ÉµØÐÎµÄ×´Ì¬£¨ÓÃÓÚÏÔÊ¾£©
+     * 将存储的数字变更成地形的状态（用于显示）
      */
     static String getType(Integer value) {
         int first = value / 10, second = value % 10;
@@ -29,52 +29,52 @@ public interface GameMapItf {
     }
 
     /**
-     * @return µØÍ¼µÄÁÐÊý
+     * @return 地图的列数
      */
     int getCols();
 
     /**
-     * @return µØÍ¼µÄÐÐÊý
+     * @return 地图的行数
      */
     int getRows();
 
     default boolean isLegalPos(int x, int y){return x >= 0 && x < getCols() && y >= 0 && y < getRows();}
 
     /**
-     * @return »ñÈ¡Åö×²¼ì²âÆ÷
+     * @return 获取碰撞检测器
      */
     ImpactCheckerItf getImpactChecker();
 
     /**
-     * @param ic ÉèÖÃÅö×²¼ì²âÆ÷
+     * @param ic 设置碰撞检测器
      */
     void setImpactChecker(ImpactCheckerItf ic);
 
     /**
-     * @return »ñµÃµØÍ¼ÄÚµØÐÎ¾ØÐÎµÄ¿í¶È
+     * @return 获得地图内地形矩形的宽度
      */
     int getTerrainWidth();
 
     /**
-     * @return »ñµÃµØÍ¼ÄÚµØÐÎ¾ØÐÎµÄ¸ß¶È
+     * @return 获得地图内地形矩形的高度
      */
     int getTerrainHeight();
 
     /**
-     * @return µØÍ¼µÄ×Ü¿í¶È
+     * @return 地图的总宽度
      */
     int getMapWidth();
 
     /**
-     * @return µØÍ¼µÄ×Ü¸ß¶È
+     * @return 地图的总高度
      */
     int getMapHeight();
 
     /**
-     * »ñÈ¡µØÐÎ
-     * @param x µØÐÎË÷ÒýÔÚx·½ÏòµÄÖµ
-     * @param y µØÐÎË÷ÒýÔÚy·½ÏòµÄÖµ
-     * @return ´¦ÓÚ(x,y)Î»ÖÃµÄµØÐÎ
+     * 获取地形
+     * @param x 地形索引在x方向的值
+     * @param y 地形索引在y方向的值
+     * @return 处于(x,y)位置的地形
      */
     TerrainItf getTerrain(int x, int y);
     default TerrainItf getTerrain(Point p){return getTerrain(p.x, p.y);}
@@ -82,9 +82,9 @@ public interface GameMapItf {
     void setTerrain(int x, int y, TerrainItf terrain);
 
     /**
-     * @param x µØÐÎË÷ÒýÔÚx·½ÏòµÄÖµ
-     * @param y µØÐÎË÷ÒýÔÚy·½ÏòµÄÖµ
-     * @return ´¦ÓÚ(x,y)Î»ÖÃµÄµØÐÎÁ¬Í¨ÐÔ
+     * @param x 地形索引在x方向的值
+     * @param y 地形索引在y方向的值
+     * @return 处于(x,y)位置的地形连通性
      */
     Connectivity getConnectivity(int x, int y);
     default Connectivity getConnectivity(Point p){return getConnectivity(p.x, p.y);}
@@ -94,16 +94,16 @@ public interface GameMapItf {
     EffectMgrItf getEffectMgr();
     void setEffectMgr(EffectMgrItf em);
     /**
-     * @param worldMgr ÉèÖÃÊÀ½ç¹ÜÀíÆ÷
+     * @param worldMgr 设置世界管理器
      */
     void setWorldMgr(WorldMgrItf worldMgr);
 
     /**
-     * @param world ÉèÖÃµ±Ç°µØÍ¼ËùÊôµÄÊÀ½ç
+     * @param world 设置当前地图所属的世界
      */
     void setWorld(WorldItf world);
     /**
-     * @return µ±Ç°µØÍ¼ËùÊôµÄÊÀ½ç
+     * @return 当前地图所属的世界
      */
     WorldItf getWorld();
 

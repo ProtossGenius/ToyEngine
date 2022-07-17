@@ -6,16 +6,16 @@ import com.suremoon.game.door.units_itf.UnitItf;
 import java.util.HashMap;
 import java.util.Map;
 /**
- * ¼¼ÄÜ¹ÜÀíÆ÷
+ * 技能管理器
  */
 public class SkillManager {
     private Map<String, SkillInfo> skillInfoMap = new HashMap<>();
 
-    /** Ê¹ÓÃ¼¼ÄÜ
-     * ÅÐ¶Ï¼¼ÄÜÊÇ·ñ¿ÉÒÔÊÍ·Å£¬Èô¿ÉÒÔÊÍ·ÅÔò¸üÐÂ×´Ì¬²¢Ê©·Å¼¼ÄÜ
+    /** 使用技能
+     * 判断技能是否可以释放，若可以释放则更新状态并施放技能
      * @param skillName
      * @param unit
-     * @return ÊÇ·ñÊÍ·Å³É¹¦
+     * @return 是否释放成功
      */
     public boolean useSkill(String skillName, UnitItf unit){
         SkillInfo info = skillInfoMap.get(skillName);

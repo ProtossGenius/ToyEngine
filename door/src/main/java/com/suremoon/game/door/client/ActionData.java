@@ -6,14 +6,14 @@ package com.suremoon.game.door.client;
 public class ActionData {
     public static final int DATA_TYPE_KEY_BOARD = 0, DATA_TYPE_MOUSE = 1, DATA_TYPE_ANOTHER = 2,
             VALUE_TYPE_PRESS = 0, VALUE_TYPE_REPLASE = 1;
-    int dataType,//0:key, 1:Mouse, 2:×Ô¶¨Òå
-            dataValue,//ÈçkeyÖµ£¬Êó±êÄÄ¸ö¼üµÈµÈ
+    int dataType,//0:key, 1:Mouse, 2:自定义
+            dataValue,//如key值，鼠标哪个键等等
     /**
      * valueType
-     * 0:°´ÏÂ
-     * 1:ËÉ¿ª
+     * 0:按下
+     * 1:松开
      */
-    valueType;//ÈçÊó±ê°´ÏÂ£¬Êó±êÌ§Æð£¬¼üÅÌ°´ÏÂµÈµÈÊÂ¼þ£¬¾ßÌåµÄ¶¨Òå»á½øÐÐ²¹³ä¡£
+    valueType;//如鼠标按下，鼠标抬起，键盘按下等等事件，具体的定义会进行补充。
 
 
     public ActionData() {
@@ -63,17 +63,17 @@ public class ActionData {
         String s_dataType = "";
         switch (dataType) {
             case 0:
-                s_dataType = "¼üÅÌ";
+                s_dataType = "键盘";
                 break;
             case 1:
-                s_dataType = "Êó±ê";
+                s_dataType = "鼠标";
                 break;
             case 2:
-                s_dataType = "×Ô¶¨Òå";
+                s_dataType = "自定义";
                 break;
             default:
-                s_dataType = "Î´¶¨Òå";
+                s_dataType = "未定义";
         }
-        return "¶¯×÷Îª" + s_dataType + ", ÖµÎª£º" + dataValue + "£¬ ×´Ì¬Îª£º " + valueType;
+        return "动作为" + s_dataType + ", 值为：" + dataValue + "， 状态为： " + valueType;
     }
 }

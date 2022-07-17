@@ -4,7 +4,7 @@ import com.suremoon.game.door.units_itf.UnitItf;
 
 public interface HurtCalcItf {
     /**
-     * @param sHurt ¹¥»÷·½µÄ¹¥»÷ÊôÐÔ
+     * @param sHurt 攻击方的攻击属性
      * @return hurt.
      */
     double underAttack(UnitItf unit, ElementPriorities sHurt);

@@ -11,7 +11,7 @@ import java.awt.*;
  * Created by Water Moon on 2017/12/28.
  */
 public class MsgCommand implements AGMessage {
-    Point point;//ÃüÁîµÄ¸¨Öúµã
+    Point point;//命令的辅助点
     int uType, extSize, target;
     byte appendCmd;
     public MsgCommand(){point = new Point();}

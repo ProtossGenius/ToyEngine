@@ -17,7 +17,7 @@ public interface UnitItf extends AGTypeInf, GRectItf, SerializeAble {
     HurtCalcItf getHurtCalcItf();
 
     /**
-     * @return ÊÇ·ñÒÑËÀÍö
+     * @return 是否已死亡
      */
     boolean isDie();
 
@@ -33,26 +33,26 @@ public interface UnitItf extends AGTypeInf, GRectItf, SerializeAble {
     UnitRemItf getUnitRem();
 
     /**
-     * @return Î¨Ò»ID
+     * @return 唯一ID
      */
     int getGid();
 
     void setGid(int gid);
 
     /**
-     * @return ¶¯»­¼ä¸ôÊ±¼ä
+     * @return 动画间隔时间
      */
     int getIntervalTime();
 
     /**
-     * @param hel ÖÎÁÆ
+     * @param hel 治疗
      */
     void BeHeal(double hel);
 
     void setDieDo(DieDo dieDo);
 
     /**
-     * ÖØÉú
+     * 重生
      */
     void relive();
 
@@ -64,24 +64,24 @@ public interface UnitItf extends AGTypeInf, GRectItf, SerializeAble {
     void setLeaveStatus(LeaveStatus leaveStatus);
 
     /**
-     * @param unitLeaveAction µ±Íæ¼ÒÉèÖÃÎªÀë¿ª£¬±»ÒÆ³ýµ±Ç°ÊÀ½çÖ®ºó×öÊ²Ã´
+     * @param unitLeaveAction 当玩家设置为离开，被移除当前世界之后做什么
      */
     void setLeaveAction(UnitLeaveAction unitLeaveAction);
     UnitLeaveAction getLeaveAction();
 
     /**
-     * @return Íæ¼ÒËùÊôµÄÕóÓª
+     * @return 玩家所属的阵营
      */
     int getCamp();
 
     /**
-     * @param camp Íæ¼ÒËùÊôµÄÕóÓª
+     * @param camp 玩家所属的阵营
      */
     void setCamp(int camp);
 
     SkillManager getSkillManager();
 
-// ------------- ÒÔÏÂÊÇdefaultÊµÏÖ ------------
+// ------------- 以下是default实现 ------------
     default void BeHurt(double hurt){
         double hp = this.getAttribute().getHp();
         hp = hp - hurt > 0 ? hp - hurt : 0;
@@ -95,9 +95,9 @@ public interface UnitItf extends AGTypeInf, GRectItf, SerializeAble {
     }
 
     /**
-     * @param attacker ¹¥»÷Õß
-     * @param ad ADÉËº¦
-     * @param ap APÉËº¦
+     * @param attacker 攻击者
+     * @param ad AD伤害
+     * @param ap AP伤害
      */
     default void underAttack(UnitItf attacker, double ad, double ap) {
         underAttack(attacker, new ElementPriorities(ad, ap));
@@ -105,8 +105,8 @@ public interface UnitItf extends AGTypeInf, GRectItf, SerializeAble {
 
     /**
      *
-     * @param skillName ¼¼ÄÜÃû
-     * @return ÊÇ·ñ³É¹¦Ê©·Å¼¼ÄÜ
+     * @param skillName 技能名
+     * @return 是否成功施放技能
      */
     default boolean useSkill(String skillName){
         return getSkillManager().useSkill(skillName, this);
