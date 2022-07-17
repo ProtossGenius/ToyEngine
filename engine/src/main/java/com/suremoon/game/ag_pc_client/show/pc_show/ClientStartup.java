@@ -72,7 +72,7 @@ public class ClientStartup {
         world.pushGRectToCalcQueue(player);
         UnitMgrItf unitMgr = world.getGameMap().getUnitMgr();
         unitMgr.addUnit(player);
-        // ¿Í»§¶ËÅäÖÃ£¬Ö÷ÒªÊÇ¿ØÖÆÏà¹Ø
+        // å®¢æˆ·ç«¯é…ç½®ï¼Œä¸»è¦æ˜¯æŽ§åˆ¶ç›¸å…³
         AGForm agf = new AGForm(worldMgrCfg, 0);
         CmdMKID cmkid = new CmdMKID(agf, cmdAnalysis);
         cmkid.setOnCmd(player::acceptCmd);
@@ -106,7 +106,7 @@ public class ClientStartup {
 
         UnitItf unit = client.login(playerType, showName);
         AGForm agf = new AGForm(worldMgrCfg, 0);
-// ¿Í»§¶ËÅäÖÃ£¬Ö÷ÒªÊÇ¿ØÖÆÏà¹Ø
+// å®¢æˆ·ç«¯é…ç½®ï¼Œä¸»è¦æ˜¯æŽ§åˆ¶ç›¸å…³
         CmdMKID cmkid = new CmdMKID(agf, cmdAnalysis);
         cmkid.setOnCmd(cmd->client.getMsgQueue().add(cmd));
         ScreenControlMKID scmkid = new ScreenControlMKID(cmkid, unit, agf.getGameScreen());
