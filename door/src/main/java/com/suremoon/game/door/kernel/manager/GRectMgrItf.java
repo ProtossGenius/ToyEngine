@@ -4,39 +4,44 @@ import com.suremoon.game.door.gometry.PointF;
 import com.suremoon.game.door.kernel.GRectDoItf;
 import com.suremoon.game.door.kernel.GRectItf;
 import com.suremoon.game.door.nils.NullGRectMgr;
-
 import java.awt.*;
 import java.util.List;
 
 public interface GRectMgrItf {
-    GRectMgrItf Null = new NullGRectMgr();
-    List<GRectItf> getGRects(Rectangle screen);
-    boolean GRectDo(Rectangle screen, GRectDoItf gRectDo);
+  GRectMgrItf Null = new NullGRectMgr();
 
-    void delGRect(GRectItf rect);
+  List<GRectItf> getGRects(Rectangle screen);
 
-    void addGRect(GRectItf rect);
+  boolean GRectDo(Rectangle screen, GRectDoItf gRectDo);
 
-    default void update(GRectItf rect, double newPosX, double newPosY){
-        delGRect(rect);
-        rect.setPosWithoutUpdateManager(newPosX, newPosY);
-        addGRect(rect);
-    }
+  void delGRect(GRectItf rect);
 
-    default void update(GRectItf rect, PointF newPos){
-        update(rect, newPos.X, newPos.Y);
-    }
+  void addGRect(GRectItf rect);
 
-    default void update(GRectItf rect, Point newPos){
-        update(rect, newPos.x, newPos.y);
-    }
+  default void update(GRectItf rect, double newPosX, double newPosY) {
+    delGRect(rect);
+    rect.setPosWithoutUpdateManager(newPosX, newPosY);
+    addGRect(rect);
+  }
 
-    List<GRectItf> getAllGRects();
+  default void update(GRectItf rect, PointF newPos) {
+    update(rect, newPos.X, newPos.Y);
+  }
 
-    int size();
-    Rectangle Area();
+  default void update(GRectItf rect, Point newPos) {
+    update(rect, newPos.x, newPos.y);
+  }
 
-    static boolean inArea(Rectangle area, Point p){
-        return p.x >= area.x && p.x <= area.x + area.width && p.y >= area.y && p.y <= area.y + area.height;
-    }
+  List<GRectItf> getAllGRects();
+
+  int size();
+
+  Rectangle Area();
+
+  static boolean inArea(Rectangle area, Point p) {
+    return p.x >= area.x
+        && p.x <= area.x + area.width
+        && p.y >= area.y
+        && p.y <= area.y + area.height;
+  }
 }

@@ -1,5 +1,7 @@
 package com.suremoon.game.kernel.data.units;
 
+import static com.suremoon.game.door.kernel.DieDo.Default;
+
 import com.suremoon.game.door.attribute.ComplexAttribute;
 import com.suremoon.game.door.attribute.HurtCalcItf;
 import com.suremoon.game.door.gometry.GRect;
@@ -14,11 +16,8 @@ import com.suremoon.game.door.tools.IDManager;
 import com.suremoon.game.door.units_itf.*;
 import com.suremoon.game.door.units_itf.skill_about.SkillManager;
 import com.suremoon.game.kernel.initer.state_init.StateInfManager;
-
 import java.util.Iterator;
 import java.util.LinkedList;
-
-import static com.suremoon.game.door.kernel.DieDo.Default;
 
 /** Created by Water Moon on 2018/1/10. */
 public class Unit extends GRect implements UnitItf {

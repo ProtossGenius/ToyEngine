@@ -1,8 +1,6 @@
 package com.suremoon.game.door.netabout;
 
-/**
- * Created by Water Moon on 2017/12/28.
- */
+/** Created by Water Moon on 2017/12/28. */
 public interface AGMessageable {
-    AGMessage toMessage();
+  AGMessage toMessage();
 }

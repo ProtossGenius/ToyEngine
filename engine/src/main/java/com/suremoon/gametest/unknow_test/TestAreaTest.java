@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class TestAreaTest {
 
-    public static void main(String[] args) {
-        JTextPane jtp;
-    }
+  public static void main(String[] args) {
+    JTextPane jtp;
+  }
 }

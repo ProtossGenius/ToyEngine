@@ -3,7 +3,7 @@ package com.suremoon.game.utils;
 import java.util.concurrent.Callable;
 
 public class TimeUtils {
-  public static void timeCost(Callable<Object> run) throws Exception{
+  public static void timeCost(Callable<Object> run) throws Exception {
     timeCost(run, "%d", 0L);
   }
 
@@ -17,11 +17,10 @@ public class TimeUtils {
   }
 
   public static void safeTimeCost(Callable<Object> run, String fmt, Long mt) {
-    try{
+    try {
       timeCost(run, fmt, mt);
-    }catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
-
 }

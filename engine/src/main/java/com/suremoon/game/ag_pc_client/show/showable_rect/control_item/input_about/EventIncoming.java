@@ -2,7 +2,4 @@ package com.suremoon.game.ag_pc_client.show.showable_rect.control_item.input_abo
 
 import java.awt.event.*;
 
-public interface EventIncoming extends KeyListener, MouseMotionListener, MouseListener {
-
-}
-
+public interface EventIncoming extends KeyListener, MouseMotionListener, MouseListener {}

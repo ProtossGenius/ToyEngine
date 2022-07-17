@@ -2,18 +2,19 @@ package com.suremoon.game.kernel.data.map.impact_checker;
 
 import com.suremoon.game.door.kernel.ImpactCheckerItf;
 
-public class ImpactCheckerFactory implements ImpactCheckerFactoryItf{
-    private ImpactCheckerFactory(){}
-    ImpactCheckerFactoryItf factory = ImpactChecker::new;
+public class ImpactCheckerFactory implements ImpactCheckerFactoryItf {
+  private ImpactCheckerFactory() {}
 
-    public void setFactory(ImpactCheckerFactoryItf itf){
-        factory = itf;
-    }
+  ImpactCheckerFactoryItf factory = ImpactChecker::new;
 
-    public static ImpactCheckerFactory Instance = new ImpactCheckerFactory();
+  public void setFactory(ImpactCheckerFactoryItf itf) {
+    factory = itf;
+  }
 
-    @Override
-    public ImpactCheckerItf product() {
-        return factory.product();
-    }
+  public static ImpactCheckerFactory Instance = new ImpactCheckerFactory();
+
+  @Override
+  public ImpactCheckerItf product() {
+    return factory.product();
+  }
 }

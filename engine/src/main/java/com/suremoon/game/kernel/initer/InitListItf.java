@@ -1,29 +1,29 @@
 package com.suremoon.game.kernel.initer;
 
 import com.suremoon.game.door.tools.IDManager;
-
 import java.io.File;
 
 public interface InitListItf {
   void init(Progress progress) throws Exception;
 
-  default void loadList(String path, String cfgSuffix, NameInit nameInit, Progress progress) throws Exception {
+  default void loadList(String path, String cfgSuffix, NameInit nameInit, Progress progress)
+      throws Exception {
     File f = new File(path);
     File[] effectCfgs = f.listFiles();
-    assert  effectCfgs != null;
+    assert effectCfgs != null;
     progress.setTotal(effectCfgs.length);
     for (File effectCfg : effectCfgs) {
       try {
-      String name = effectCfg.getName();
-      if (!name.endsWith(cfgSuffix)) {
-        continue;
-      }
+        String name = effectCfg.getName();
+        if (!name.endsWith(cfgSuffix)) {
+          continue;
+        }
 
-      name = name.substring(0, name.length() - cfgSuffix.length());
-      IDManager.getID(name);
-      nameInit.Init(name);
+        name = name.substring(0, name.length() - cfgSuffix.length());
+        IDManager.getID(name);
+        nameInit.Init(name);
       } finally {
-       progress.done();
+        progress.done();
       }
     }
   }

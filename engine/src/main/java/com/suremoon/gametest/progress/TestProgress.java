@@ -5,7 +5,6 @@ import com.suremoon.game.door.attribute.ComplexAttribute;
 import com.suremoon.game.kernel.data.units.Unit;
 import com.suremoon.game.kernel.initer.InitManager;
 import com.suremoon.game.kernel.initer.Progress;
-
 import java.awt.*;
 
 public class TestProgress {
@@ -38,8 +37,8 @@ public class TestProgress {
             return;
           }
 
-            u.getAttribute().setMaxMp(total);
-            u.getAttribute().setMp(current);
+          u.getAttribute().setMaxMp(total);
+          u.getAttribute().setMp(current);
         },
         () -> {
           throw new RuntimeException("success");
@@ -56,11 +55,11 @@ public class TestProgress {
 
     draftForm.draw(
         graphics -> {
-            ComplexAttribute attribute = u.getAttribute();
-            graphics.setColor(Color.BLUE);
-            graphics.fillRect(0, 100, (int)(600 * attribute.getHp() / attribute.getMaxHp()), 100);
-            graphics.setColor(Color.GREEN);
-            graphics.fillRect(0, 300, (int)(600 * attribute.getMp() / attribute.getMaxMp()), 100);
+          ComplexAttribute attribute = u.getAttribute();
+          graphics.setColor(Color.BLUE);
+          graphics.fillRect(0, 100, (int) (600 * attribute.getHp() / attribute.getMaxHp()), 100);
+          graphics.setColor(Color.GREEN);
+          graphics.fillRect(0, 300, (int) (600 * attribute.getMp() / attribute.getMaxMp()), 100);
         });
   }
 }

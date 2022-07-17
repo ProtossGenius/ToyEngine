@@ -1,7 +1,7 @@
 package com.suremoon.game.door.units_itf;
 
-import com.suremoon.game.door.attribute.ElementPriorities;
 import com.suremoon.game.door.attribute.ComplexAttribute;
+import com.suremoon.game.door.attribute.ElementPriorities;
 import com.suremoon.game.door.attribute.HurtCalcItf;
 import com.suremoon.game.door.kernel.AGTypeInf;
 import com.suremoon.game.door.kernel.DieDo;
@@ -13,102 +13,105 @@ import com.suremoon.game.door.units_itf.skill_about.SkillManager;
 
 public interface UnitItf extends AGTypeInf, GRectItf, SerializeAble {
 
-    void setHurtCalcItf(HurtCalcItf hurtCalc);
-    HurtCalcItf getHurtCalcItf();
+  void setHurtCalcItf(HurtCalcItf hurtCalc);
 
-    /**
-     * @return 是否已死亡
-     */
-    boolean isDie();
+  HurtCalcItf getHurtCalcItf();
 
-    ComplexAttribute getAttribute();
+  /**
+   * @return 是否已死亡
+   */
+  boolean isDie();
 
-    StateItf getState();
+  ComplexAttribute getAttribute();
 
-    void setState(StateItf state);
+  StateItf getState();
 
-    void acceptBuff(BuffItf buff);
-    void acceptCmd(CommandItf cmd);
-    void setUnitRem(UnitRemItf itf);
-    UnitRemItf getUnitRem();
+  void setState(StateItf state);
 
-    /**
-     * @return 唯一ID
-     */
-    int getGid();
+  void acceptBuff(BuffItf buff);
 
-    void setGid(int gid);
+  void acceptCmd(CommandItf cmd);
 
-    /**
-     * @return 动画间隔时间
-     */
-    int getIntervalTime();
+  void setUnitRem(UnitRemItf itf);
 
-    /**
-     * @param hel 治疗
-     */
-    void BeHeal(double hel);
+  UnitRemItf getUnitRem();
 
-    void setDieDo(DieDo dieDo);
+  /**
+   * @return 唯一ID
+   */
+  int getGid();
 
-    /**
-     * 重生
-     */
-    void relive();
+  void setGid(int gid);
 
-    void setShowName(String showName);
-    String getShowName();
+  /**
+   * @return 动画间隔时间
+   */
+  int getIntervalTime();
 
-    LeaveStatus getLeaveStatus();
+  /**
+   * @param hel 治疗
+   */
+  void BeHeal(double hel);
 
-    void setLeaveStatus(LeaveStatus leaveStatus);
+  void setDieDo(DieDo dieDo);
 
-    /**
-     * @param unitLeaveAction 当玩家设置为离开，被移除当前世界之后做什么
-     */
-    void setLeaveAction(UnitLeaveAction unitLeaveAction);
-    UnitLeaveAction getLeaveAction();
+  /** 重生 */
+  void relive();
 
-    /**
-     * @return 玩家所属的阵营
-     */
-    int getCamp();
+  void setShowName(String showName);
 
-    /**
-     * @param camp 玩家所属的阵营
-     */
-    void setCamp(int camp);
+  String getShowName();
 
-    SkillManager getSkillManager();
+  LeaveStatus getLeaveStatus();
 
-// ------------- 以下是default实现 ------------
-    default void BeHurt(double hurt){
-        double hp = this.getAttribute().getHp();
-        hp = hp - hurt > 0 ? hp - hurt : 0;
-        this.getAttribute().setHp(hp);
-    }
+  void setLeaveStatus(LeaveStatus leaveStatus);
 
-    default void underAttack(UnitItf attacker, ElementPriorities elementPriorities) {
-        double hurt = getHurtCalcItf().underAttack(this, elementPriorities);
-        BeHurt(hurt);
-        getUnitRem().underAttack(this, attacker, hurt);
-    }
+  /**
+   * @param unitLeaveAction 当玩家设置为离开，被移除当前世界之后做什么
+   */
+  void setLeaveAction(UnitLeaveAction unitLeaveAction);
 
-    /**
-     * @param attacker 攻击者
-     * @param ad AD伤害
-     * @param ap AP伤害
-     */
-    default void underAttack(UnitItf attacker, double ad, double ap) {
-        underAttack(attacker, new ElementPriorities(ad, ap));
-    }
+  UnitLeaveAction getLeaveAction();
 
-    /**
-     *
-     * @param skillName 技能名
-     * @return 是否成功施放技能
-     */
-    default boolean useSkill(String skillName){
-        return getSkillManager().useSkill(skillName, this);
-    }
+  /**
+   * @return 玩家所属的阵营
+   */
+  int getCamp();
+
+  /**
+   * @param camp 玩家所属的阵营
+   */
+  void setCamp(int camp);
+
+  SkillManager getSkillManager();
+
+  // ------------- 以下是default实现 ------------
+  default void BeHurt(double hurt) {
+    double hp = this.getAttribute().getHp();
+    hp = hp - hurt > 0 ? hp - hurt : 0;
+    this.getAttribute().setHp(hp);
+  }
+
+  default void underAttack(UnitItf attacker, ElementPriorities elementPriorities) {
+    double hurt = getHurtCalcItf().underAttack(this, elementPriorities);
+    BeHurt(hurt);
+    getUnitRem().underAttack(this, attacker, hurt);
+  }
+
+  /**
+   * @param attacker 攻击者
+   * @param ad AD伤害
+   * @param ap AP伤害
+   */
+  default void underAttack(UnitItf attacker, double ad, double ap) {
+    underAttack(attacker, new ElementPriorities(ad, ap));
+  }
+
+  /**
+   * @param skillName 技能名
+   * @return 是否成功施放技能
+   */
+  default boolean useSkill(String skillName) {
+    return getSkillManager().useSkill(skillName, this);
+  }
 }

@@ -5,78 +5,86 @@ import com.suremoon.game.door.tools.ByteStream;
 import com.suremoon.game.door.tools.CJDeal;
 import com.suremoon.game.door.units_itf.EffectItf;
 
-/**
- * Created by Water Moon on 2017/12/28.
- */
-public class MsgEffect implements AGMessage {//4+4+4+4+4+8+8+8=44
-    protected int EffectType, pos_x, pos_y, width, height, gid;
-    protected int PTime;
-    protected double direct_x, direct_y;
-    public MsgEffect(){}
-    public MsgEffect(ByteStream bs){
-        this.EffectType = bs.getInteger();
-        this.PTime = bs.getInteger();
-        direct_x = bs.getDouble();
-        direct_y = bs.getDouble();
-        pos_x = bs.getInteger();
-        pos_y = bs.getInteger();
-        this.width = bs.getInteger();
-        this.height = bs.getInteger();
-        this.gid = bs.getInteger();
-    }
+/** Created by Water Moon on 2017/12/28. */
+public class MsgEffect implements AGMessage { // 4+4+4+4+4+8+8+8=44
+  protected int EffectType, pos_x, pos_y, width, height, gid;
+  protected int PTime;
+  protected double direct_x, direct_y;
 
-    public MsgEffect(EffectItf effect) {
-        super();
-        EffectType = effect.getAGType();
-        PTime = effect.getPassedTime();
-        direct_x = effect.getDirect().X;
-        direct_y = effect.getDirect().Y;
-        pos_x = effect.getX();
-        pos_y = effect.getY();
-        width = effect.getWidth();
-        height = effect.getHeight();
-        gid  = effect.getGid();
-    }
+  public MsgEffect() {}
 
-    @Override
-    public byte[] toBytes() {
-        return CJDeal.ByteArrayConnect(CJDeal.int2byte(EffectType), CJDeal.int2byte(PTime), CJDeal.double2bytes(direct_x), CJDeal.double2bytes(direct_y),
-                CJDeal.int2byte(pos_x), CJDeal.int2byte(pos_y), CJDeal.int2byte(width), CJDeal.int2byte(height), CJDeal.int2byte(gid));
-    }
+  public MsgEffect(ByteStream bs) {
+    this.EffectType = bs.getInteger();
+    this.PTime = bs.getInteger();
+    direct_x = bs.getDouble();
+    direct_y = bs.getDouble();
+    pos_x = bs.getInteger();
+    pos_y = bs.getInteger();
+    this.width = bs.getInteger();
+    this.height = bs.getInteger();
+    this.gid = bs.getInteger();
+  }
 
-    public int getEffectType() {
-        return EffectType;
-    }
+  public MsgEffect(EffectItf effect) {
+    super();
+    EffectType = effect.getAGType();
+    PTime = effect.getPassedTime();
+    direct_x = effect.getDirect().X;
+    direct_y = effect.getDirect().Y;
+    pos_x = effect.getX();
+    pos_y = effect.getY();
+    width = effect.getWidth();
+    height = effect.getHeight();
+    gid = effect.getGid();
+  }
 
-    public int getPos_x() {
-        return pos_x;
-    }
+  @Override
+  public byte[] toBytes() {
+    return CJDeal.ByteArrayConnect(
+        CJDeal.int2byte(EffectType),
+        CJDeal.int2byte(PTime),
+        CJDeal.double2bytes(direct_x),
+        CJDeal.double2bytes(direct_y),
+        CJDeal.int2byte(pos_x),
+        CJDeal.int2byte(pos_y),
+        CJDeal.int2byte(width),
+        CJDeal.int2byte(height),
+        CJDeal.int2byte(gid));
+  }
 
-    public int getPos_y() {
-        return pos_y;
-    }
+  public int getEffectType() {
+    return EffectType;
+  }
 
-    public int getWidth() {
-        return width;
-    }
+  public int getPos_x() {
+    return pos_x;
+  }
 
-    public int getHeight() {
-        return height;
-    }
+  public int getPos_y() {
+    return pos_y;
+  }
 
-    public long getPTime() {
-        return PTime;
-    }
+  public int getWidth() {
+    return width;
+  }
 
-    public double getDirect_x() {
-        return direct_x;
-    }
+  public int getHeight() {
+    return height;
+  }
 
-    public double getDirect_y() {
-        return direct_y;
-    }
+  public long getPTime() {
+    return PTime;
+  }
 
-    public int getGid() {
-        return gid;
-    }
+  public double getDirect_x() {
+    return direct_x;
+  }
+
+  public double getDirect_y() {
+    return direct_y;
+  }
+
+  public int getGid() {
+    return gid;
+  }
 }
