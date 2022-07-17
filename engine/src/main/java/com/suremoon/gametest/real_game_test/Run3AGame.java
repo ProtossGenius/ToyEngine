@@ -17,6 +17,6 @@ public class Run3AGame {
 
     public static void main(String[] args) throws Exception {
         InitManager.init();
-        ClientStartup.singleClient("configs/world_mgr_config/my_world.xml", "T_red_knight", "Õ∑∫≈ÕÊº“", null);
+        ClientStartup.singleClient("configs/world_mgr_config/my_world.xml", "T_red_knight", "Â§¥Âè∑Áé©ÂÆ∂", null);
     }
 }

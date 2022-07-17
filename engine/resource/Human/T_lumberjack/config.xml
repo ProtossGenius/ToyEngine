@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <Root>
+	<Type>NADN</Type>
+	<Ext>bmp</Ext>
+	<trans_color>0x61442b</trans_color>
+	<Actions>
+		<action name="lumberjack with axe 128x bitmaps\felling tree" action_nums="13" directs="8" numlength="4"/>
+		<action name="lumberjack with axe 128x bitmaps\lay down axe" action_nums="7" directs="8" numlength="4"/>
+		<action name="lumberjack with axe 128x bitmaps\pickup axe" action_nums="6" directs="8" numlength="4"/>
+		<action name="lumberjack with axe 96x bitmaps\talking" action_nums="9" directs="8" numlength="4"/>
+		<action name="lumberjack with axe 96x bitmaps\walking" action_nums="7" directs="8" numlength="4"/>
+		<action name="lumberjack with trunk 128x bitmaps\laydown trunk" action_nums="13" directs="8" numlength="4"/>
+		<action name="lumberjack with trunk 128x bitmaps\pickup trunk" action_nums="12" directs="8" numlength="4"/>
+		<action name="lumberjack with trunk 96x bitmaps\walking with trunk" action_nums="7" directs="8" numlength="4"/>
+		<action name="lumberjack without axe 128x bitmaps\laydown without axe" action_nums="6" directs="8" numlength="4"/>
+		<action name="lumberjack without axe 128x bitmaps\pickup without axe" action_nums="6" directs="8" numlength="4"/>
+		<action name="lumberjack without axe 96x  bitmaps\talking without axe" action_nums="9" directs="8" numlength="4"/>
+		<action name="lumberjack without axe 96x  bitmaps\walking without axe" action_nums="7" directs="8" numlength="4"/>
+	</Actions>
+</Root>

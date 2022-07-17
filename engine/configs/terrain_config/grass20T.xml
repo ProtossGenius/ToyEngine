@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<ResFile>resource\terrains\grass20.xml</ResFile>
+	<IsDecorate>false</IsDecorate>
+	<AverageColor>0x7d7e39</AverageColor>
+	<Buffs>
+ 	</Buffs>
+	<Walkable>{"Type":"WalkableOI","WalkableO":"true","WalkableI":"true"}</Walkable>
+</Root>

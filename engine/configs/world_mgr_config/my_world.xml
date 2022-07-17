@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+    <WorldList>
+        <World>./configs/world_config/lost_place.xml</World>
+        <World>./configs/world_config/magic_door.xml</World>
+    </WorldList>
+    <ModList>
+        <WorldMgrMod>com.suremoon.gametest.real_game_test.WorldMgrMods.WorldMgrModDemo</WorldMgrMod>
+    </ModList>
+</Root>

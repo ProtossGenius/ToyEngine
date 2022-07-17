@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Root>
+    <Type>NADN</Type>
+    <Ext>bmp</Ext>
+    <trans_color>0x61442B</trans_color>
+    <Actions>
+        <action name="attack" action_nums="13" directs="8" numlength="4"/>
+        <action name="been hit"  action_nums="9" directs="8" numlength="4"/>
+        <action name="looking"  action_nums="13" directs="8" numlength="4"/>
+        <action name="running"  action_nums="8" directs="8" numlength="4"/>
+        <action name="tipping over" action_nums="11" directs="8" numlength="4"/>
+        <action name="walking" action_nums="8" directs="8" numlength="4"/>
+    </Actions>
+</Root>

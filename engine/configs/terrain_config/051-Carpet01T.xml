@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<ResFile>resource\terrains\051-Carpet01.xml</ResFile>
+	<IsDecorate>false</IsDecorate>
+	<AverageColor>0xb15d3f</AverageColor>
+	<Buffs>
+ 	</Buffs>
+	<Walkable>{"Type":"WalkableOI","WalkableO":"true","WalkableI":"true"}</Walkable>
+</Root>

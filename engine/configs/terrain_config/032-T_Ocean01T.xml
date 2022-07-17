@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<ResFile>resource\terrains\032-T_Ocean01.xml</ResFile>
+	<IsDecorate>false</IsDecorate>
+	<AverageColor>0x217593</AverageColor>
+	<Buffs>
+ 	</Buffs>
+	<Walkable>{"Type":"WalkableOI","WalkableO":"false","WalkableI":"false"}</Walkable>
+</Root>

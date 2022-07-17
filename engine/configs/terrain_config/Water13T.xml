@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<ResFile>resource\terrains\Water13.xml</ResFile>
+	<IsDecorate>false</IsDecorate>
+	<AverageColor>0x2b5846</AverageColor>
+	<Buffs>
+ 	</Buffs>
+	<Walkable>{"Type":"WalkableOI","WalkableO":"false","WalkableI":"false"}</Walkable>
+</Root>

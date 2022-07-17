@@ -21,6 +21,8 @@ dependencies {
     // This dependency is used by the application.
     implementation("com.google.guava:guava:30.1.1-jre")
     implementation(project(":door"))
+
+    implementation(fileTree(mapOf("dir" to "../libs", "include" to listOf("*.jar"))))
 }
 
 testing {
@@ -34,6 +36,7 @@ testing {
 }
 
 application {
+    executableDir = "../resources/"
     // Define the main class for the application.
-    mainClass.set("com.suremoon.App")
+    mainClass.set("com.suremoon.gametest.real_game_test.Run3AGame")
 }

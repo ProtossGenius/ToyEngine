@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<PicPath>resource/Effect/FlowerFire.jpg</PicPath>
+	<Type>SIRC</Type>
+	<TransColor>0x010101</TransColor>
+	<ResList>
+		<ResConfig Id = "1" Describe = "no-need" StartPoint = "0, 0" EndPoint = "192, 192"/>
+		<ResConfig Id = "2" Describe = "no-need" StartPoint = "192, 0" EndPoint = "384, 192"/>
+		<ResConfig Id = "3" Describe = "no-need" StartPoint = "384, 0" EndPoint = "576, 192"/>
+		<ResConfig Id = "4" Describe = "no-need" StartPoint = "576, 0" EndPoint = "768, 192"/>
+		<ResConfig Id = "5" Describe = "no-need" StartPoint = "768, 0" EndPoint = "960, 192"/>
+		<ResConfig Id = "6" Describe = "no-need" StartPoint = "0, 192" EndPoint = "192, 384"/>
+		<ResConfig Id = "7" Describe = "no-need" StartPoint = "192, 192" EndPoint = "384, 384"/>
+		<ResConfig Id = "8" Describe = "no-need" StartPoint = "384, 192" EndPoint = "576, 384"/>
+		<ResConfig Id = "9" Describe = "no-need" StartPoint = "576, 192" EndPoint = "768, 384"/>
+		<ResConfig Id = "10" Describe = "no-need" StartPoint = "768, 192" EndPoint = "960, 384"/>
+		<ResConfig Id = "11" Describe = "no-need" StartPoint = "0, 384" EndPoint = "192, 576"/>
+		<ResConfig Id = "12" Describe = "no-need" StartPoint = "192, 384" EndPoint = "384, 576"/>
+		<ResConfig Id = "13" Describe = "no-need" StartPoint = "384, 384" EndPoint = "576, 576"/>
+		<ResConfig Id = "14" Describe = "no-need" StartPoint = "576, 384" EndPoint = "768, 576"/>
+		<ResConfig Id = "15" Describe = "no-need" StartPoint = "768, 384" EndPoint = "960, 576"/>
+		<ResConfig Id = "16" Describe = "no-need" StartPoint = "0, 576" EndPoint = "192, 768"/>
+		<ResConfig Id = "17" Describe = "no-need" StartPoint = "192, 576" EndPoint = "384, 768"/>
+		<ResConfig Id = "18" Describe = "no-need" StartPoint = "384, 576" EndPoint = "576, 768"/>
+		<ResConfig Id = "19" Describe = "no-need" StartPoint = "576, 576" EndPoint = "768, 768"/>
+		<ResConfig Id = "20" Describe = "no-need" StartPoint = "768, 576" EndPoint = "960, 768"/>
+		<ResConfig Id = "21" Describe = "no-need" StartPoint = "0, 768" EndPoint = "192, 960"/>
+		<ResConfig Id = "22" Describe = "no-need" StartPoint = "192, 768" EndPoint = "384, 960"/>
+		<ResConfig Id = "23" Describe = "no-need" StartPoint = "384, 768" EndPoint = "576, 960"/>
+		<ResConfig Id = "24" Describe = "no-need" StartPoint = "576, 768" EndPoint = "768, 960"/>
+		<ResConfig Id = "25" Describe = "no-need" StartPoint = "768, 768" EndPoint = "960, 960"/>
+		<ResConfig Id = "26" Describe = "no-need" StartPoint = "0, 960" EndPoint = "192, 1152"/>
+		<ResConfig Id = "27" Describe = "no-need" StartPoint = "192, 960" EndPoint = "384, 1152"/>
+		<ResConfig Id = "28" Describe = "no-need" StartPoint = "384, 960" EndPoint = "576, 1152"/>
+		<ResConfig Id = "29" Describe = "no-need" StartPoint = "576, 960" EndPoint = "768, 1152"/>
+		<ResConfig Id = "30" Describe = "no-need" StartPoint = "768, 960" EndPoint = "960, 1152"/>
+	</ResList>
+</Root>

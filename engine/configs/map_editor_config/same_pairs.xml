@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+    <SamePairs>
+        <SamePair father = "070-CI_Snow01" son = "SnowRoad" />
+    </SamePairs>
+</Root>

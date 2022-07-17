@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+    <Commands>
+        <Command name="CmdWalk">com.suremoon.gametest.real_game_test.action_dealers.WalkAd</Command>
+        <Command name="CmdAttack">com.suremoon.gametest.real_game_test.action_dealers.AttackAd</Command>
+        <Command name="CmdPutMagic">com.suremoon.gametest.real_game_test.action_dealers.MagicAd</Command>
+        <Command name="CmdFlowerFire">com.suremoon.gametest.real_game_test.action_dealers.FlowerFireAd</Command>
+        <Command name="CmdRandMove">com.suremoon.gametest.real_game_test.action_dealers.RandomMoveAd</Command>
+        <Command name="CmdTrans">com.suremoon.gametest.real_game_test.action_dealers.TransAd</Command>
+        <Command name="CmdInteractive">com.suremoon.gametest.real_game_test.action_dealers.InteractiveAD</Command>
+    </Commands>
+</Root>

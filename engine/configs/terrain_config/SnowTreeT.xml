@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<ResFile>resource\terrains\SnowTree.xml</ResFile>
+	<IsDecorate>true</IsDecorate>
+	<AverageColor>0xf2f2f2</AverageColor>
+	<Buffs>
+ 	</Buffs>
+	<Walkable>{"Type":"WalkableOI","WalkableO":"false","WalkableI":"false"}</Walkable>
+</Root>
