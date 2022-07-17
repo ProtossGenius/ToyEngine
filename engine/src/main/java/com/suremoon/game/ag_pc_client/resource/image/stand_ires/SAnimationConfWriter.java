@@ -15,7 +15,7 @@ import java.util.TreeMap;
 public class SAnimationConfWriter {
     protected String confPath;
     protected TreeMap<String, Integer> rcs;
-    protected ArrayList<Point> aniRes;//xΪConfId,yΪSRId
+    protected ArrayList<Point> aniRes;//x为ConfId,y为SRId
     protected String describe;
     public SAnimationConfWriter(String confPath) {
         this.confPath = confPath;

@@ -33,7 +33,7 @@ public class MSplitPane extends JSplitPane{
     @Override
     public void setDividerLocation(int location) {
         super.setDividerLocation(location);
-        if (getOrientation() == HORIZONTAL_SPLIT) {//ºá×ÅµÄ
+        if (getOrientation() == HORIZONTAL_SPLIT) {//æ¨ªç€çš„
             leftComponent.setBounds(getX(), getY(), location, getHeight());
             rightComponent.setBounds(getX()+location+dividerSize, getY(), getWidth()-location-10, getHeight());
         } else {

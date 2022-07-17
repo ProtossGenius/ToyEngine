@@ -14,23 +14,23 @@ public class SimpleNettyClient {
     public void connect(String host, int port) throws Exception {
         EventLoopGroup worker = new NioEventLoopGroup();
         try {
-            // ¿Í»§¶ËÆô¶¯Àà³ÌĞò
+            // å®¢æˆ·ç«¯å¯åŠ¨ç±»ç¨‹åº
             Bootstrap bootstrap = new Bootstrap();
             /**
-             *EventLoopµÄ×é
+             *EventLoopçš„ç»„
              */
             bootstrap.group(worker);
             /**
-             * ÓÃÓÚ¹¹Ôìsocketchannel¹¤³§
+             * ç”¨äºæ„é€ socketchannelå·¥å‚
              */
             bootstrap.channel(NioSocketChannel.class);
-            /**ÉèÖÃÑ¡Ïî
-             * ²ÎÊı£ºSocketµÄ±ê×¼²ÎÊı£¨key£¬value£©£¬¿É×ÔĞĞ°Ù¶È
-             ±£³ÖºôÎü£¬²»Òª¶ÏÆø£¡
+            /**è®¾ç½®é€‰é¡¹
+             * å‚æ•°ï¼šSocketçš„æ ‡å‡†å‚æ•°ï¼ˆkeyï¼Œvalueï¼‰ï¼Œå¯è‡ªè¡Œç™¾åº¦
+             ä¿æŒå‘¼å¸ï¼Œä¸è¦æ–­æ°”ï¼
              * */
             bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
             /**
-             * ×Ô¶¨Òå¿Í»§¶ËHandle£¨¿Í»§¶ËÔÚÕâÀï¸ãÊÂÇé£©
+             * è‡ªå®šä¹‰å®¢æˆ·ç«¯Handleï¼ˆå®¢æˆ·ç«¯åœ¨è¿™é‡Œæäº‹æƒ…ï¼‰
              */
             bootstrap.handler(new ChannelInitializer<SocketChannel>() {
                 @Override
@@ -39,9 +39,9 @@ public class SimpleNettyClient {
                 }
             });
 
-            /** ¿ªÆô¿Í»§¶Ë¼àÌı£¬Á¬½Óµ½Ô¶³Ì½Úµã£¬×èÈûµÈ´ıÖ±µ½Á¬½ÓÍê³É*/
+            /** å¼€å¯å®¢æˆ·ç«¯ç›‘å¬ï¼Œè¿æ¥åˆ°è¿œç¨‹èŠ‚ç‚¹ï¼Œé˜»å¡ç­‰å¾…ç›´åˆ°è¿æ¥å®Œæˆ*/
             ChannelFuture channelFuture = bootstrap.connect(host, port).sync();
-            /**×èÈûµÈ´ıÊı¾İ£¬Ö±µ½channel¹Ø±Õ(¿Í»§¶Ë¹Ø±Õ)*/
+            /**é˜»å¡ç­‰å¾…æ•°æ®ï¼Œç›´åˆ°channelå…³é—­(å®¢æˆ·ç«¯å…³é—­)*/
             channelFuture.channel().closeFuture().sync();
         } finally {
             worker.shutdownGracefully();

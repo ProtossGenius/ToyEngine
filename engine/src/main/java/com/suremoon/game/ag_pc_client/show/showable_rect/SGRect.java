@@ -27,7 +27,7 @@ public class SGRect extends GRect {
     }
 
     /**
-     * °´ÕÕËõ·ÅµÄ·½·¨½«ËùÓĞµÄ²¿·ÖÈ«²¿ÏÔÊ¾ÔÚ»­°åÉÏ
+     * æŒ‰ç…§ç¼©æ”¾çš„æ–¹æ³•å°†æ‰€æœ‰çš„éƒ¨åˆ†å…¨éƒ¨æ˜¾ç¤ºåœ¨ç”»æ¿ä¸Š
      * @param gp
      */
     public void show(Graphics gp){
@@ -35,9 +35,9 @@ public class SGRect extends GRect {
     }
 
     /**
-     * ²¿·Ö»æÖÆ
-     * @param gp »­°å
-     * @param rect ²¿·ÖÇøÓò¡£
+     * éƒ¨åˆ†ç»˜åˆ¶
+     * @param gp ç”»æ¿
+     * @param rect éƒ¨åˆ†åŒºåŸŸã€‚
      */
     public void show(Graphics gp, Rectangle rect){
         PicArea pa = new PicArea(smi, rect);

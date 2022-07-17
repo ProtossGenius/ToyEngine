@@ -18,14 +18,14 @@ public class GetProjectLines {
         getLines(f);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         MSLoger.write("GetProjectLines.txt", "[" + df.format(new Date()) + "]");
-        MSLoger.write("GetProjectLines.txt", "总行数：        " + totalLines);
-        MSLoger.write("GetProjectLines.txt", "非空行总行数：  " + notNullTotalLines);
-        MSLoger.write("GetProjectLines.txt", "非行注释总行数：" + notLineCommentsTotalLines);
-        MSLoger.write("GetProjectLines.txt", "空行数：        " + (totalLines - notNullTotalLines));
-        System.out.println("总行数：        " + totalLines);
-        System.out.println("非空行总行数：  " + notNullTotalLines);
-        System.out.println("非行注释总行数：" + notLineCommentsTotalLines);
-        System.out.println("空行数：        " + (totalLines - notNullTotalLines));
+        MSLoger.write("GetProjectLines.txt", "鎬昏鏁帮細        " + totalLines);
+        MSLoger.write("GetProjectLines.txt", "闈炵┖琛屾�昏鏁帮細  " + notNullTotalLines);
+        MSLoger.write("GetProjectLines.txt", "闈炶娉ㄩ噴鎬昏鏁帮細" + notLineCommentsTotalLines);
+        MSLoger.write("GetProjectLines.txt", "绌鸿鏁帮細        " + (totalLines - notNullTotalLines));
+        System.out.println("鎬昏鏁帮細        " + totalLines);
+        System.out.println("闈炵┖琛屾�昏鏁帮細  " + notNullTotalLines);
+        System.out.println("闈炶娉ㄩ噴鎬昏鏁帮細" + notLineCommentsTotalLines);
+        System.out.println("绌鸿鏁帮細        " + (totalLines - notNullTotalLines));
     }
     static int totalLines = 0, notNullTotalLines, notLineCommentsTotalLines;
     public static int getFileLines(File f) throws IOException {

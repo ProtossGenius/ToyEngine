@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Water Moon on 2018/3/13.
- * 单一世界
+ * 鍗曚竴涓栫晫
  */
 public class World implements WorldItf {
     protected GameMap gm;//todo: MapInfManager product

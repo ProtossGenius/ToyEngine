@@ -33,15 +33,15 @@ import java.util.Map;
  */
 public class UnitEditor extends JFrame{
     JPicture preView = new JPicture();
-    JLabel lal = new JLabel("¶¯×÷ÁĞ±í"), ldl = new JLabel("·½ÏòÁĞ±í"), lfpx = new JLabel("½ÅÎ»ÖÃ-X"),
-    lfpy = new JLabel("½ÅÎ»ÖÃ-Y"), luname = new JLabel("µ¥Î»Ãû³Æ"), lsize = new JLabel("¹æ¸ñ"),
-            lwidth = new JLabel("¿í¶È"), lheight = new JLabel("¸ß¶È"), lsname = new JLabel("ÏÔÊ¾Ãû"), lsca = new JLabel("¿ÉÌí¼ÓµÄ×´Ì¬"), laca = new JLabel("¿ÉÌí¼ÓµÄ¶¯×÷");
+    JLabel lal = new JLabel("åŠ¨ä½œåˆ—è¡¨"), ldl = new JLabel("æ–¹å‘åˆ—è¡¨"), lfpx = new JLabel("è„šä½ç½®-X"),
+    lfpy = new JLabel("è„šä½ç½®-Y"), luname = new JLabel("å•ä½åç§°"), lsize = new JLabel("è§„æ ¼"),
+            lwidth = new JLabel("å®½åº¦"), lheight = new JLabel("é«˜åº¦"), lsname = new JLabel("æ˜¾ç¤ºå"), lsca = new JLabel("å¯æ·»åŠ çš„çŠ¶æ€"), laca = new JLabel("å¯æ·»åŠ çš„åŠ¨ä½œ");
     JTextField footPosX = new JTextField(), footPosY = new JTextField(), width = new JTextField("100"), height = new JTextField("100"), sname = new JTextField(),
     uName = new JTextField();
     DefaultTableModel dtm = new DefaultTableModel();
     JTable stateActionTable = new JTable(dtm);
-    JButton openResConfig = new JButton("´ò¿ª×ÊÔ´ÅäÖÃÎÄ¼ş"), openUnitConfig = new JButton("´ò¿ªµ¥Î»ÅäÖÃÎÄ¼ş"), saveConfig = new JButton("±£´æÅäÖÃ"), checkIsUsed = new JButton("¼ì²âÃû³ÆÊÇ·ñ±»Õ¼ÓÃ."), addSA = new JButton("Ìí¼Ó")
-            ,deleteSA = new JButton("É¾³ı");
+    JButton openResConfig = new JButton("æ‰“å¼€èµ„æºé…ç½®æ–‡ä»¶"), openUnitConfig = new JButton("æ‰“å¼€å•ä½é…ç½®æ–‡ä»¶"), saveConfig = new JButton("ä¿å­˜é…ç½®"), checkIsUsed = new JButton("æ£€æµ‹åç§°æ˜¯å¦è¢«å ç”¨."), addSA = new JButton("æ·»åŠ ")
+            ,deleteSA = new JButton("åˆ é™¤");
     DefaultComboBoxModel sca = new DefaultComboBoxModel(), aca = new DefaultComboBoxModel();//state can add  & action can add 's model
     JComboBox actionList = new JComboBox(), directList = new JComboBox(), stateCanAdd = new JComboBox(sca), actionCanAdd = new JComboBox(aca);
     public static final String directs[] = {"e", "w", "s", "n", "se", "sw", "ne", "nw"};
@@ -162,7 +162,7 @@ public class UnitEditor extends JFrame{
         openResConfig.addActionListener((ActionEvent e)-> {
                 JFileChooser jfc = new JFileChooser(new File("./resource"));
                 FileNameExtensionFilter filter=
-                        new FileNameExtensionFilter("ÅäÖÃÎÄ¼ş *.xml", "xml");
+                        new FileNameExtensionFilter("é…ç½®æ–‡ä»¶ *.xml", "xml");
                 jfc.setFileFilter(filter);
                 int resoult = jfc.showOpenDialog(UnitEditor.this);
                 if(resoult == jfc.APPROVE_OPTION){
@@ -176,7 +176,7 @@ public class UnitEditor extends JFrame{
         openUnitConfig.addActionListener((ActionEvent e)->{
             JFileChooser jfc = new JFileChooser(new File("./configs/unit_config"));
             FileNameExtensionFilter filter=
-                    new FileNameExtensionFilter("ÅäÖÃÎÄ¼ş *.xml", "xml");
+                    new FileNameExtensionFilter("é…ç½®æ–‡ä»¶ *.xml", "xml");
             jfc.setFileFilter(filter);
             int resoult = jfc.showOpenDialog(UnitEditor.this);
             if(resoult == jfc.APPROVE_OPTION){
@@ -196,9 +196,9 @@ public class UnitEditor extends JFrame{
         checkIsUsed.addActionListener((ActionEvent e)->{
             boolean isExisted = checkIsNameExist();
             if(isExisted){
-                JOptionPane.showConfirmDialog(null, "The name has existed.", "Error", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+                JOptionPane.showConfirmDialog(null, "The name has existed.", "Error", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
             }else{
-                JOptionPane.showConfirmDialog(null, "Ãû×ÖÎ´±»Õ¼ÓÃ.", "ÏûÏ¢", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+                JOptionPane.showConfirmDialog(null, "åå­—æœªè¢«å ç”¨.", "æ¶ˆæ¯", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
             }
         });
         //delete
@@ -300,9 +300,9 @@ public class UnitEditor extends JFrame{
     protected void saveConfig() {
         boolean isExist = checkIsNameExist();
         if(isExist){
-            int res = JOptionPane.showConfirmDialog(null, "ÎÄ¼şÒÑ¾­´æÔÚ£¬ÊÇ·ñÌæ»»£¿.", "¾¯¸æ", JOptionPane.YES_NO_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+            int res = JOptionPane.showConfirmDialog(null, "æ–‡ä»¶å·²ç»å­˜åœ¨ï¼Œæ˜¯å¦æ›¿æ¢ï¼Ÿ.", "è­¦å‘Š", JOptionPane.YES_NO_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
             if(res == JOptionPane.NO_OPTION){
-                JOptionPane.showConfirmDialog(null, "·ÅÆú±£´æµ±Ç°ÉèÖÃ.", "ĞÅÏ¢", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+                JOptionPane.showConfirmDialog(null, "æ”¾å¼ƒä¿å­˜å½“å‰è®¾ç½®.", "ä¿¡æ¯", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
                 return;
             }
         }
@@ -331,9 +331,9 @@ public class UnitEditor extends JFrame{
             fw.close();
         }catch (Exception e){
             e.printStackTrace();
-            JOptionPane.showConfirmDialog(null, "±£´æ¹ı³ÌÖĞ·¢ÉúÁËÒì³££¬Òì³£ĞÅÏ¢Îª£º" + e.toString(), "´íÎó", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+            JOptionPane.showConfirmDialog(null, "ä¿å­˜è¿‡ç¨‹ä¸­å‘ç”Ÿäº†å¼‚å¸¸ï¼Œå¼‚å¸¸ä¿¡æ¯ä¸ºï¼š" + e.toString(), "é”™è¯¯", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
         }
-        JOptionPane.showConfirmDialog(null, "µ±Ç°µ¥Î»µÄÅäÖÃĞÅÏ¢±£´æ³É¹¦.", "³É¹¦", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+        JOptionPane.showConfirmDialog(null, "å½“å‰å•ä½çš„é…ç½®ä¿¡æ¯ä¿å­˜æˆåŠŸ.", "æˆåŠŸ", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
     }
     protected void addStateAction(){
         if(stateCanAdd.getSelectedIndex() == -1 || actionCanAdd.getSelectedIndex() == -1){

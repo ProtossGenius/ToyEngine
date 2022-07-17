@@ -150,7 +150,7 @@ public class MapEditor extends JFrame implements MouseListener, MouseMotionListe
     }
 
     private static String pointToString(Point p) {
-        if (p.equals(new Point(-7758, -521))) return "·¶Î§Ö®Íâ";
+        if (p.equals(new Point(-7758, -521))) return "èŒƒå›´ä¹‹å¤–";
         return "(" + p.x + ", " + p.y + ")";
     }
 
@@ -210,10 +210,10 @@ public class MapEditor extends JFrame implements MouseListener, MouseMotionListe
         msg.getGraphics().setColor(Color.WHITE);
         msg.getGraphics().fillRect(0, 0, msg.getWidth(), msg.getHeight());
         msg.getGraphics().setColor(Color.BLACK);
-        Font font = new Font("ËÎÌå", Font.BOLD, 20);
-        new StringShow("µØĞÎÃû³Æ: " + tc.getTerrainName(), new Rectangle(0, 30, msg.getWidth(), 50), font).drawOn(msg.getGraphics());
-        new StringShow("Êó±êÕæÊµÎ»ÖÃ: " + pointToString(new Point(lastPos.x + gs.getFocusPoint().x, lastPos.y + gs.getFocusPoint().y)), new Rectangle(0, 130, msg.getWidth(), 50), font).drawOn(msg.getGraphics());
-        new StringShow("ÊÓ´°Î»ÖÃ: " + pointToString(gs.getFocusPoint()), new Rectangle(0, 230, msg.getWidth(), 50), font).drawOn(msg.getGraphics());
+        Font font = new Font("å®‹ä½“", Font.BOLD, 20);
+        new StringShow("åœ°å½¢åç§°: " + tc.getTerrainName(), new Rectangle(0, 30, msg.getWidth(), 50), font).drawOn(msg.getGraphics());
+        new StringShow("é¼ æ ‡çœŸå®ä½ç½®: " + pointToString(new Point(lastPos.x + gs.getFocusPoint().x, lastPos.y + gs.getFocusPoint().y)), new Rectangle(0, 130, msg.getWidth(), 50), font).drawOn(msg.getGraphics());
+        new StringShow("è§†çª—ä½ç½®: " + pointToString(gs.getFocusPoint()), new Rectangle(0, 230, msg.getWidth(), 50), font).drawOn(msg.getGraphics());
         msg.refresh();
     }
 
@@ -447,11 +447,11 @@ public class MapEditor extends JFrame implements MouseListener, MouseMotionListe
         lastPos = gc.getDesignPos(e.getPoint());
     }
 
-    class MenuTest extends JMenuBar {// ¼Ì³Ğ²Ëµ¥Bar
+    class MenuTest extends JMenuBar {// ç»§æ‰¿èœå•Bar
         private JDialog aboutDialog;
 
         public MenuTest() {
-            JMenu fileMenu = new JMenu("ÎÄ¼ş");// ÊµÀı»¯Ò»¸ö¡°ÎÄ¼ş¡±µÄ²Ëµ¥
+            JMenu fileMenu = new JMenu("æ–‡ä»¶");// å®ä¾‹åŒ–ä¸€ä¸ªâ€œæ–‡ä»¶â€çš„èœå•
             fileMenu.addMenuListener(new MenuListener() {
                 @Override
                 public void menuSelected(MenuEvent e) {
@@ -468,19 +468,19 @@ public class MapEditor extends JFrame implements MouseListener, MouseMotionListe
                     updateMsg = true;
                 }
             });
-            JMenuItem exitMenuItem = new JMenuItem("ÍË³ö", KeyEvent.VK_E); // ÍË³ö²Ëµ¥Ïî
-            JMenuItem openMenuItem = new JMenuItem("´ò¿ª", KeyEvent.VK_O);
-            JMenuItem saveMenuItem = new JMenuItem("±£´æ", KeyEvent.VK_S);
-            JMenuItem updateMenuItem = new JMenuItem("Ë¢ĞÂ", KeyEvent.VK_F5);
-            JMenuItem aboutMenuItem = new JMenuItem("¹ØÓÚ..", KeyEvent.VK_A); // ¹ØÓÚ²Ëµ¥Ïî
+            JMenuItem exitMenuItem = new JMenuItem("é€€å‡º", KeyEvent.VK_E); // é€€å‡ºèœå•é¡¹
+            JMenuItem openMenuItem = new JMenuItem("æ‰“å¼€", KeyEvent.VK_O);
+            JMenuItem saveMenuItem = new JMenuItem("ä¿å­˜", KeyEvent.VK_S);
+            JMenuItem updateMenuItem = new JMenuItem("åˆ·æ–°", KeyEvent.VK_F5);
+            JMenuItem aboutMenuItem = new JMenuItem("å…³äº..", KeyEvent.VK_A); // å…³äºèœå•é¡¹
             fileMenu.add(openMenuItem);
             fileMenu.add(saveMenuItem);
             fileMenu.add(updateMenuItem);
-            fileMenu.add(exitMenuItem); // °ÑÕâĞ©²Ëµ¥Ïî·Åµ½¡®ÎÄ¼ş¡¯²Ëµ¥ÏîÖĞ
+            fileMenu.add(exitMenuItem); // æŠŠè¿™äº›èœå•é¡¹æ”¾åˆ°â€˜æ–‡ä»¶â€™èœå•é¡¹ä¸­
             fileMenu.add(aboutMenuItem);
-            this.add(fileMenu);// Ìí¼Óµ½Õâ¸öjframeÀïÃæ
-            aboutDialog = new JDialog(); // ÔÙÊµÀı»¯Ò»¸öDialog
-            initAboutDialog();// ³õÊ¼»¯Õâ¸ödialog
+            this.add(fileMenu);// æ·»åŠ åˆ°è¿™ä¸ªjframeé‡Œé¢
+            aboutDialog = new JDialog(); // å†å®ä¾‹åŒ–ä¸€ä¸ªDialog
+            initAboutDialog();// åˆå§‹åŒ–è¿™ä¸ªdialog
             openMenuItem.addActionListener(e -> {
                 try {
                     JFileChooser jfc = new JFileChooser(new File("./resource/maps"));
@@ -490,10 +490,10 @@ public class MapEditor extends JFrame implements MouseListener, MouseMotionListe
                         MapFileReader mfr = new MapFileReader(configFile.toString());
                         mapIfm = mfr.getMi();
                         updateGameMap();
-                        JOptionPane.showConfirmDialog(null, "´ò¿ªµØÍ¼³É¹¦", "ÌáÊ¾¿ò", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+                        JOptionPane.showConfirmDialog(null, "æ‰“å¼€åœ°å›¾æˆåŠŸ", "æç¤ºæ¡†", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
                     }
                 } catch (IOException e1) {
-                    JOptionPane.showConfirmDialog(null, "´ò¿ªµØÍ¼Ê§°Ü,´íÎóĞÅÏ¢Îª£º" + e1.getMessage(), "ÌáÊ¾¿ò", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+                    JOptionPane.showConfirmDialog(null, "æ‰“å¼€åœ°å›¾å¤±è´¥,é”™è¯¯ä¿¡æ¯ä¸ºï¼š" + e1.getMessage(), "æç¤ºæ¡†", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
                 }
             });
             saveMenuItem.addActionListener(e -> {
@@ -504,10 +504,10 @@ public class MapEditor extends JFrame implements MouseListener, MouseMotionListe
                         if (result == jfc.APPROVE_OPTION) {
                             File configFile = jfc.getSelectedFile();
                             new MapFileWriter(configFile.toString(), mapIfm);
-                            JOptionPane.showConfirmDialog(null, "±£´æ³É¹¦", "ÌáÊ¾¿ò", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+                            JOptionPane.showConfirmDialog(null, "ä¿å­˜æˆåŠŸ", "æç¤ºæ¡†", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
                         }
                     } catch (IOException e1) {
-                        JOptionPane.showConfirmDialog(null, "±£´æµØÍ¼Ê§°Ü£¬´íÎóĞÅÏ¢Îª£º" + e1.getMessage(), "ÌáÊ¾¿ò", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+                        JOptionPane.showConfirmDialog(null, "ä¿å­˜åœ°å›¾å¤±è´¥ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š" + e1.getMessage(), "æç¤ºæ¡†", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
                     }
                 }
             });
@@ -517,26 +517,26 @@ public class MapEditor extends JFrame implements MouseListener, MouseMotionListe
                         updateTerrain(i, j);
                     }
                 }
-                JOptionPane.showConfirmDialog(null, "Ë¢ĞÂµØÍ¼³É¹¦", "ÌáÊ¾¿ò", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+                JOptionPane.showConfirmDialog(null, "åˆ·æ–°åœ°å›¾æˆåŠŸ", "æç¤ºæ¡†", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
             });
-            // ¸øÍË³ö²Ëµ¥ÏîÌí¼ÓÒ»¸öÍË³öÊ±¼ä
-            exitMenuItem.addActionListener(e -> {// ÍË³öÌí¼Ó¼àÌıÊÂ¼ş
+            // ç»™é€€å‡ºèœå•é¡¹æ·»åŠ ä¸€ä¸ªé€€å‡ºæ—¶é—´
+            exitMenuItem.addActionListener(e -> {// é€€å‡ºæ·»åŠ ç›‘å¬äº‹ä»¶
                 dispose();
                 System.exit(0);
             });
-            // ¹ØÓÚÌí¼Ó¼àÌıÊÂ¼ş
+            // å…³äºæ·»åŠ ç›‘å¬äº‹ä»¶
             aboutMenuItem.addActionListener(e -> aboutDialog.setVisible(true));
         }
 
-        public void initAboutDialog() { // ³õÊ¼»¯dialog
-            aboutDialog.setTitle("¹ØÓÚ");// ÉèÖÃdialogµÄ±êÌâ
-            Container con = aboutDialog.getContentPane();// »ñµÃdialogÕû¸öµÄÈİÆ÷
+        public void initAboutDialog() { // åˆå§‹åŒ–dialog
+            aboutDialog.setTitle("å…³äº");// è®¾ç½®dialogçš„æ ‡é¢˜
+            Container con = aboutDialog.getContentPane();// è·å¾—dialogæ•´ä¸ªçš„å®¹å™¨
             Icon icon = new ImageIcon("images/LxGLory.gif");
             JLabel aboutLabel = new JLabel("<html><b><font size=5>"
-                    + "<center>TAµØÍ¼±à¼­Æ÷ by moon_sui" + "<br>", icon, JLabel.CENTER);
-            con.add(aboutLabel, BorderLayout.CENTER);// ÉèÖÃ±ß½ç²¼¾Ö Îª¾ÓÖĞ
-            aboutDialog.setSize(450, 225);// ÉèÖÃdialogµÄ´óĞ¡
-            aboutDialog.setLocationRelativeTo(null);// Ä¬ÈÏÆÁÄ»¾ÓÖĞ
+                    + "<center>TAåœ°å›¾ç¼–è¾‘å™¨ by moon_sui" + "<br>", icon, JLabel.CENTER);
+            con.add(aboutLabel, BorderLayout.CENTER);// è®¾ç½®è¾¹ç•Œå¸ƒå±€ ä¸ºå±…ä¸­
+            aboutDialog.setSize(450, 225);// è®¾ç½®dialogçš„å¤§å°
+            aboutDialog.setLocationRelativeTo(null);// é»˜è®¤å±å¹•å±…ä¸­
         }
     }
 

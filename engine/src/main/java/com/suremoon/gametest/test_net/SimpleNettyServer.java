@@ -11,20 +11,20 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 public class SimpleNettyServer {
     public void bind(int port) throws Exception {
 
-        // ·şÎñÆ÷¶ËÓ¦ÓÃ³ÌĞòÊ¹ÓÃÁ½¸öNioEventLoopGroup´´½¨Á½¸öEventLoopµÄ×é£¬EventLoopÕâ¸öÏàµ±ÓÚÒ»¸ö´¦ÀíÏß³Ì£¬ÊÇNetty½ÓÊÕÇëÇóºÍ´¦ÀíIOÇëÇóµÄÏß³Ì¡£
-        // Ö÷Ïß³Ì×é, ÓÃÓÚ½ÓÊÜ¿Í»§¶ËµÄÁ¬½Ó£¬µ«ÊÇ²»×öÈÎºÎ´¦Àí£¬¸úÀÏ°åÒ»Ñù£¬²»×öÊÂ
+        // æœåŠ¡å™¨ç«¯åº”ç”¨ç¨‹åºä½¿ç”¨ä¸¤ä¸ªNioEventLoopGroupåˆ›å»ºä¸¤ä¸ªEventLoopçš„ç»„ï¼ŒEventLoopè¿™ä¸ªç›¸å½“äºä¸€ä¸ªå¤„ç†çº¿ç¨‹ï¼Œæ˜¯Nettyæ¥æ”¶è¯·æ±‚å’Œå¤„ç†IOè¯·æ±‚çš„çº¿ç¨‹ã€‚
+        // ä¸»çº¿ç¨‹ç»„, ç”¨äºæ¥å—å®¢æˆ·ç«¯çš„è¿æ¥ï¼Œä½†æ˜¯ä¸åšä»»ä½•å¤„ç†ï¼Œè·Ÿè€æ¿ä¸€æ ·ï¼Œä¸åšäº‹
         EventLoopGroup bossGroup = new NioEventLoopGroup();
-        // ´ÓÏß³Ì×é, µ±boss½ÓÊÜÁ¬½Ó²¢×¢²á±»½ÓÊÜµÄÁ¬½Óµ½workerÊ±£¬´¦Àí±»½ÓÊÜÁ¬½ÓµÄÁ÷Á¿¡£
+        // ä»çº¿ç¨‹ç»„, å½“bossæ¥å—è¿æ¥å¹¶æ³¨å†Œè¢«æ¥å—çš„è¿æ¥åˆ°workeræ—¶ï¼Œå¤„ç†è¢«æ¥å—è¿æ¥çš„æµé‡ã€‚
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try {
-            // netty·şÎñÆ÷Æô¶¯ÀàµÄ´´½¨, ¸¨Öú¹¤¾ßÀà£¬ÓÃÓÚ·şÎñÆ÷Í¨µÀµÄÒ»ÏµÁĞÅäÖÃ
+            // nettyæœåŠ¡å™¨å¯åŠ¨ç±»çš„åˆ›å»º, è¾…åŠ©å·¥å…·ç±»ï¼Œç”¨äºæœåŠ¡å™¨é€šé“çš„ä¸€ç³»åˆ—é…ç½®
             ServerBootstrap serverBootstrap = new ServerBootstrap();
 
-            serverBootstrap.group(bossGroup, workerGroup)           //°ó¶¨Á½¸öÏß³Ì×é
-                    // ÓÃÓÚ¹¹Ôìsocketchannel¹¤³§
-                    .channel(NioServerSocketChannel.class)   //Ö¸¶¨NIOµÄÄ£Ê½
-                    .childHandler(new ChannelInitializer<SocketChannel>() {  // ×Ó´¦ÀíÆ÷£¬ÓÃÓÚ´¦ÀíworkerGroup
+            serverBootstrap.group(bossGroup, workerGroup)           //ç»‘å®šä¸¤ä¸ªçº¿ç¨‹ç»„
+                    // ç”¨äºæ„é€ socketchannelå·¥å‚
+                    .channel(NioServerSocketChannel.class)   //æŒ‡å®šNIOçš„æ¨¡å¼
+                    .childHandler(new ChannelInitializer<SocketChannel>() {  // å­å¤„ç†å™¨ï¼Œç”¨äºå¤„ç†workerGroup
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
 //                            socketChannel.pipeline().addLast(new NettyServerOutBoundHandler());
                             socketChannel.pipeline().addLast(new SimpleNettyServerHandler());
@@ -32,14 +32,14 @@ public class SimpleNettyServer {
                         }
                     });
 
-            // Æô¶¯server£¬°ó¶¨¶Ë¿Ú£¬¿ªÊ¼½ÓÊÕ½øÀ´µÄÁ¬½Ó£¬ÉèÖÃ8088ÎªÆô¶¯µÄ¶Ë¿ÚºÅ£¬Í¬Ê±Æô¶¯·½Ê½ÎªÍ¬²½
+            // å¯åŠ¨serverï¼Œç»‘å®šç«¯å£ï¼Œå¼€å§‹æ¥æ”¶è¿›æ¥çš„è¿æ¥ï¼Œè®¾ç½®8088ä¸ºå¯åŠ¨çš„ç«¯å£å·ï¼ŒåŒæ—¶å¯åŠ¨æ–¹å¼ä¸ºåŒæ­¥
             ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
 
             System.out.println("server start");
-            // ¼àÌı¹Ø±ÕµÄchannel£¬µÈ´ı·şÎñÆ÷ socket ¹Ø±Õ ¡£ÉèÖÃÎ»Í¬²½·½Ê½
+            // ç›‘å¬å…³é—­çš„channelï¼Œç­‰å¾…æœåŠ¡å™¨ socket å…³é—­ ã€‚è®¾ç½®ä½åŒæ­¥æ–¹å¼
             channelFuture.channel().closeFuture().sync();
         } finally {
-            //ÍË³öÏß³Ì×é
+            //é€€å‡ºçº¿ç¨‹ç»„
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }

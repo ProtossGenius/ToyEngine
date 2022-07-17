@@ -32,13 +32,13 @@ public class TerrainEditor extends JFrame {
     DefaultTableModel buffListDTM = new DefaultTableModel();
     DefaultComboBoxModel /*resTypeListDCBM = new DefaultComboBoxModel(),*/ buffListDCBM = new DefaultComboBoxModel();
 
-    final String tableTitle[] = new String[]{"BuffÃû³Æ", "¸½¼Ó²ÎÊı"};
+    final String tableTitle[] = new String[]{"Buffåç§°", "é™„åŠ å‚æ•°"};
     LinkedList<Pair<String, String>> buffListD = new LinkedList<>();//pair is buff, extra_p
     public String resPath;
     AGSAdapter adapter;
 
     /**
-     *  ÓÃÓÚÈ·¶¨¿ÉÒÔ±£´æÁÙÊ±ÎÄ¼ş¡£ÁÙÊ±ÎÄ¼şµÄ±£´æÄ¿Â¼ÎªÏÂÊöÄ¿Â¼¡£
+     *  ç”¨äºç¡®å®šå¯ä»¥ä¿å­˜ä¸´æ—¶æ–‡ä»¶ã€‚ä¸´æ—¶æ–‡ä»¶çš„ä¿å­˜ç›®å½•ä¸ºä¸‹è¿°ç›®å½•ã€‚
      */
     static {
         File f = new File("temp/terrain_config/");
@@ -60,45 +60,45 @@ public class TerrainEditor extends JFrame {
         preViewP.setBounds(18, 12, 232, 146);
         add(preViewP);
         //----------------------------------------openTConfB--------------------------------------------
-        openTConfB = new JButton("´ò¿ªµØĞÎÅäÖÃÎÄ¼ş");
+        openTConfB = new JButton("æ‰“å¼€åœ°å½¢é…ç½®æ–‡ä»¶");
         openTConfB.setBounds(464, 13, 133, 24);
         add(openTConfB);
         //------------------------------------------openPicResB------------------------------------------
-        openPicResB = new JButton("´ò¿ª×ÊÔ´ÅäÖÃÎÄ¼ş");
+        openPicResB = new JButton("æ‰“å¼€èµ„æºé…ç½®æ–‡ä»¶");
         openPicResB.setBounds(282, 12, 133, 25);;
         add(openPicResB);
         //----------------------------------------addBuffB--------------------------------------------
-        addBuffB = new JButton("Ìí¼Ó");
+        addBuffB = new JButton("æ·»åŠ ");
         addBuffB.setBounds(377, 365, 60, 22);
         add(addBuffB);
         //------------------------------------deleteChoiceB------------------------------------------------
-        deleteChoiceB = new JButton("É¾³ıËùÑ¡");
+        deleteChoiceB = new JButton("åˆ é™¤æ‰€é€‰");
         deleteChoiceB.setBounds(442, 365, 90, 22);
         add(deleteChoiceB);
         //-------------------------------------saveB-----------------------------------------------
-        saveB = new JButton("±£´æ");
+        saveB = new JButton("ä¿å­˜");
         saveB.setBounds(537, 365, 60, 22);
         add(saveB);
         /*
         //----------------------------------choiceResTypeL--------------------------------------------------
-        choiceResTypeL = new JLabel("Ñ¡Ôñ×ÊÔ´ÀàĞÍ:");
+        choiceResTypeL = new JLabel("é€‰æ‹©èµ„æºç±»å‹:");
         choiceResTypeL.setBounds(282, 54, 133, 25);
         add(choiceResTypeL);
         */
         //----------------------------------resNameL--------------------------------------------------
-        resNameL = new JLabel("×ÊÔ´Ãû");
+        resNameL = new JLabel("èµ„æºå");
         resNameL.setBounds(282, 54, 133, 25);
         add(resNameL);
         //-----------------------------------preViewTypeL-------------------------------------------------
-        preViewTypeL = new JLabel("×ÊÔ´Ô¤ÀÀ·½Ê½:");
+        preViewTypeL = new JLabel("èµ„æºé¢„è§ˆæ–¹å¼:");
         preViewTypeL.setBounds(282, 95, 133,24);
         add(preViewTypeL);
         //-----------------------------------passableIL-------------------------------------------------
-        passableIL = new JLabel("ÊÇ·ñ¿ÉÍ¨ĞĞ(ÄÚ)");
+        passableIL = new JLabel("æ˜¯å¦å¯é€šè¡Œ(å†…)");
         passableIL.setBounds(308, 176, 141, 22);
         add(passableIL);
         //----------------------------------passableOL--------------------------------------------------
-        passableOL = new JLabel("ÊÇ·ñ¿ÉÍ¨ĞĞ(Íâ)");
+        passableOL = new JLabel("æ˜¯å¦å¯é€šè¡Œ(å¤–)");
         passableOL.setBounds(18, 176, 141, 22);
         add(passableOL);
         /*
@@ -191,9 +191,9 @@ public class TerrainEditor extends JFrame {
         saveB.addActionListener((ActionEvent e)->{
             boolean isExist = new File(getSavePath()).exists();
             if(isExist){
-                int res = JOptionPane.showConfirmDialog(null, "ÎÄ¼şÒÑ¾­´æÔÚ£¬ÊÇ·ñÌæ»»£¿.", "¾¯¸æ", JOptionPane.YES_NO_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+                int res = JOptionPane.showConfirmDialog(null, "æ–‡ä»¶å·²ç»å­˜åœ¨ï¼Œæ˜¯å¦æ›¿æ¢ï¼Ÿ.", "è­¦å‘Š", JOptionPane.YES_NO_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
                 if(res == JOptionPane.NO_OPTION){
-                    JOptionPane.showConfirmDialog(null, "·ÅÆú±£´æµ±Ç°ÉèÖÃ.", "ĞÅÏ¢", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+                    JOptionPane.showConfirmDialog(null, "æ”¾å¼ƒä¿å­˜å½“å‰è®¾ç½®.", "ä¿¡æ¯", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
                     return;
                 }
             }
@@ -201,9 +201,9 @@ public class TerrainEditor extends JFrame {
                 save(getSavePath());
             }catch (Exception e1){
                 e1.printStackTrace();
-                JOptionPane.showConfirmDialog(null, "±£´æ¹ı³ÌÖĞ·¢ÉúÁËÒì³££¬Òì³£ĞÅÏ¢Îª£º" + e1.toString(), "´íÎó", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+                JOptionPane.showConfirmDialog(null, "ä¿å­˜è¿‡ç¨‹ä¸­å‘ç”Ÿäº†å¼‚å¸¸ï¼Œå¼‚å¸¸ä¿¡æ¯ä¸ºï¼š" + e1.toString(), "é”™è¯¯", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
             }
-            JOptionPane.showConfirmDialog(null, "µ±Ç°µ¥Î»µÄÅäÖÃĞÅÏ¢±£´æ³É¹¦.", "³É¹¦", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+            JOptionPane.showConfirmDialog(null, "å½“å‰å•ä½çš„é…ç½®ä¿¡æ¯ä¿å­˜æˆåŠŸ.", "æˆåŠŸ", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
         });
     }
 

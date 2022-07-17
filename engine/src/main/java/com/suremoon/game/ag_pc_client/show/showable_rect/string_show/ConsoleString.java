@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.Iterator;
 
 /**
- * Ö»ÄÜÈİÄÉ¹Ì¶¨ÊıÁ¿µÄ×Ö·û´®£¬³¬³öÒÆ³ı¶¥¶ËÊı¾İ
+ * åªèƒ½å®¹çº³å›ºå®šæ•°é‡çš„å­—ç¬¦ä¸²ï¼Œè¶…å‡ºç§»é™¤é¡¶ç«¯æ•°æ®
  */
 public class ConsoleString extends StringShow{
     public ConsoleString(String str, Rectangle showArea, Font font) {

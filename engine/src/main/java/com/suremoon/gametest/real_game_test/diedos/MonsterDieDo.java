@@ -21,7 +21,7 @@ public class MonsterDieDo implements DieDo {
     public void Do(UnitItf it, WorldItf world, WorldMgrItf worldMgr) {
         GameMapItf gm = world.getGameMap();
         UnitMgrItf um = gm.getUnitMgr();
-        //ʬ�崦��
+        //尸体处理
         if (it.isDie() && it.getState().getPassedTime() >= 3000) {
             it.setDrop(true);
             um.removeUnit(it);

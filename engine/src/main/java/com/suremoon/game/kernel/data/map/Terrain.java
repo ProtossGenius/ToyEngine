@@ -13,8 +13,8 @@ import com.suremoon.game.kernel.initer.buff_init.BuffInfManager;
 public class Terrain extends GRect implements TerrainItf {//map_unit, like: Grassland, Woodland, Sandy, etc.
     protected int UnitType;
     public static int width = 100, height = 100;
-    protected int landHeight;//       ´ıÓÃ
-    protected String terrainType;//ÌØÖ¸T12ÀàĞÍµÄµØÍ¼¡£ÎªÎ»ÖÃ¡£
+    protected int landHeight;//       å¾…ç”¨
+    protected String terrainType;//ç‰¹æŒ‡T12ç±»å‹çš„åœ°å›¾ã€‚ä¸ºä½ç½®ã€‚
     protected TerrainWalkableItf twj;
 //    public boolean WalkableI, WalkabelO;//walkable in/out
     protected final BuffItf[]agbuffs;

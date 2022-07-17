@@ -53,7 +53,7 @@ public class TerrainIniter extends Initer{
                 walkable = new InnerJarTerrainWalkable(jo);
                 break;
             default:
-                ErrorDeal.putError("Error happened in TerrainInformation: 未定义的类型发生于构造函数，类型为：" + type);
+                ErrorDeal.putError("Error happened in TerrainInformation: 鏈畾涔夌殑绫诲瀷鍙戠敓浜庢瀯閫犲嚱鏁帮紝绫诲瀷涓猴細" + type);
                 walkable = new TerrainOutInWalkable();
         }
         TerrainInformation ti = new TerrainInformation(adapter, buffs, walkable, isDecorate.toLowerCase().equals("true"), taCol, interval);

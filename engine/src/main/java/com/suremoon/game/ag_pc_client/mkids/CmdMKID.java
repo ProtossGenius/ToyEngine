@@ -93,7 +93,7 @@ public class CmdMKID extends MKInpDeal {
 //        System.out.println("==============================");
         if ((sa = cmdAnalysis.getStateAction()) != null) {
             if (sa.sa_type != StateAction.NOTHING) {
-                // TODO: 2018/4/5 ´Ë´¦Ó¦µ±¼ÓÈë¹ØÓÚsaµÄ´¦Àí¡£
+                // TODO: 2018/4/5 æ­¤å¤„åº”å½“åŠ å…¥å…³äºsaçš„å¤„ç†ã€‚
 //                System.out.println("sa type is" + sa.sa_type);
             }
         }

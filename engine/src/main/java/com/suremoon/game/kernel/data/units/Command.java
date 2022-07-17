@@ -21,7 +21,7 @@ public class Command implements CommandItf {
     UnitItf owner;
     protected int target;
     protected Point tp;
-    private boolean appendCmd = false; // ÊÇ·ñÊÇÒÔ×·¼ÓµÄ·½Ê½Ìí¼ÓÃüÁî
+    private boolean appendCmd = false; // æ˜¯å¦æ˜¯ä»¥è¿½åŠ çš„æ–¹å¼æ·»åŠ å‘½ä»¤
     CmdActionItf cmdAction;
     //public Goods toGoods;
 

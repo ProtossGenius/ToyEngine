@@ -12,8 +12,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * ÎÄ¼ş¹ÜÀí¹¦ÄÜ¡¢½ø¶ÈÌõ¹¦ÄÜ¡¢´ò¿ªÎÄ¼ş¹¦ÄÜ¡¢¸´Ñ¡°´Å¥¡¢µ¥Ñ¡°´Å¥ ¡¢
- * ÏÂÀ­²Ëµ¥¡¢ÁĞ±í²Ëµ¥¡¢±í¸ñÑİÊ¾µÈ¹¦ÄÜ
+ * æ–‡ä»¶ç®¡ç†åŠŸèƒ½ã€è¿›åº¦æ¡åŠŸèƒ½ã€æ‰“å¼€æ–‡ä»¶åŠŸèƒ½ã€å¤é€‰æŒ‰é’®ã€å•é€‰æŒ‰é’® ã€
+ * ä¸‹æ‹‰èœå•ã€åˆ—è¡¨èœå•ã€è¡¨æ ¼æ¼”ç¤ºç­‰åŠŸèƒ½
  * @author LzwGlory
  * @version 2014/2/18
  * */
@@ -21,21 +21,21 @@ public class TestFrame extends JFrame {
 
     public TestFrame() {
 
-        MenuTest menuTest = new MenuTest();// ÉÏÃæµÄÎÄ¼ş²Ëµ¥
+        MenuTest menuTest = new MenuTest();// ä¸Šé¢çš„æ–‡ä»¶èœå•
 
-        LeftPanel leftPanel = new LeftPanel(); // ×óÃæÃæ°å
+        LeftPanel leftPanel = new LeftPanel(); // å·¦é¢é¢æ¿
 
-        RightPanel rightPanel = new RightPanel();// ÓÒÃæÃæ°å
+        RightPanel rightPanel = new RightPanel();// å³é¢é¢æ¿
 
-        BottomPanel bottomPanel = new BottomPanel();// µ×²¿Ãæ°å
+        BottomPanel bottomPanel = new BottomPanel();// åº•éƒ¨é¢æ¿
 
-        CenterPanel centerPanel = new CenterPanel();// ÖĞ¼äµÄÃæ°å
+        CenterPanel centerPanel = new CenterPanel();// ä¸­é—´çš„é¢æ¿
 
-        Container c = this.getContentPane();// »ñµÃÕû¸öframeµÄÃæ°å
+        Container c = this.getContentPane();// è·å¾—æ•´ä¸ªframeçš„é¢æ¿
 
-        this.setJMenuBar(menuTest); // ¸øÕâ¸öframeÌí¼Ó²Ëµ¥Ïî
+        this.setJMenuBar(menuTest); // ç»™è¿™ä¸ªframeæ·»åŠ èœå•é¡¹
 
-        c.add(leftPanel, BorderLayout.WEST);// È»ºóÍ¨¹ı±ß½ç²¼¾Ö
+        c.add(leftPanel, BorderLayout.WEST);// ç„¶åé€šè¿‡è¾¹ç•Œå¸ƒå±€
 
         c.add(rightPanel, BorderLayout.EAST);
 
@@ -57,7 +57,7 @@ public class TestFrame extends JFrame {
 
         setSize(700, 500);
 
-        setTitle("Swing ×é¼ş´óÈ«¼òÌå°æ");
+        setTitle("Swing ç»„ä»¶å¤§å…¨ç®€ä½“ç‰ˆ");
 
         setLocationRelativeTo(null);
 
@@ -70,31 +70,31 @@ public class TestFrame extends JFrame {
 
     }
 
-    class MenuTest extends JMenuBar {// ¼Ì³Ğ²Ëµ¥Bar
+    class MenuTest extends JMenuBar {// ç»§æ‰¿èœå•Bar
 
         private JDialog aboutDialog;
 
         public MenuTest() {
 
-            JMenu fileMenu = new JMenu("ÎÄ¼ş");// ÊµÀı»¯Ò»¸ö¡°ÎÄ¼ş¡±µÄ²Ëµ¥
+            JMenu fileMenu = new JMenu("æ–‡ä»¶");// å®ä¾‹åŒ–ä¸€ä¸ªâ€œæ–‡ä»¶â€çš„èœå•
 
-            JMenuItem exitMenuItem = new JMenuItem("ÍË³ö", KeyEvent.VK_E); // ÍË³ö²Ëµ¥Ïî
+            JMenuItem exitMenuItem = new JMenuItem("é€€å‡º", KeyEvent.VK_E); // é€€å‡ºèœå•é¡¹
 
-            JMenuItem aboutMenuItem = new JMenuItem("¹ØÓÚ..", KeyEvent.VK_A); // ¹ØÓÚ²Ëµ¥Ïî
+            JMenuItem aboutMenuItem = new JMenuItem("å…³äº..", KeyEvent.VK_A); // å…³äºèœå•é¡¹
 
-            fileMenu.add(exitMenuItem); // °ÑÕâĞ©²Ëµ¥Ïî·Åµ½¡®ÎÄ¼ş¡¯²Ëµ¥ÏîÖĞ
+            fileMenu.add(exitMenuItem); // æŠŠè¿™äº›èœå•é¡¹æ”¾åˆ°â€˜æ–‡ä»¶â€™èœå•é¡¹ä¸­
 
             fileMenu.add(aboutMenuItem);
 
-            this.add(fileMenu);// Ìí¼Óµ½Õâ¸öjframeÀïÃæ
+            this.add(fileMenu);// æ·»åŠ åˆ°è¿™ä¸ªjframeé‡Œé¢
 
-            aboutDialog = new JDialog(); // ÔÙÊµÀı»¯Ò»¸öDialog
+            aboutDialog = new JDialog(); // å†å®ä¾‹åŒ–ä¸€ä¸ªDialog
 
-            initAboutDialog();// ³õÊ¼»¯Õâ¸ödialog
+            initAboutDialog();// åˆå§‹åŒ–è¿™ä¸ªdialog
 
-            exitMenuItem.addActionListener(new ActionListener() {// ¸øÍË³ö²Ëµ¥ÏîÌí¼ÓÒ»¸öÍË³öÊ±¼ä
+            exitMenuItem.addActionListener(new ActionListener() {// ç»™é€€å‡ºèœå•é¡¹æ·»åŠ ä¸€ä¸ªé€€å‡ºæ—¶é—´
 
-                public void actionPerformed(ActionEvent e) {// ÍË³öÌí¼Ó¼àÌıÊÂ¼ş
+                public void actionPerformed(ActionEvent e) {// é€€å‡ºæ·»åŠ ç›‘å¬äº‹ä»¶
 
                     dispose();
 
@@ -104,7 +104,7 @@ public class TestFrame extends JFrame {
 
             });
 
-            aboutMenuItem.addActionListener(new ActionListener() {// ¹ØÓÚÌí¼Ó¼àÌıÊÂ¼ş
+            aboutMenuItem.addActionListener(new ActionListener() {// å…³äºæ·»åŠ ç›‘å¬äº‹ä»¶
 
                 public void actionPerformed(ActionEvent e) {
 
@@ -116,22 +116,22 @@ public class TestFrame extends JFrame {
 
         }
 
-        public void initAboutDialog() { // ³õÊ¼»¯dialog
+        public void initAboutDialog() { // åˆå§‹åŒ–dialog
 
-            aboutDialog.setTitle("¹ØÓÚ");// ÉèÖÃdialogµÄ±êÌâ
+            aboutDialog.setTitle("å…³äº");// è®¾ç½®dialogçš„æ ‡é¢˜
 
-            Container con = aboutDialog.getContentPane();// »ñµÃdialogÕû¸öµÄÈİÆ÷
+            Container con = aboutDialog.getContentPane();// è·å¾—dialogæ•´ä¸ªçš„å®¹å™¨
 
             Icon icon = new ImageIcon("images/LxGLory.gif");
 
             JLabel aboutLabel = new JLabel("<html><b><font size=5>"
                     + "<center>Swing!" + "<br>", icon, JLabel.CENTER);
 
-            con.add(aboutLabel, BorderLayout.CENTER);// ÉèÖÃ±ß½ç²¼¾Ö Îª¾ÓÖĞ
+            con.add(aboutLabel, BorderLayout.CENTER);// è®¾ç½®è¾¹ç•Œå¸ƒå±€ ä¸ºå±…ä¸­
 
-            aboutDialog.setSize(450, 225);// ÉèÖÃdialogµÄ´óĞ¡
+            aboutDialog.setSize(450, 225);// è®¾ç½®dialogçš„å¤§å°
 
-            aboutDialog.setLocationRelativeTo(null);// Ä¬ÈÏÆÁÄ»¾ÓÖĞ
+            aboutDialog.setLocationRelativeTo(null);// é»˜è®¤å±å¹•å±…ä¸­
 
         }
 
@@ -143,7 +143,7 @@ public class TestFrame extends JFrame {
 
         public LeftPanel() {
 
-            DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");// Ä¬ÈÏÊäµÄ¸ù½Úµã
+            DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");// é»˜è®¤è¾“çš„æ ¹èŠ‚ç‚¹
 
             DefaultMutableTreeNode child = new DefaultMutableTreeNode("Child");
 
@@ -151,7 +151,7 @@ public class TestFrame extends JFrame {
 
             DefaultMutableTreeNode child1 = new DefaultMutableTreeNode("" + i);
 
-            root.add(child); // Íù¸ù½ÚµãÏÂÌí¼ÓÒ¶×Ó½Úµã
+            root.add(child); // å¾€æ ¹èŠ‚ç‚¹ä¸‹æ·»åŠ å¶å­èŠ‚ç‚¹
 
             root.add(select);
 
@@ -162,11 +162,11 @@ public class TestFrame extends JFrame {
             tree.getSelectionModel().setSelectionMode(
                     TreeSelectionModel.DISCONTIGUOUS_TREE_SELECTION);
 
-            tree.setRowHeight(20);// ÉèÖÃÕû¸öÊ÷µÄ½Úµã20ĞĞ¸ß
+            tree.setRowHeight(20);// è®¾ç½®æ•´ä¸ªæ ‘çš„èŠ‚ç‚¹20è¡Œé«˜
 
-            tree.addTreeSelectionListener(new TreeSelectionListener() {// ¸øÃ¿¸ö½ÚµãÌí¼Ó¼àÌıÊÂ¼ş
+            tree.addTreeSelectionListener(new TreeSelectionListener() {// ç»™æ¯ä¸ªèŠ‚ç‚¹æ·»åŠ ç›‘å¬äº‹ä»¶
 
-                public void valueChanged(TreeSelectionEvent e) {// ¾ÍÊÇÔÚÄÇÃ¿Ñ¡ÔñÏîµÄÏÂÃæÌí¼ÓÒ»¸ö½Úµã
+                public void valueChanged(TreeSelectionEvent e) {// å°±æ˜¯åœ¨é‚£æ¯é€‰æ‹©é¡¹çš„ä¸‹é¢æ·»åŠ ä¸€ä¸ªèŠ‚ç‚¹
 
                     JTree tree = (JTree) e.getSource();
 
@@ -181,25 +181,25 @@ public class TestFrame extends JFrame {
 
             });
 
-            tree.setPreferredSize(new Dimension(100, 300));// ÉèÖÃÄ¬ÈÏ¿í¸ß
+            tree.setPreferredSize(new Dimension(100, 300));// è®¾ç½®é»˜è®¤å®½é«˜
 
-            JScrollPane scrollPane = new JScrollPane(tree);// ¸øÊ÷Ìí¼Ó¹ö¶¯Ãæ°å
+            JScrollPane scrollPane = new JScrollPane(tree);// ç»™æ ‘æ·»åŠ æ»šåŠ¨é¢æ¿
 
-            this.add(scrollPane); // È»ºó°Ñ¹ö¶¯Ãæ°å¼Óµ½jframeÉÏ
+            this.add(scrollPane); // ç„¶åæŠŠæ»šåŠ¨é¢æ¿åŠ åˆ°jframeä¸Š
 
         }
 
     }
 
-    class BottomPanel extends JPanel {// ¼Ì³ĞÃæ°å ÊµÏÖÒ»¸ö½ø¶ÈÌõµÄÃæ°å
+    class BottomPanel extends JPanel {// ç»§æ‰¿é¢æ¿ å®ç°ä¸€ä¸ªè¿›åº¦æ¡çš„é¢æ¿
 
-        private JProgressBar pb;// ÉùÃ÷Ò»¸ö½ø¶ÈÌõµÄbar
+        private JProgressBar pb;// å£°æ˜ä¸€ä¸ªè¿›åº¦æ¡çš„bar
 
         public BottomPanel() {
 
             pb = new JProgressBar();
 
-            pb.setPreferredSize(new Dimension(680, 20));// ÉèÖÃ³õÊ¼»¯¿í¸ß
+            pb.setPreferredSize(new Dimension(680, 20));// è®¾ç½®åˆå§‹åŒ–å®½é«˜
 
             Timer time = new Timer(1, new ActionListener() {
 
@@ -251,21 +251,21 @@ public class TestFrame extends JFrame {
 
     }
 
-    class RightPanel extends JPanel { // ¼Ì³ĞÒ»¸öÃæ°å
+    class RightPanel extends JPanel { // ç»§æ‰¿ä¸€ä¸ªé¢æ¿
 
         public RightPanel() {
 
-            this.setLayout(new GridLayout(8, 1));// ÉèÖÃ²¼¾Ö²ÉÓÃÍø¸ñ²»È¥
+            this.setLayout(new GridLayout(8, 1));// è®¾ç½®å¸ƒå±€é‡‡ç”¨ç½‘æ ¼ä¸å»
 
-            JCheckBox checkBox = new JCheckBox("¸´Ñ¡°´Å¥");// ÊµÀı»¯Ò»¸ö¸´Ñ¡°´Å¥
+            JCheckBox checkBox = new JCheckBox("å¤é€‰æŒ‰é’®");// å®ä¾‹åŒ–ä¸€ä¸ªå¤é€‰æŒ‰é’®
 
-            JButton button = new JButton("´ò¿ªÎÄ¼ş");// ÊµÀı»¯Ò»¸ö´ò¿ªÎÄ¼ş
+            JButton button = new JButton("æ‰“å¼€æ–‡ä»¶");// å®ä¾‹åŒ–ä¸€ä¸ªæ‰“å¼€æ–‡ä»¶
 
-            button.addActionListener(new ActionListener() { // ¸øÕâ¸öÎÄ¼şÌí¼ÓÒ»¸öÊÂ¼ş
+            button.addActionListener(new ActionListener() { // ç»™è¿™ä¸ªæ–‡ä»¶æ·»åŠ ä¸€ä¸ªäº‹ä»¶
 
                 public void actionPerformed(ActionEvent e) {
 
-                    JFileChooser file = new JFileChooser();// ÊµÀı»¯Ò»¸öÎÄ¼şÑ¡Ôñ
+                    JFileChooser file = new JFileChooser();// å®ä¾‹åŒ–ä¸€ä¸ªæ–‡ä»¶é€‰æ‹©
 
                     int resule = file.showOpenDialog(new JPanel());
 
@@ -276,7 +276,7 @@ public class TestFrame extends JFrame {
                         String dir = file.getSelectedFile().getName();
 
                         JOptionPane.showConfirmDialog(null, dir + "\\"
-                                + fileName, "Ñ¡ÔñµÄÎÄ¼ş", JOptionPane.YES_OPTION);// ÏÔÊ¾Ò»¸öconfirmµÄ´°¿Ú
+                                + fileName, "é€‰æ‹©çš„æ–‡ä»¶", JOptionPane.YES_OPTION);// æ˜¾ç¤ºä¸€ä¸ªconfirmçš„çª—å£
 
                     }
 
@@ -284,36 +284,36 @@ public class TestFrame extends JFrame {
 
             });
 
-            JToggleButton toggleButton = new JToggleButton("Ë«Ì¥°´Å¥");
+            JToggleButton toggleButton = new JToggleButton("åŒèƒæŒ‰é’®");
 
-            ButtonGroup buttonGroup = new ButtonGroup();// ÊµÀı»¯Ò»¸ö°´Å¥×é
+            ButtonGroup buttonGroup = new ButtonGroup();// å®ä¾‹åŒ–ä¸€ä¸ªæŒ‰é’®ç»„
 
-            JRadioButton radioButton1 = new JRadioButton("µ¥Ñ¡°´Å¥1", false);// ÊµÀı»¯Ò»¸öµ¥Ñ¡°´Å¥
+            JRadioButton radioButton1 = new JRadioButton("å•é€‰æŒ‰é’®1", false);// å®ä¾‹åŒ–ä¸€ä¸ªå•é€‰æŒ‰é’®
 
-            JRadioButton radioButton2 = new JRadioButton("µ¥Ñ¡°´Å¥2", false);
+            JRadioButton radioButton2 = new JRadioButton("å•é€‰æŒ‰é’®2", false);
 
-            JComboBox comboBox = new JComboBox(); // ¶¨ÒåÒ»¸öÏÂÀ­²Ëµ¥
+            JComboBox comboBox = new JComboBox(); // å®šä¹‰ä¸€ä¸ªä¸‹æ‹‰èœå•
 
-            comboBox.addItem("³ÌĞòÔ±");
-            comboBox.addItem("³ÌĞòÔ±2");
-            comboBox.addItem("·ÖÎöÔ±");
-            comboBox.addActionListener(new ActionListener() {//Ìí¼ÓÒ»¸ö¶àÑ¡¿òµÄÊÂ¼şÑ¡ÔñÄÄ¸öµ¯³öÄÄ¸öµÄÖµ
+            comboBox.addItem("ç¨‹åºå‘˜");
+            comboBox.addItem("ç¨‹åºå‘˜2");
+            comboBox.addItem("åˆ†æå‘˜");
+            comboBox.addActionListener(new ActionListener() {//æ·»åŠ ä¸€ä¸ªå¤šé€‰æ¡†çš„äº‹ä»¶é€‰æ‹©å“ªä¸ªå¼¹å‡ºå“ªä¸ªçš„å€¼
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     // TODO Auto-generated method stub
                     JComboBox comboBox = (JComboBox) e.getSource();
                     String mes=comboBox.getSelectedItem().toString();
-                    JOptionPane.showMessageDialog(null,mes, "ÏûÏ¢¿ò",
+                    JOptionPane.showMessageDialog(null,mes, "æ¶ˆæ¯æ¡†",
                             JOptionPane.YES_OPTION);
                 }
             });
 
-            DefaultListModel litem = new DefaultListModel();// ÊµÀı»¯Ò»¸öÁĞ±í
+            DefaultListModel litem = new DefaultListModel();// å®ä¾‹åŒ–ä¸€ä¸ªåˆ—è¡¨
 
-            litem.addElement("Ïã½¶");
+            litem.addElement("é¦™è•‰");
 
-            litem.addElement("Ë®¹û");
+            litem.addElement("æ°´æœ");
 
             JList list = new JList(litem);
 
@@ -325,7 +325,7 @@ public class TestFrame extends JFrame {
 
                     Object s = l.getSelectedValue();
 
-                    JOptionPane.showMessageDialog(null, s, "ÏûÏ¢¿ò",
+                    JOptionPane.showMessageDialog(null, s, "æ¶ˆæ¯æ¡†",
                             JOptionPane.YES_OPTION);
 
                 }
@@ -351,7 +351,7 @@ public class TestFrame extends JFrame {
             add(list);
 
             this.setBorder(new EtchedBorder(EtchedBorder.LOWERED,
-                    Color.LIGHT_GRAY, Color.blue));// ÉèÖÃ±ß¿òµÄÑùÊ½
+                    Color.LIGHT_GRAY, Color.blue));// è®¾ç½®è¾¹æ¡†çš„æ ·å¼
 
         }
 
@@ -361,34 +361,34 @@ public class TestFrame extends JFrame {
 
         public CenterPanel() {
 
-            JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP);//ÊµÀı»¯Ò»¸ötabÇĞ»»µÄÃæ°å
+            JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP);//å®ä¾‹åŒ–ä¸€ä¸ªtabåˆ‡æ¢çš„é¢æ¿
 
-            JTextField textField = new JTextField("ÎÄ±¾Óò£¬µã»÷´ò¿ª<ÎÄ¼ş°´Å¥>¿ÉÑ¡ÔñÎÄ¼ş");//ÊµÀı»¯Ò»¸öÎÄ±¾±à¼­×Ö¶ÎÈ»ºóÉèÖÃÄ¬ÈÏÖµ
+            JTextField textField = new JTextField("æ–‡æœ¬åŸŸï¼Œç‚¹å‡»æ‰“å¼€<æ–‡ä»¶æŒ‰é’®>å¯é€‰æ‹©æ–‡ä»¶");//å®ä¾‹åŒ–ä¸€ä¸ªæ–‡æœ¬ç¼–è¾‘å­—æ®µç„¶åè®¾ç½®é»˜è®¤å€¼
 
             textField.setActionCommand("textField");
 
-            JTextPane textPane = new JTextPane();//ÉèÖÃÒ»¸öÎÄ±¾±à¼­Ãæ°å
+            JTextPane textPane = new JTextPane();//è®¾ç½®ä¸€ä¸ªæ–‡æœ¬ç¼–è¾‘é¢æ¿
 
             textPane.setCursor(new Cursor(Cursor.TEXT_CURSOR));
 
-            textPane.setText("±à¼­Æ÷£¬ÊÔ×Åµã»÷ÎÄ±¾Çø£¬ÊÔ×ÅÀ­¶¯·Ö¸ôÌõ¡£");
+            textPane.setText("ç¼–è¾‘å™¨ï¼Œè¯•ç€ç‚¹å‡»æ–‡æœ¬åŒºï¼Œè¯•ç€æ‹‰åŠ¨åˆ†éš”æ¡ã€‚");
 
-            textPane.addMouseListener(new MouseAdapter() {//Ìí¼ÓÒ»¸öÊó±ê°´ÏÂÊÂ¼ş
+            textPane.addMouseListener(new MouseAdapter() {//æ·»åŠ ä¸€ä¸ªé¼ æ ‡æŒ‰ä¸‹äº‹ä»¶
 
                 public void mousePressed(MouseEvent e) {
 
                     JTextPane textPane = (JTextPane) e.getSource();
 
-                    textPane.setText("±à¼­Æ÷µã»÷ÃüÁî³É¹¦");
+                    textPane.setText("ç¼–è¾‘å™¨ç‚¹å‡»å‘½ä»¤æˆåŠŸ");
 
                 }
 
             });
 
             JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-                    textField, textPane);//ÊµÀı»¯Ò»¸öÎÄ±¾·Ö¸îÃæ°å°Ñ ÎÄ±¾±à¼­×Ö¶Î ºÍ ÎÄ±¾±à¼­Ãæ°å·Ö¸î ¿ªÁË
+                    textField, textPane);//å®ä¾‹åŒ–ä¸€ä¸ªæ–‡æœ¬åˆ†å‰²é¢æ¿æŠŠ æ–‡æœ¬ç¼–è¾‘å­—æ®µ å’Œ æ–‡æœ¬ç¼–è¾‘é¢æ¿åˆ†å‰² å¼€äº†
 
-            JTable table = new JTable(10, 10);//ÉèÖÃÒ»¸ö±í¸ñ10*10
+            JTable table = new JTable(10, 10);//è®¾ç½®ä¸€ä¸ªè¡¨æ ¼10*10
 
             JPanel pane = new JPanel();
 
@@ -396,9 +396,9 @@ public class TestFrame extends JFrame {
 
             pane.add(table);
 
-            tab.addTab("ÎÄ±¾ÑİÊ¾", splitPane);//Ìí¼ÓÇĞ»»µÄÃæ°å
+            tab.addTab("æ–‡æœ¬æ¼”ç¤º", splitPane);//æ·»åŠ åˆ‡æ¢çš„é¢æ¿
 
-            tab.addTab("±í¸ñÑİÊ¾", pane);
+            tab.addTab("è¡¨æ ¼æ¼”ç¤º", pane);
 
             tab.setPreferredSize(new Dimension(500, 600));
 

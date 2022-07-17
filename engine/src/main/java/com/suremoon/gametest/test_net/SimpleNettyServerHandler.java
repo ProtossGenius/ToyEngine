@@ -6,7 +6,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 public class SimpleNettyServerHandler extends ChannelInboundHandlerAdapter {
     /**
-     * ±¾·½·¨ÓÃÓÚ¶ÁÈ¡¿Í»§¶Ë·¢ËÍµÄĞÅÏ¢
+     * æœ¬æ–¹æ³•ç”¨äºè¯»å–å®¢æˆ·ç«¯å‘é€çš„ä¿¡æ¯
      *
      * @param ctx
      * @param msg
@@ -17,17 +17,17 @@ public class SimpleNettyServerHandler extends ChannelInboundHandlerAdapter {
         System.out.println("SimpleNettyServerHandler.channelRead");
         ByteBuf result = (ByteBuf) msg;
         byte[] bytesMsg = new byte[result.readableBytes()];
-        // msgÖĞ´æ´¢µÄÊÇByteBufÀàĞÍµÄÊı¾İ£¬°ÑÊı¾İ¶ÁÈ¡µ½byte[]ÖĞ
+        // msgä¸­å­˜å‚¨çš„æ˜¯ByteBufç±»å‹çš„æ•°æ®ï¼ŒæŠŠæ•°æ®è¯»å–åˆ°byte[]ä¸­
         result.readBytes(bytesMsg);
         String resultStr = new String(bytesMsg);
-        // ½ÓÊÕ²¢´òÓ¡¿Í»§¶ËµÄĞÅÏ¢
+        // æ¥æ”¶å¹¶æ‰“å°å®¢æˆ·ç«¯çš„ä¿¡æ¯
         System.out.println("Client said:" + resultStr);
-        // ÊÍ·Å×ÊÔ´£¬ÕâĞĞºÜ¹Ø¼ü
+        // é‡Šæ”¾èµ„æºï¼Œè¿™è¡Œå¾ˆå…³é”®
         result.release();
 
-        // Ïò¿Í»§¶Ë·¢ËÍÏûÏ¢
+        // å‘å®¢æˆ·ç«¯å‘é€æ¶ˆæ¯
         String response = "hello client!";
-        // ÔÚµ±Ç°³¡¾°ÏÂ£¬·¢ËÍµÄÊı¾İ±ØĞë×ª»»³ÉByteBufÊı×é
+        // åœ¨å½“å‰åœºæ™¯ä¸‹ï¼Œå‘é€çš„æ•°æ®å¿…é¡»è½¬æ¢æˆByteBufæ•°ç»„
         ByteBuf encoded = ctx.alloc().buffer(4 * response.length());
         encoded.writeBytes(response.getBytes());
         ctx.write(encoded);
@@ -35,7 +35,7 @@ public class SimpleNettyServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     /**
-     * ±¾·½·¨ÓÃ×÷´¦ÀíÒì³£
+     * æœ¬æ–¹æ³•ç”¨ä½œå¤„ç†å¼‚å¸¸
      *
      * @param ctx
      * @param cause
@@ -43,13 +43,13 @@ public class SimpleNettyServerHandler extends ChannelInboundHandlerAdapter {
      */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        // µ±³öÏÖÒì³£¾Í¹Ø±ÕÁ¬½Ó
+        // å½“å‡ºç°å¼‚å¸¸å°±å…³é—­è¿æ¥
         cause.printStackTrace();
         ctx.close();
     }
 
     /**
-     * ĞÅÏ¢»ñÈ¡Íê±Ïºó²Ù×÷
+     * ä¿¡æ¯è·å–å®Œæ¯•åæ“ä½œ
      *
      * @param ctx
      * @throws Exception

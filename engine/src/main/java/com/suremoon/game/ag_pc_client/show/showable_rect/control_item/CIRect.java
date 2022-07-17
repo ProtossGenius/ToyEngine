@@ -5,7 +5,7 @@ import com.suremoon.game.door.gometry.GRect;
 
 
 /**
- * ÈÏÎª¿Ø¼ş£¨ControlItem£©ÊÇÒ»¸ö¾ØĞÎ£¬¿ÉÒÔÏìÓ¦Êó±êºÍ¼üÅÌÊÂ¼ş¡£
+ * è®¤ä¸ºæ§ä»¶ï¼ˆControlItemï¼‰æ˜¯ä¸€ä¸ªçŸ©å½¢ï¼Œå¯ä»¥å“åº”é¼ æ ‡å’Œé”®ç›˜äº‹ä»¶ã€‚
  */
 public abstract class CIRect extends GRect implements EventIncoming {
     protected int state;//press, mouse pass etc. show-use. should only change by input-event.

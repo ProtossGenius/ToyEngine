@@ -5,7 +5,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 public class SimpleNettyClientHandler extends ChannelInboundHandlerAdapter {
     /**
-     * ±¾·½·¨ÓÃÓÚ½ÓÊÕ·şÎñ¶Ë·¢ËÍ¹ıÀ´µÄÏûÏ¢
+     * æœ¬æ–¹æ³•ç”¨äºæ¥æ”¶æœåŠ¡ç«¯å‘é€è¿‡æ¥çš„æ¶ˆæ¯
      *
      * @param ctx
      * @param msg
@@ -22,7 +22,7 @@ public class SimpleNettyClientHandler extends ChannelInboundHandlerAdapter {
     }
 
     /**
-     * ±¾·½·¨ÓÃÓÚ´¦ÀíÒì³£
+     * æœ¬æ–¹æ³•ç”¨äºå¤„ç†å¼‚å¸¸
      *
      * @param ctx
      * @param cause
@@ -30,13 +30,13 @@ public class SimpleNettyClientHandler extends ChannelInboundHandlerAdapter {
      */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        // µ±³öÏÖÒì³£¾Í¹Ø±ÕÁ¬½Ó
+        // å½“å‡ºç°å¼‚å¸¸å°±å…³é—­è¿æ¥
         cause.printStackTrace();
         ctx.close();
     }
 
     /**
-     * ±¾·½·¨ÓÃÓÚÏò·şÎñ¶Ë·¢ËÍĞÅÏ¢
+     * æœ¬æ–¹æ³•ç”¨äºå‘æœåŠ¡ç«¯å‘é€ä¿¡æ¯
      *
      * @param ctx
      * @throws Exception

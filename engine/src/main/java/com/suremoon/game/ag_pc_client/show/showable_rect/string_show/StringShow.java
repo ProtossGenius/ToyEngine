@@ -16,7 +16,7 @@ public class StringShow {
     int charHeight = 1;
     int startIndex = 0;
 
-    public StringShow(String str, Rectangle showArea){this(str, showArea, new Font("ËÎÌå", Font.BOLD, 24));}
+    public StringShow(String str, Rectangle showArea){this(str, showArea, new Font("å®‹ä½“", Font.BOLD, 24));}
 
     public StringShow(String str, Rectangle showArea, Font font) {
         this(str, showArea, font, 0);
@@ -64,8 +64,8 @@ public class StringShow {
 
     /**
      * @param gp
-     * @param yChange Y·½ÏòÉÏµÄÆ«ÒÆ
-     * @return ÊÇ·ñÈÔÓĞ¿É»æÖÆµÄ¿é£¨ÎªfalseµÄ»°±íÊ¾Õâ¸öStringShowÒÑ¾­»æÖÆÍêÁË£©
+     * @param yChange Yæ–¹å‘ä¸Šçš„åç§»
+     * @return æ˜¯å¦ä»æœ‰å¯ç»˜åˆ¶çš„å—ï¼ˆä¸ºfalseçš„è¯è¡¨ç¤ºè¿™ä¸ªStringShowå·²ç»ç»˜åˆ¶å®Œäº†ï¼‰
      */
     public boolean drawOn(Graphics gp, int yChange){
         gp.setFont(this.font);

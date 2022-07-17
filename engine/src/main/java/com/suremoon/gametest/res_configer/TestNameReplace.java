@@ -10,7 +10,7 @@ import java.io.File;
  */
 public class TestNameReplace {
     public static void main(String[] args) {
-        NameReplace np = new NameReplace(new File("F:\\BaiduYunDownload\\www.reinerstilesets.de\\Human_Unzip"), "l„uft", "Walking");
+        NameReplace np = new NameReplace(new File("F:\\BaiduYunDownload\\www.reinerstilesets.de\\Human_Unzip"), "lå‰ˆft", "Walking");
         np.replace();
     }
 }

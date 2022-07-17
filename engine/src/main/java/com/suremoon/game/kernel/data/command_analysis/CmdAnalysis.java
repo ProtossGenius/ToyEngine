@@ -142,11 +142,11 @@ public class CmdAnalysis implements CmdAnalysisItf {
     protected class GetInfJI implements JudgeInf{
         ICPair icp;
         /**
-         * todo �˴������Ż� 2018/3/23
-         * dropableSize ��ָĿǰ�õ����¼����в����ܹ�ƥ��ɹ�,������ĳЩ������ȴ�����ж�һЩ�ɵ��������������
-         * ����ƥ��ɹ��ı����˳������������------һ����ֱ�����һ���¼���δ��Ѱ�ҵ�Ŀ��,��һ������Ѱ�ҵ�;�з�
-         * �ֲ�û�����������,�����˳�.��������Ҫ�����¼����������жϵ�,��Ϊ��ʱ�ͻ��˵Ĵ���ѹ������̫��,�����һ��
-         * ����ʱ����Ҫ�����Ż�,������ĳЩ�����,�ͻ��˵Ĵ������֮��,�������Ҫ�����Ż���.
+         * todo 此处可以优化 2018/3/23
+         * dropableSize 是指目前得到的事件队列并不能够匹配成功,但是在某些条件下却可以判断一些旧的命令可以抛弃掉
+         * 不能匹配成功的被迫退出情况包括两种------一种是直到最后一个事件都未能寻找到目标,另一种是在寻找的途中发
+         * 现并没有适配的命令,被迫退出.后者是需要丢弃事件进行重新判断的,因为暂时客户端的处理压力不会太大,因此这一部
+         * 分暂时不必要进行优化,但是在某些情况下,客户端的处理变大之后,这里就需要进行优化了.
          */
         int dropableSize = 0;
         public GetInfJI(ICPair icp){
@@ -203,13 +203,13 @@ public class CmdAnalysis implements CmdAnalysisItf {
         }
 
         public boolean do_action(CANode caNode, int index){
-            if(index == inp.length)return false;//�Ѿ�Խ����
+            if(index == inp.length)return false;//已经越界了
             ArrayList<CANode> nodes = caNode.getNext();
             ActionData atype = inp[index];
             for(int i = 0; i < nodes.size(); ++i){
                 CANode cn = nodes.get(i);
                 if(cn.getCmdId().equals(atype)){
-                    //ֻΪ���еķ�Ҷ�ӽڵ�Ľڵ�����״̬�µĶ�������Ϊ�����Ҷ�ӽڵ����ʾ��������ɣ�����Ҫ����Ķ�����
+                    //只为已有的非叶子节点的节点添加状态下的动作，因为如果是叶子节点则表示动作已完成，不需要特殊的动作。
                     if(cn.isLeaf()){
                         return false;
                     }
@@ -220,7 +220,7 @@ public class CmdAnalysis implements CmdAnalysisItf {
                     return do_action(cn, index + 1);
                 }
             }
-            //��forѭ����û�д�����ζ�Ų����´�Ҷ�ӽڵ㣬��Ϊ����´�Ҷ�ӽڵ�Ļ�CmdCreater����nullӰ�������ط���
+            //在for循环外没有代码意味着不会新创叶子节点，因为如果新创叶子节点的话CmdCreater将是null影响其他地方。
             return false;
         }
     }
@@ -249,9 +249,9 @@ public class CmdAnalysis implements CmdAnalysisItf {
                     }
                     /**
                     else if(atype != KeyEvent.VK_CONTROL && atype != KeyEvent.VK_SHIFT && atype != KeyEvent.VK_ALT){
-                         �����������������İ�������˵��
+                         如果不是这三个特殊的按键，则说明
                          return false;
-                        shift�����ڷ�����ֻҪshift���־���ζ������Ϊ����(add)����������(set),�����ж����¼�������صĵط�����.
+                        shift不用于分析，只要shift出现就意味着命令为添加(add)而不是设置(set),该项判断在事件处理相关的地方进行.
 
                      }
                      */
@@ -273,7 +273,7 @@ public class CmdAnalysis implements CmdAnalysisItf {
     }
 
     /**
-     * ��Ϊ�βδ��룬����java��һЩ���ԣ������ĸı�ᱻ���沢������
+     * 作为形参传入，基于java的一些特性，对它的改变会被报存并传出。
      */
     static class ICPair{
         public CmdCreatorItf cc;
@@ -282,7 +282,7 @@ public class CmdAnalysis implements CmdAnalysisItf {
     }
 
     /**
-     * ���ڵݹ鴦������Ϊһ��
+     * 用于递归处理，作为一个
      */
     interface JudgeInf{
         boolean doJudge(CANode caNode);

@@ -23,7 +23,7 @@ public class TerrainChoice extends JFrame {
     MapEditor me;
 
     public TerrainChoice(MapEditor me) throws Exception {
-        super("地形选择");
+        super("鍦板舰閫夋嫨");
         setLayout(null);
         InitManager.init();
         this.me = me;
@@ -39,7 +39,7 @@ public class TerrainChoice extends JFrame {
     }
 
     private void initComponent() {
-        l_terrainList = new JLabel("地形列表");
+        l_terrainList = new JLabel("鍦板舰鍒楄〃");
         l_terrainList.setBounds(12, 24, 202, 23);
         add(l_terrainList);
 

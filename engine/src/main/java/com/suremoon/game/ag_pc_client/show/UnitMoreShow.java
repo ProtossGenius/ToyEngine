@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * Created by Water Moon on 2017/12/12.
- * µ¥Î»ĞèÒªÏÔÊ¾µÄ¶îÍâĞÅÏ¢,ÈçÑªÌõ/
+ * å•ä½éœ€è¦æ˜¾ç¤ºçš„é¢å¤–ä¿¡æ¯,å¦‚è¡€æ¡/
  */
 public class UnitMoreShow {
     public static Image hpRed, hpGreen, hpOrange, mpBlue, mpCyan, mpGray;

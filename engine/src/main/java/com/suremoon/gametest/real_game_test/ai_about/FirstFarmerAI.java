@@ -18,7 +18,7 @@ public class FirstFarmerAI implements UnitRemItf {
     public void underAttack(UnitItf owner, UnitItf unitItf, double v) {
         if(unitItf instanceof PlayerItf){
             PlayerItf player = (PlayerItf)unitItf;
-            player.addMessage("Å©·òËµ£ºĞ¡×Ó£¬Äã¾¹¸Ò´òÀÏ×Ó£¿");
+            player.addMessage("å†œå¤«è¯´ï¼šå°å­ï¼Œä½ ç«Ÿæ•¢æ‰“è€å­ï¼Ÿ");
         }
     }
 
@@ -34,7 +34,7 @@ public class FirstFarmerAI implements UnitRemItf {
                 unit->{
             if(unit instanceof PlayerItf){
                 PlayerItf player = (PlayerItf) unit;
-                player.addMessage("Å©·ò´óÉùº°£º¹ö¿ª£¬Äª°¤ÀÏ×Ó¡£");
+                player.addMessage("å†œå¤«å¤§å£°å–Šï¼šæ»šå¼€ï¼Œè«æŒ¨è€å­ã€‚");
             }
             return false;
         });
@@ -42,6 +42,6 @@ public class FirstFarmerAI implements UnitRemItf {
 
     @Override
     public String interactive(String s) {
-        return "Å©·òÑıæ¬µÄËµ£ºKill me baby!";
+        return "å†œå¤«å¦–å¨†çš„è¯´ï¼šKill me baby!";
     }
 }

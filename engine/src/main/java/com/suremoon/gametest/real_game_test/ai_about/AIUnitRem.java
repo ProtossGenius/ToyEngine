@@ -48,6 +48,6 @@ public class AIUnitRem implements UnitRemItf {
 
     @Override
     public String interactive(String s) {
-        return "覴ñر���";
+        return "瑕疵必报！";
     }
 }

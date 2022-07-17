@@ -8,7 +8,7 @@ import com.suremoon.game.door.units_itf.UnitItf;
 public class PlayerDieDo implements DieDo {
     @Override
     public void Do(UnitItf it, WorldItf world, WorldMgrItf worldMgr) {
-        //ʬ�崦��
+        //尸体处理
         if (it.isDie() && it.getState().getPassedTime() >= 3000) {
             it.relive();
         }
