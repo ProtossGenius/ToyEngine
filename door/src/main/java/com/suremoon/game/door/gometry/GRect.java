@@ -25,6 +25,8 @@ public class GRect implements GRectItf {
     this(0, 0, 0, 0);
   }
 
+  private int transparency = 0xff;
+
   public GRect(GRect rhs, Object move) {
     this.size = rhs.size;
     this.pos = rhs.pos;
@@ -215,6 +217,7 @@ public class GRect implements GRectItf {
     this.isDrop = byteStream.getBytes(1)[0] == 1;
     this.direct.parseFromBytes(byteStream);
     this.footPos.parseFromBytes(byteStream);
+    this.transparency = byteStream.getInteger();
   }
 
   @Override
@@ -225,6 +228,16 @@ public class GRect implements GRectItf {
         this.pos.encodeToBytes(),
         this.isDrop ? new byte[] {1} : new byte[] {0},
         this.direct.encodeToBytes(),
-        this.footPos.encodeToBytes());
+        this.footPos.encodeToBytes(),
+        CJDeal.int2byte(this.transparency));
+  }
+
+  public void setTransparency(int transparency) {
+    this.transparency = transparency;
+  }
+
+  @Override
+  public int getTransparency() {
+    return transparency;
   }
 }

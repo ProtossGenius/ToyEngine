@@ -5,8 +5,8 @@ import com.springmoon.sm_form.config.exceptions.NoSuchConfigException;
 import com.springmoon.sm_form.config.exceptions.NotLeafException;
 import com.springmoon.sm_form.interfaces.config.ConfigInf;
 import com.suremoon.game.ag_pc_client.resource.image.ImageFactory;
-import com.suremoon.game.ag_pc_client.resource.image.PicArea;
 import com.suremoon.game.ag_pc_client.resource.image.SMImage;
+import com.suremoon.game.door.client.SMImageItf;
 import java.awt.*;
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -71,14 +71,14 @@ public class StandIResConf {
     protected int id;
     protected String describe;
     protected Point start, end;
-    protected PicArea pa;
+    protected SMImageItf pa;
 
     public ResConfNode(int id, SMImage smi, String describe, Point start, Point end) {
       this.id = id;
       this.describe = describe;
       this.start = start;
       this.end = end;
-      pa = new PicArea(smi, start, end);
+      pa = smi.subArea(start, end);
     }
 
     public int getId() {
@@ -89,7 +89,7 @@ public class StandIResConf {
       return describe;
     }
 
-    public PicArea getRes() {
+    public SMImageItf getRes() {
       return pa;
     }
 
@@ -110,7 +110,7 @@ public class StandIResConf {
     return confLists[id];
   }
 
-  public PicArea getRes(int id) {
+  public SMImageItf getRes(int id) {
     return confLists[id].getRes();
   }
 }

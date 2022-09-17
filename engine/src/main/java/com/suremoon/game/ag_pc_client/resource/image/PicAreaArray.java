@@ -1,18 +1,19 @@
 package com.suremoon.game.ag_pc_client.resource.image;
 
 import com.suremoon.game.door.client.PicAreaArrayItf;
+import com.suremoon.game.door.client.SMImageItf;
 import java.awt.*;
 
 /** Created by Water Moon on 2017/11/29. */
 public class PicAreaArray implements PicAreaArrayItf {
-  public PicArea[] pa;
-
-  public PicAreaArray(PicArea[] pa) {
-    this.pa = pa;
-  }
+  public SMImageItf[] pa;
 
   public PicAreaArray(String[] pan) {
     this(pan, null);
+  }
+
+  public PicAreaArray(SMImageItf[] smImageItf) {
+    this.pa = smImageItf;
   }
 
   public PicAreaArray(SMImage smi, int rows, int cols) {
@@ -29,22 +30,9 @@ public class PicAreaArray implements PicAreaArrayItf {
     if (size + start_index >= rows * cols) {
       size = rows * cols - start_index - 1;
     }
-    pa = new PicArea[size];
+    pa = new SMImageItf[size];
     for (int i = 0; i < pa.length; ++i) {
-      pa[i] = new PicArea(smi, rows, cols, (start_index + i) % cols, (start_index + i) / cols);
-    }
-  }
-
-  public PicAreaArray(PicArea ipa, int rows, int cols, int size, int row, int col) {
-    if (size < 0) size = -size;
-    int start_index = col + cols * row;
-    if (size + start_index >= rows * cols) {
-      size = rows * cols - start_index - 1;
-    }
-    pa = new PicArea[size];
-    for (int i = 0; i < pa.length; ++i) {
-      pa[i] =
-          new PicArea(ipa.smImage, rows, cols, (start_index + i) % cols, (start_index + i) / cols);
+      pa[i] = smi.subArea(rows, cols, (start_index + i) % cols, (start_index + i) / cols);
     }
   }
 
@@ -61,16 +49,16 @@ public class PicAreaArray implements PicAreaArrayItf {
   }
 
   public PicAreaArray(String[] pan, Color transe) {
-    pa = new PicArea[pan.length];
+    pa = new SMImage[pan.length];
     for (int i = 0; i < pa.length; i++) {
       SMImage smi = ImageFactory.getSMImage(pan[i]);
       if (transe != null) smi.setTransparent(transe);
-      pa[i] = new PicArea(smi);
+      pa[i] = smi;
     }
   }
 
   @Override
-  public PicArea getPicArea(int index) {
+  public SMImageItf getPicArea(int index) {
     if (index < 0) index *= -1;
     if (index >= pa.length) index %= pa.length;
     return pa[index];

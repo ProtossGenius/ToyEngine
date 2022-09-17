@@ -1,6 +1,5 @@
 package com.suremoon.game.door.tools;
 
-
 /** Created by Water Moon on 2017/12/28. */
 public class ByteStream {
   byte[] bts;

@@ -1,6 +1,5 @@
 package com.suremoon.game.ag_pc_client.show.showable_rect;
 
-import com.suremoon.game.ag_pc_client.resource.image.PicArea;
 import com.suremoon.game.ag_pc_client.resource.image.SMImage;
 import com.suremoon.game.door.gometry.GRect;
 import java.awt.*;
@@ -29,7 +28,7 @@ public class SGRect extends GRect {
    * @param gp
    */
   public void show(Graphics gp) {
-    gp.drawImage(smi.getImg(), getX(), getY(), getWidth(), getHeight(), null);
+    gp.drawImage(smi.getImg(getTransparency()), getX(), getY(), getWidth(), getHeight(), null);
   }
 
   /**
@@ -39,8 +38,7 @@ public class SGRect extends GRect {
    * @param rect 部分区域。
    */
   public void show(Graphics gp, Rectangle rect) {
-    PicArea pa = new PicArea(smi, rect);
-    pa.show(gp, toRect());
+    smi.show(gp, toRect());
   }
 
   public SMImage getSmi() {

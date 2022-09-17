@@ -1,6 +1,5 @@
 package com.suremoon.game.door.factorys;
 
-
 public class Factories {
   private UnitFactory unitFactory;
   private StateFactory stateFactory;

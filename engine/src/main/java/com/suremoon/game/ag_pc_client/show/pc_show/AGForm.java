@@ -146,13 +146,13 @@ public class AGForm extends JFrame implements ScreenInfoUpdateItf {
                     + "\n"
                     + "Nps : "
                     + nps.See(),
-                new Rectangle(30, 130, 200, 800));
+                new Rectangle(GameConfiger.DESIGN_SCREEN_WIDTH - 230, 30, 200, 800));
         clientInfo.drawOn(cache);
         Point mousePos = mkid.getLastPoint();
         StringShow showMousePos =
             new StringShow(
                 "mouse's real pos = (" + mousePos.x + ", " + mousePos.y + ")",
-                new Rectangle(30, GameConfiger.DESIGN_SCREEN_HEIGHT - 100, 600, 200));
+                new Rectangle(100, 30, 600, 200));
         showMousePos.setColor(Color.RED);
         showMousePos.drawOn(cache);
         rollingString.drawOn(cache);

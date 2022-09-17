@@ -1,12 +1,22 @@
 package com.suremoon.game.ag_pc_client.resource.image;
 
+import com.suremoon.game.door.client.SMImageItf;
 import java.awt.*;
 import java.awt.image.*;
 
 /** Created by Water Moon on 2017/8/28. */
-public class SMImage {
-  public Image getImg() {
-    return img;
+public class SMImage implements SMImageItf {
+  public Image getImg(int trans) {
+    if (trans == 0xff) return img;
+    Image tImg = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+    for (int i = 0; i < img.getWidth(); ++i) {
+      for (int j = 0; j < img.getHeight(); ++j) {
+        int rgb = img.getRGB(i, j);
+        img.setRGB(i, j, trans << 24 | (rgb & 0x00ffffff));
+        // Mark the alpha bits as zero - transparent
+      }
+    }
+    return tImg;
   }
 
   public int getImageWidth() {
@@ -17,7 +27,7 @@ public class SMImage {
     return image_height;
   }
 
-  protected Image img;
+  protected BufferedImage img;
   protected int image_width;
   protected int image_height;
 
@@ -27,16 +37,10 @@ public class SMImage {
     this.image_width = 0;
   }
 
-  public SMImage(Image i, int width, int height) {
-    this.img = i;
-    this.image_height = height;
-    this.image_width = width;
-  }
-
   public SMImage(BufferedImage bi) {
     image_width = bi.getWidth();
     image_height = bi.getHeight();
-    img = bi.getScaledInstance(image_width, image_height, Image.SCALE_SMOOTH);
+    img = bi;
   }
 
   public void setTransparent(Color transparent) {
@@ -46,7 +50,7 @@ public class SMImage {
   public SMImage(BufferedImage bi, Color transparent) {
     image_width = bi.getWidth();
     image_height = bi.getHeight();
-    img = bi.getScaledInstance(image_width, image_height, Image.SCALE_SMOOTH);
+    img = bi;
     setTransparent(transparent);
   }
 
@@ -56,30 +60,27 @@ public class SMImage {
     return a > b ? a - b <= color_range : b - a <= color_range;
   }
 
-  public static Image makeColorTransparent(Image im, final Color color) {
+  public static BufferedImage makeColorTransparent(BufferedImage im, final Color color) {
     if (im == null) {
-      return im;
+      return null;
     }
-    ImageFilter filter =
-        new RGBImageFilter() {
-          // the color we are looking for... Alpha bits are set to opaque
-          public int markerRGB = color.getRGB() | 0xFF000000;
 
-          @Override
-          public final int filterRGB(int x, int y, int rgb) {
-            //                if ((rgb | 0xFF000000) == markerRGB) {
-            if (ColorSame(new Color(rgb), new Color(markerRGB))) {
-              // Mark the alpha bits as zero - transparent
-              return 0x00FFFFFF & rgb;
-            } else {
-              // nothing to do
-              return rgb;
-            }
-          }
-        };
+    BufferedImage img =
+        new BufferedImage(im.getWidth(), im.getHeight(), BufferedImage.TYPE_INT_ARGB);
+    for (int i = 0; i < im.getWidth(); ++i) {
+      for (int j = 0; j < im.getHeight(); ++j) {
+        int rgb = im.getRGB(i, j);
+        if (ColorSame(new Color(rgb), color)) {
+          img.setRGB(i, j, 0x00FFFFFF);
+          // Mark the alpha bits as zero - transparent
+        } else {
+          // nothing to do
+          img.setRGB(i, j, rgb);
+        }
+      }
+    }
 
-    ImageProducer ip = new FilteredImageSource(im.getSource(), filter);
-    return Toolkit.getDefaultToolkit().createImage(ip);
+    return img;
   }
 
   public static boolean ColorSame(Color a, Color b) {
@@ -91,5 +92,42 @@ public class SMImage {
 
   public static boolean NumberSame(int a, int b, int c) {
     return a > b ? a - b <= c : b - a <= c;
+  }
+
+  @Override
+  public void show(Graphics gp, int x, int y, int width, int height) {
+    gp.drawImage(
+        getImg(0xff),
+        x,
+        y,
+        x + width,
+        y + height,
+        0,
+        0,
+        getImageHeight(),
+        getImageWidth(),
+        null);
+  }
+
+  public SMImageItf subArea(int rows, int cols, int row, int col) {
+    int width = getImageWidth() / cols;
+    int height = getImageHeight() / rows;
+    if (row >= rows) row = rows - 1;
+    if (col >= cols) col = cols - 1;
+    Point start = new Point(col * width, row * height);
+    Point end = new Point((col + 1) * width, (row + 1) * height);
+
+    return subArea(start, end);
+  }
+
+  public SMImageItf subArea(Point start, Point end) {
+    end = new Point(Math.min(end.x, getImageWidth()), Math.min(end.y, getImageHeight()));
+    BufferedImage bi = new BufferedImage(end.x - start.x, end.y - start.y, BufferedImage.TYPE_4BYTE_ABGR);
+    for (int i = start.x; i < end.x; ++i) {
+      for (int j = start.y; j < end.y; ++j) {
+        bi.setRGB(i-start.x, j - start.y, img.getRGB(i, j));
+      }
+    }
+    return new SMImage(bi);
   }
 }

@@ -68,7 +68,7 @@ public class AGSAdapter {
       if (isLoop) id %= paa.getLength();
       else id = paa.getLength() - 1;
     }
-    PicAreaItf pa = paa.getPicArea(id);
+    SMImageItf pa = paa.getPicArea(id);
     pa.show(
         gp,
         (int) (rect.getX() - focusPoint.getX()),

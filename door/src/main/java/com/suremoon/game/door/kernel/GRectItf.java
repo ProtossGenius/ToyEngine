@@ -135,4 +135,9 @@ public interface GRectItf extends CalcAble, SerializeAble {
    * @return 是否要丢弃该单位
    */
   boolean isDrop();
+
+  // 角色的透明度
+  int getTransparency();
+
+  void setTransparency(int trans);
 }

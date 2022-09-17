@@ -38,3 +38,7 @@ tasks.compileJava {
     // use the project's version or define one directly
     options.javaModuleVersion.set(provider { project.version as String })
 }
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}

@@ -2,7 +2,7 @@ package com.suremoon.game.door.client;
 
 import java.awt.*;
 
-public interface PicAreaItf {
+public interface SMImageItf {
   void show(Graphics gp, int x, int y, int width, int height);
 
   default void show(Graphics gp, Rectangle rect) {

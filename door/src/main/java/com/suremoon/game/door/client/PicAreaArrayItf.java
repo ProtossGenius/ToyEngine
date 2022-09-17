@@ -1,7 +1,7 @@
 package com.suremoon.game.door.client;
 
 public interface PicAreaArrayItf {
-  PicAreaItf getPicArea(int index);
+  SMImageItf getPicArea(int index);
 
   int getLength();
 }

@@ -68,7 +68,7 @@ public class ClientStartup {
     }
     PlayerItf player =
         new Player((Unit) UnitInfManager.getUim().productUnit(IDManager.getID(playerType)));
-
+    player.setTransparency(15);
     CmdAnalysisItf cmdAnalysis = new CmdAnalysis();
     initCmdAnalysis(cmdAnalysis, analysisClass);
     wm.setAfterLoadModAction(

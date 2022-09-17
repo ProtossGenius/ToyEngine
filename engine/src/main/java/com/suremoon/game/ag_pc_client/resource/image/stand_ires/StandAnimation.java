@@ -4,8 +4,8 @@ import com.springmoon.sm_form.config.EasyConfig;
 import com.springmoon.sm_form.config.exceptions.NoSuchConfigException;
 import com.springmoon.sm_form.config.exceptions.NotLeafException;
 import com.springmoon.sm_form.interfaces.config.ConfigInf;
-import com.suremoon.game.ag_pc_client.resource.image.PicArea;
 import com.suremoon.game.ag_pc_client.resource.image.PicAreaArray;
+import com.suremoon.game.door.client.SMImageItf;
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
@@ -36,7 +36,7 @@ public class StandAnimation {
     }
     ConfigInf res = ec.getConfig("PAList");
     ConfigInf[] rs = res.listConfigs();
-    PicArea[] pas = new PicArea[rs.length];
+    SMImageItf[] pas = new SMImageItf[rs.length];
     for (int i = 0; i < rs.length; ++i) {
       String confId = rs[i].getValue("ConfId"), srid = rs[i].getValue("SRId");
       pas[i] = sircs[Integer.parseInt(confId)].getRes(Integer.parseInt(srid));

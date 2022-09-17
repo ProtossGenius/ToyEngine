@@ -40,3 +40,7 @@ application {
     // Define the main class for the application.
     mainClass.set("com.suremoon.gametest.real_game_test.Run3AGame")
 }
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
