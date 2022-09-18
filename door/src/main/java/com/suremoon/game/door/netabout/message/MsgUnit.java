@@ -28,6 +28,7 @@ public class MsgUnit implements AGMessage {
     this.max_mp = (int) attrib.getMaxMp();
     this.mp = (int) attrib.getMp();
     this.showName = unit.getShowName();
+    this.trans = unit.getTransparency();
   }
 
   public MsgUnit(ByteStream bs) {
@@ -47,6 +48,7 @@ public class MsgUnit implements AGMessage {
     this.max_mp = bs.getInteger();
     this.mp = bs.getInteger();
     this.showName = bs.getString();
+    this.trans = bs.getInteger();
   }
 
   public int UnitType,
@@ -60,7 +62,8 @@ public class MsgUnit implements AGMessage {
       hp,
       max_mp,
       mp,
-      intervalTime;
+      intervalTime,
+      trans;
   public long StatePTime;
   public double direct_x, direct_y;
   public String showName = "";
@@ -83,7 +86,8 @@ public class MsgUnit implements AGMessage {
         CJDeal.int2byte(hp),
         CJDeal.int2byte(max_mp),
         CJDeal.int2byte(mp),
-        CJDeal.string2bytes(showName));
+        CJDeal.string2bytes(showName),
+            CJDeal.int2byte(trans));
   }
 
   public static MsgUnit Null = new MsgUnit();

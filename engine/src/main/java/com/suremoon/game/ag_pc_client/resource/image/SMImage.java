@@ -8,11 +8,12 @@ import java.awt.image.*;
 public class SMImage implements SMImageItf {
   public Image getImg(int trans) {
     if (trans == 0xff) return img;
-    Image tImg = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+    BufferedImage tImg = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
     for (int i = 0; i < img.getWidth(); ++i) {
       for (int j = 0; j < img.getHeight(); ++j) {
         int rgb = img.getRGB(i, j);
-        img.setRGB(i, j, trans << 24 | (rgb & 0x00ffffff));
+        if ((rgb | 0x00ffffff) == 0x00ffffff) continue;
+        tImg.setRGB(i, j, trans << 24 | (rgb & 0x00ffffff));
         // Mark the alpha bits as zero - transparent
       }
     }
@@ -95,9 +96,9 @@ public class SMImage implements SMImageItf {
   }
 
   @Override
-  public void show(Graphics gp, int x, int y, int width, int height) {
+  public void show(Graphics gp, int x, int y, int width, int height, int trans) {
     gp.drawImage(
-        getImg(0xff),
+        getImg(trans),
         x,
         y,
         x + width,

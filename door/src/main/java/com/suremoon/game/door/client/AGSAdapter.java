@@ -74,7 +74,8 @@ public class AGSAdapter {
         (int) (rect.getX() - focusPoint.getX()),
         (int) (rect.getY() - focusPoint.getY()),
         rect.getWidth(),
-        rect.getHeight());
+        rect.getHeight(),
+        rect.getTransparency());
   }
 
   public void show(

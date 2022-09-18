@@ -29,6 +29,7 @@ public class MonsterDieDo implements DieDo {
             Math.abs(rand.nextInt() % gm.getMapWidth()),
             Math.abs(rand.nextInt() % gm.getMapHeight()));
         u2.getAttribute().setSpd(150);
+        u2.setTransparency(50);
         //        u2.addCmd(CmdInfManager.CIM.productCommand(IDManager.getID("CmdAttack"), u2, new
         // Point(100, 100), null, gr.getGm()));
         //

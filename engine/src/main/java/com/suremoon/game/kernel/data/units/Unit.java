@@ -57,7 +57,7 @@ public class Unit extends GRect implements UnitItf {
     this.showName = u.showName;
     this.leaveStatus = u.leaveStatus;
     this.skillManager = u.skillManager;
-
+    this.setTransparency(u.getTransparency());
     u.attrib = null;
     u.state = null;
     u.buffList = null;
@@ -75,6 +75,7 @@ public class Unit extends GRect implements UnitItf {
     setGid(mu.gid);
     setPos(new PointF(mu.pos_x, mu.pos_y));
     setDirect(new PointF(mu.direct_x, mu.direct_y));
+    setTransparency(mu.trans);
     State ags;
     ags = StateInfManager.sm.productState(IDManager.getName(mu.StateType));
     ags.smp.currentTime = ags.smp.startTime + mu.StatePTime;
