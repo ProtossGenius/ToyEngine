@@ -7,6 +7,7 @@ import com.suremoon.game.ag_pc_client.mkids.ScreenControlMKID;
 import com.suremoon.game.door.client.ActionData;
 import com.suremoon.game.door.client.CmdAnalysisInitItf;
 import com.suremoon.game.door.client.CmdAnalysisItf;
+import com.suremoon.game.door.kernel.DieDo;
 import com.suremoon.game.door.kernel.WorldItf;
 import com.suremoon.game.door.kernel.manager.UnitMgrItf;
 import com.suremoon.game.door.netabout.AGMessage;
@@ -22,6 +23,8 @@ import com.suremoon.game.kernel.game_run.WorldMgr;
 import com.suremoon.game.kernel.initer.unit_init.UnitInfManager;
 import com.suremoon.game.netabout.Player;
 import com.suremoon.game.netabout.client.NetGameClient;
+import com.suremoon.gametest.real_game_test.diedos.PlayerDieDo;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
@@ -68,6 +71,7 @@ public class ClientStartup {
     }
     PlayerItf player =
         new Player((Unit) UnitInfManager.getUim().productUnit(IDManager.getID(playerType)));
+    player.setDieDo(PlayerDieDo.Instance);
     CmdAnalysisItf cmdAnalysis = new CmdAnalysis();
     initCmdAnalysis(cmdAnalysis, analysisClass);
     wm.setAfterLoadModAction(

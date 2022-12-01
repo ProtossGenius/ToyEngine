@@ -3,12 +3,21 @@ package com.suremoon.game.ag_pc_client.resource.image;
 import com.suremoon.game.door.client.SMImageItf;
 import java.awt.*;
 import java.awt.image.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /** Created by Water Moon on 2017/8/28. */
 public class SMImage implements SMImageItf {
+  Map<Integer, BufferedImage> transImg = new HashMap<>();
   public Image getImg(int trans) {
     if (trans == 0xff) return img;
-    BufferedImage tImg = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+
+    BufferedImage tImg;
+    if ((tImg = transImg.get(trans)) != null){
+      return tImg;
+    }
+
+    tImg = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
     for (int i = 0; i < img.getWidth(); ++i) {
       for (int j = 0; j < img.getHeight(); ++j) {
         int rgb = img.getRGB(i, j);
@@ -17,6 +26,7 @@ public class SMImage implements SMImageItf {
         // Mark the alpha bits as zero - transparent
       }
     }
+    transImg.put(trans, tImg);
     return tImg;
   }
 
