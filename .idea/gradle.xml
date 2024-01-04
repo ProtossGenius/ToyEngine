@@ -4,18 +4,19 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="/opt/gradle/gradle-7.3.3" />
+        <option name="gradleJvm" value="17 (3)" />
         <option name="modules">
           <set>
-            <option value="$USER_HOME$/gopath/src/github.com/ProtossGenius/ToyEngine" />
-            <option value="$USER_HOME$/gopath/src/github.com/ProtossGenius/ToyEngine/door" />
-            <option value="$USER_HOME$/gopath/src/github.com/ProtossGenius/ToyEngine/engine" />
-            <option value="$USER_HOME$/gopath/src/github.com/ProtossGenius/ToyEngine/init_temp" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/door" />
+            <option value="$PROJECT_DIR$/engine" />
+            <option value="$PROJECT_DIR$/init_temp" />
           </set>
         </option>
+        <option name="resolveExternalAnnotations" value="false" />
       </GradleProjectSettings>
     </option>
+    <option name="parallelModelFetch" value="true" />
   </component>
 </project>

@@ -1,13 +1,11 @@
 package com.suremoon.game.ag_pc_client.show.pc_show;
 
-import static com.suremoon.game.door.client.ActionData.*;
-
 import com.suremoon.game.ag_pc_client.mkids.CmdMKID;
 import com.suremoon.game.ag_pc_client.mkids.ScreenControlMKID;
+import com.suremoon.game.ag_pc_client.mkids.UiMKID;
 import com.suremoon.game.door.client.ActionData;
 import com.suremoon.game.door.client.CmdAnalysisInitItf;
 import com.suremoon.game.door.client.CmdAnalysisItf;
-import com.suremoon.game.door.kernel.DieDo;
 import com.suremoon.game.door.kernel.WorldItf;
 import com.suremoon.game.door.kernel.manager.UnitMgrItf;
 import com.suremoon.game.door.netabout.AGMessage;
@@ -28,116 +26,120 @@ import com.suremoon.gametest.real_game_test.diedos.PlayerDieDo;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+import static com.suremoon.game.door.client.ActionData.*;
+
 public class ClientStartup {
-  public static void defaultCmdAnalysis(CmdAnalysisItf ca) {
-    ca.addState(new int[] {-MouseEvent.BUTTON3}, "CmdInteractive");
-    ca.addState(new int[] {KeyEvent.VK_M, -MouseEvent.BUTTON1}, "CmdWalk");
-    ca.addState(new int[] {KeyEvent.VK_A, -MouseEvent.BUTTON1}, "CmdAttack");
-    ca.addState(
-        new ActionData[] {
-          new ActionData(0, KeyEvent.VK_A, VALUE_TYPE_PRESS),
-          new ActionData(DATA_TYPE_MOUSE, MouseEvent.BUTTON1, VALUE_TYPE_PRESS),
-          new ActionData(DATA_TYPE_MOUSE, MouseEvent.BUTTON1, VALUE_TYPE_REPLASE)
-        },
-        "CmdAttack");
-    ca.addState(
-        new ActionData[] {
-          new ActionData(DATA_TYPE_KEY_BOARD, KeyEvent.VK_A, VALUE_TYPE_PRESS),
-          new ActionData(DATA_TYPE_MOUSE, MouseEvent.BUTTON1, VALUE_TYPE_PRESS),
-          new ActionData(DATA_TYPE_KEY_BOARD, KeyEvent.VK_A, VALUE_TYPE_REPLASE),
-          new ActionData(DATA_TYPE_MOUSE, MouseEvent.BUTTON1, VALUE_TYPE_REPLASE)
-        },
-        "CmdAttack");
+    public static void defaultCmdAnalysis(CmdAnalysisItf ca) {
+        ca.addState(new int[]{-MouseEvent.BUTTON3}, "CmdInteractive");
+        ca.addState(new int[]{KeyEvent.VK_M, -MouseEvent.BUTTON1}, "CmdWalk");
+        ca.addState(new int[]{KeyEvent.VK_A, -MouseEvent.BUTTON1}, "CmdAttack");
+        ca.addState(
+                new ActionData[]{
+                        new ActionData(0, KeyEvent.VK_A, VALUE_TYPE_PRESS),
+                        new ActionData(DATA_TYPE_MOUSE, MouseEvent.BUTTON1, VALUE_TYPE_PRESS),
+                        new ActionData(DATA_TYPE_MOUSE, MouseEvent.BUTTON1, VALUE_TYPE_REPLASE)
+                },
+                "CmdAttack");
+        ca.addState(
+                new ActionData[]{
+                        new ActionData(DATA_TYPE_KEY_BOARD, KeyEvent.VK_A, VALUE_TYPE_PRESS),
+                        new ActionData(DATA_TYPE_MOUSE, MouseEvent.BUTTON1, VALUE_TYPE_PRESS),
+                        new ActionData(DATA_TYPE_KEY_BOARD, KeyEvent.VK_A, VALUE_TYPE_REPLASE),
+                        new ActionData(DATA_TYPE_MOUSE, MouseEvent.BUTTON1, VALUE_TYPE_REPLASE)
+                },
+                "CmdAttack");
 
-    ca.addState(new int[] {KeyEvent.VK_Q}, "CmdPutMagic");
-    ca.addState(new int[] {KeyEvent.VK_T}, "CmdTrans");
-  }
-
-  private static void initCmdAnalysis(CmdAnalysisItf ca, CmdAnalysisInitItf initor) {
-    if (initor == null) {
-      initor = ClientStartup::defaultCmdAnalysis;
+        ca.addState(new int[]{KeyEvent.VK_Q}, "CmdPutMagic");
+        ca.addState(new int[]{KeyEvent.VK_T}, "CmdTrans");
     }
 
-    initor.Init(ca);
-  }
+    private static void initCmdAnalysis(CmdAnalysisItf ca, CmdAnalysisInitItf initor) {
+        if (initor == null) {
+            initor = ClientStartup::defaultCmdAnalysis;
+        }
 
-  public static void singleClient(
-      String worldMgrCfg, String playerType, String playerName, CmdAnalysisInitItf analysisClass)
-      throws Exception {
-    WorldMgr wm = new WorldMgr(worldMgrCfg);
-    WorldItf world = wm.getWorld(0);
-    if (world == null) {
-      throw new Exception("no such world whose index = 0");
+        initor.Init(ca);
     }
-    PlayerItf player =
-        new Player((Unit) UnitInfManager.getUim().productUnit(IDManager.getID(playerType)));
-    player.setDieDo(PlayerDieDo.Instance);
-    CmdAnalysisItf cmdAnalysis = new CmdAnalysis();
-    initCmdAnalysis(cmdAnalysis, analysisClass);
-    wm.setAfterLoadModAction(
-        () -> {
-          player.setShowName(playerName);
-          wm.InitPlayer(player);
-        });
-    new Thread(wm).start();
 
-    world.pushGRectToCalcQueue(player);
-    UnitMgrItf unitMgr = world.getGameMap().getUnitMgr();
-    unitMgr.addUnit(player);
-    // 客户端配置，主要是控制相关
-    AGForm agf = new AGForm(worldMgrCfg, 0);
-    CmdMKID cmkid = new CmdMKID(agf, cmdAnalysis);
-    cmkid.setOnCmd(player::acceptCmd);
-    ScreenControlMKID scmkid = new ScreenControlMKID(cmkid, player, agf.getGameScreen());
-    agf.setMKID(scmkid);
+    public static void singleClient(
+            String worldMgrCfg, String playerType, String playerName, CmdAnalysisInitItf analysisClass)
+            throws Exception {
+        WorldMgr wm = new WorldMgr(worldMgrCfg);
+        WorldItf world = wm.getWorld(0);
+        if (world == null) {
+            throw new Exception("no such world whose index = 0");
+        }
+        PlayerItf player =
+                new Player((Unit) UnitInfManager.getUim().productUnit(IDManager.getID(playerType)));
+        player.setDieDo(PlayerDieDo.Instance);
+        CmdAnalysisItf cmdAnalysis = new CmdAnalysis();
+        initCmdAnalysis(cmdAnalysis, analysisClass);
+        wm.setAfterLoadModAction(
+                () -> {
+                    player.setShowName(playerName);
+                    wm.InitPlayer(player);
+                });
+        new Thread(wm).start();
 
-    agf.setVisible(true);
-    new Thread(
-            () -> {
-              while (true) {
-                PieceRun.DoPeaceRun(
-                    15,
-                    () -> {
-                      player.getScreen().setFocusPoint(agf.getGameScreen().getFocusPoint());
-                      AGMessage[][] msg = player.getScreen().getShowers();
-                      msg[0] = new AGMessage[] {new MsgUnit(player)};
-                      msg[3] = player.getMessages(10);
-                      int index = 0;
-                      WorldItf currentWorld = player.getWorld();
-                      if (currentWorld != null) {
-                        index = currentWorld.getWorldIndex();
-                      }
-                      agf.update(new MsgScreenInfo(index, msg));
-                    });
-              }
-            })
-        .start();
-    agf.gameLoop();
-  }
+        world.pushGRectToCalcQueue(player);
+        UnitMgrItf unitMgr = world.getGameMap().getUnitMgr();
+        unitMgr.addUnit(player);
+        // 客户端配置，主要是控制相关
+        AGForm agf = new AGForm(worldMgrCfg, 0);
+        CmdMKID cmkid = new CmdMKID(agf, cmdAnalysis);
+        cmkid.setOnCmd(player::acceptCmd);
+        ScreenControlMKID scmkid = new ScreenControlMKID(cmkid, player, agf.getGameScreen());
+        UiMKID.instace.setMkid(scmkid);
 
-  public static void networkClient(
-      String serverAddress,
-      int port,
-      String worldMgrCfg,
-      String playerType,
-      String showName,
-      CmdAnalysisInitItf analysisClass)
-      throws Exception {
-    NetGameClient client = new NetGameClient(serverAddress, port);
-    CmdAnalysisItf cmdAnalysis = new CmdAnalysis();
-    initCmdAnalysis(cmdAnalysis, analysisClass);
+        agf.setVisible(true);
 
-    UnitItf unit = client.login(playerType, showName);
-    AGForm agf = new AGForm(worldMgrCfg, 0);
-    // 客户端配置，主要是控制相关
-    CmdMKID cmkid = new CmdMKID(agf, cmdAnalysis);
-    cmkid.setOnCmd(cmd -> client.getMsgQueue().add(cmd));
-    ScreenControlMKID scmkid = new ScreenControlMKID(cmkid, unit, agf.getGameScreen());
-    agf.setMKID(scmkid);
-    agf.setVisible(true);
-    client.setUpdater(agf);
-    client.setGameScreen(agf.getGameScreen());
-    client.start();
-    agf.gameLoop();
-  }
+        new Thread(
+                () -> {
+                    while (true) {
+                        PieceRun.DoPeaceRun(
+                                15,
+                                () -> {
+                                    player.getScreen().setFocusPoint(agf.getGameScreen().getFocusPoint());
+                                    AGMessage[][] msg = player.getScreen().getShowers();
+                                    msg[0] = new AGMessage[]{new MsgUnit(player)};
+                                    msg[3] = player.getMessages(10);
+                                    int index = 0;
+                                    WorldItf currentWorld = player.getWorld();
+                                    if (currentWorld != null) {
+                                        index = currentWorld.getWorldIndex();
+                                    }
+                                    agf.update(new MsgScreenInfo(index, msg));
+
+                                });
+                    }
+                })
+                .start();
+        agf.gameLoop();
+    }
+
+    public static void networkClient(
+            String serverAddress,
+            int port,
+            String worldMgrCfg,
+            String playerType,
+            String showName,
+            CmdAnalysisInitItf analysisClass)
+            throws Exception {
+        NetGameClient client = new NetGameClient(serverAddress, port);
+        CmdAnalysisItf cmdAnalysis = new CmdAnalysis();
+        initCmdAnalysis(cmdAnalysis, analysisClass);
+
+        UnitItf unit = client.login(playerType, showName);
+        AGForm agf = new AGForm(worldMgrCfg, 0);
+        // 客户端配置，主要是控制相关
+        CmdMKID cmkid = new CmdMKID(agf, cmdAnalysis);
+        cmkid.setOnCmd(cmd -> client.getMsgQueue().add(cmd));
+        ScreenControlMKID scmkid = new ScreenControlMKID(cmkid, unit, agf.getGameScreen());
+        UiMKID.instace.setMkid(scmkid);
+        agf.setVisible(true);
+        client.setUpdater(agf);
+        client.setGameScreen(agf.getGameScreen());
+        client.start();
+        agf.gameLoop();
+    }
 }
