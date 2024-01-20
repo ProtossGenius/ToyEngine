@@ -1,4 +1,4 @@
-package com.suremoon.game.kernel.initer.unit_init;
+package com.suremoon.game.kernel.initer.goods_init;
 
 import com.suremoon.game.door.attribute.AttributeAdapter;
 import com.suremoon.game.door.factorys.UnitFactory;
@@ -13,16 +13,17 @@ import java.util.HashMap;
 /**
  * Created by Water Moon on 2018/3/6.
  */
-public class UnitInfManager implements UnitFactory {
-    public static final UnitInfManager UIM = new UnitInfManager();
-    static Integer unitGId = 0;
+public class GoodsInfManager implements UnitFactory {
+    public static final GoodsInfManager UIM = new GoodsInfManager();
     private static final byte[] lock = new byte[0];
+    static Integer unitGId = 0;
     HashMap<Integer, UnitInformation> unitInfMap;
-    protected UnitInfManager() {
+
+    protected GoodsInfManager() {
         unitInfMap = new HashMap<>();
     }
 
-    public static final UnitInfManager getUim() {
+    public static final GoodsInfManager getUim() {
         return UIM;
     }
 

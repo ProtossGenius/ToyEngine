@@ -7,7 +7,8 @@ import com.suremoon.game.ag_pc_client.show.adapters.effect.EffectSAGetter;
 import com.suremoon.game.ag_pc_client.show.adapters.unit.UnitSAGetter;
 import com.suremoon.game.ag_pc_client.show.showable_rect.string_show.RollingString;
 import com.suremoon.game.ag_pc_client.show.showable_rect.string_show.StringShow;
-import com.suremoon.game.ag_pc_client.ui.GameUI;
+import com.suremoon.game.ag_pc_client.ui.IGameUI;
+import com.suremoon.game.ag_pc_client.ui.NoneUI;
 import com.suremoon.game.door.client.ScreenInfoUpdateItf;
 import com.suremoon.game.door.kernel.GameScreenItf;
 import com.suremoon.game.door.kernel.WorldItf;
@@ -33,7 +34,6 @@ import java.awt.image.BufferedImage;
  * Created by Water Moon on 2018/3/11.
  */
 public class AGForm extends JFrame implements ScreenInfoUpdateItf {
-    private final GameUI ui = new GameUI(new Rectangle(0, 0, 100, 100));
     private final MKInpDeal mkid = UiMKID.instace;
     protected GameScreenItf gs;
     BufferedImage bi;
@@ -43,6 +43,8 @@ public class AGForm extends JFrame implements ScreenInfoUpdateItf {
     RollingString rollingString;
     FrequencyCollector nps = new FrequencyCollector(1000);
     FrequencyCollector fps = new FrequencyCollector(1000);
+    int lastWorldId = 0;
+    private IGameUI ui = new NoneUI();
 
     public AGForm(String path, int index) throws Exception {
         super();
@@ -84,6 +86,12 @@ public class AGForm extends JFrame implements ScreenInfoUpdateItf {
         mkid.setParent(this);
     }
 
+
+    public void setUI(IGameUI gameUI) {
+        this.ui = gameUI;
+        UiMKID.instace.setGameUI(gameUI);
+    }
+
     @Override
     public void update(MsgScreenInfo screenInfo) {
         synchronized (this.screenInfo) {
@@ -110,9 +118,16 @@ public class AGForm extends JFrame implements ScreenInfoUpdateItf {
         return gs;
     }
 
+    public void draw(Graphics g) {
+
+    }
+
+    public WorldItf getCurrentWorld() {
+        return worldMgr.getWorld(lastWorldId);
+    }
 
     public void gameLoop() {
-        int lastWorldId = 0;
+
         while (true) {
             try {
                 long start = System.currentTimeMillis();

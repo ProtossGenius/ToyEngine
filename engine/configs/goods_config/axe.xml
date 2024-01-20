@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+    <name>axe</name>
+    <FootPos x="0.5" y="0.5"/>
+    <Width>150</Width>
+    <Height>150</Height>
+    <States>
+        <State stateName="ground_act" resource="resource/Goods/axe at ground bitmaps/axe activ.bmp"/>
+        <State stateName="ground_inact" resource="resource/Goods/axe at ground bitmaps/axe inactiv.bmp"/>
+        <State stateName="bag_act" resource="resource/Goods/axe at ground bitmaps/axe activ.bmp"/>
+        <State stateName="bag_inact" resource="resource/Goods/axe at ground bitmaps/axe inactiv.bmp"/>
+    </States>
+
+</Root>

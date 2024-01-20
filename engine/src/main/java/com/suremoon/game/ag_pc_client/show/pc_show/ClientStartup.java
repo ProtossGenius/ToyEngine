@@ -22,6 +22,7 @@ import com.suremoon.game.kernel.initer.unit_init.UnitInfManager;
 import com.suremoon.game.netabout.Player;
 import com.suremoon.game.netabout.client.NetGameClient;
 import com.suremoon.gametest.real_game_test.diedos.PlayerDieDo;
+import com.suremoon.gametest.real_game_test.my_ui.MyMainUI;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -86,6 +87,7 @@ public class ClientStartup {
         unitMgr.addUnit(player);
         // 客户端配置，主要是控制相关
         AGForm agf = new AGForm(worldMgrCfg, 0);
+        agf.setUI(new MyMainUI(agf));
         CmdMKID cmkid = new CmdMKID(agf, cmdAnalysis);
         cmkid.setOnCmd(player::acceptCmd);
         ScreenControlMKID scmkid = new ScreenControlMKID(cmkid, player, agf.getGameScreen());
@@ -137,6 +139,7 @@ public class ClientStartup {
         ScreenControlMKID scmkid = new ScreenControlMKID(cmkid, unit, agf.getGameScreen());
         UiMKID.instace.setMkid(scmkid);
         agf.setVisible(true);
+        agf.setUI(new MyMainUI(agf));
         client.setUpdater(agf);
         client.setGameScreen(agf.getGameScreen());
         client.start();

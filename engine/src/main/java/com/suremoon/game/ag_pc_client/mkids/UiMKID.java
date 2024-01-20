@@ -1,13 +1,13 @@
 package com.suremoon.game.ag_pc_client.mkids;
 
-import com.suremoon.game.ag_pc_client.ui.GameUI;
+import com.suremoon.game.ag_pc_client.ui.IGameUI;
 
 import java.awt.event.MouseEvent;
 
 public class UiMKID extends MKInpDeal {
     public static final UiMKID instace = new UiMKID();
 
-    GameUI ui;
+    IGameUI ui;
 
     private UiMKID() {
         super();
@@ -17,7 +17,7 @@ public class UiMKID extends MKInpDeal {
         this.mkid = mkid;
     }
 
-    public void setGameUI(GameUI ui) {
+    public void setGameUI(IGameUI ui) {
         this.ui = ui;
     }
 
