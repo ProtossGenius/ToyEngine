@@ -1,27 +1,29 @@
 package com.suremoon.game.door.kernel;
 
+import com.suremoon.game.door.units_itf.PlayerItf;
 import com.suremoon.game.door.units_itf.UnitItf;
 
 public interface UnitRemItf {
-  void underAttack(UnitItf owner, UnitItf attacker, double hurt);
+    UnitRemItf Null = new UnitRemNothing();
 
-  void doCalc(UnitItf unit, WorldItf world, WorldMgrItf worldMgr);
+    void underAttack(UnitItf self, UnitItf attacker, double hurt);
 
-  String interactive(String input);
+    void doCalc(UnitItf self, WorldItf world, WorldMgrItf worldMgr);
 
-  UnitRemItf Null = new UnitRemNothing();
+    void interactive(UnitItf self, PlayerItf playerItf, String input);
 }
 
 class UnitRemNothing implements UnitRemItf {
 
-  @Override
-  public void underAttack(UnitItf owner, UnitItf attacker, double hurt) {}
+    @Override
+    public void underAttack(UnitItf owner, UnitItf attacker, double hurt) {
+    }
 
-  @Override
-  public void doCalc(UnitItf unit, WorldItf world, WorldMgrItf worldMgr) {}
+    @Override
+    public void doCalc(UnitItf unit, WorldItf world, WorldMgrItf worldMgr) {
+    }
 
-  @Override
-  public String interactive(String input) {
-    return "";
-  }
+    @Override
+    public void interactive(UnitItf self, PlayerItf playerItf, String input) {
+    }
 }

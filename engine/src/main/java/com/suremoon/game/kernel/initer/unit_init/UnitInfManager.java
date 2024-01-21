@@ -4,7 +4,9 @@ import com.suremoon.game.door.attribute.AttributeAdapter;
 import com.suremoon.game.door.factorys.UnitFactory;
 import com.suremoon.game.door.gometry.PointF;
 import com.suremoon.game.door.infos.UnitInformation;
+import com.suremoon.game.door.units_itf.GoodsItf;
 import com.suremoon.game.door.units_itf.UnitItf;
+import com.suremoon.game.kernel.data.units.Goods;
 import com.suremoon.game.kernel.data.units.Unit;
 import com.suremoon.game.kernel.initer.state_init.StateInfManager;
 
@@ -15,9 +17,10 @@ import java.util.HashMap;
  */
 public class UnitInfManager implements UnitFactory {
     public static final UnitInfManager UIM = new UnitInfManager();
-    static Integer unitGId = 0;
     private static final byte[] lock = new byte[0];
+    static Integer unitGId = 0;
     HashMap<Integer, UnitInformation> unitInfMap;
+
     protected UnitInfManager() {
         unitInfMap = new HashMap<>();
     }
@@ -42,6 +45,16 @@ public class UnitInfManager implements UnitFactory {
         }
         InitUnit(unit);
         return unit;
+    }
+
+    @Override
+    public GoodsItf productGoods(int unitId) {
+        var goods = new Goods(unitId);
+        synchronized (lock) {
+            goods.setGid(unitGId++);
+        }
+        InitUnit(goods);
+        return goods;
     }
 
     @Override

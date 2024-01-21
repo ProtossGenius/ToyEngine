@@ -4,6 +4,7 @@
     <FootPos x="0.5" y="0.5"/>
     <Width>150</Width>
     <Height>150</Height>
+    <trans_color>0xCF8FD3</trans_color>
     <States>
         <State stateName="ground_act" resource="resource/Goods/axe at ground bitmaps/axe activ.bmp"/>
         <State stateName="ground_inact" resource="resource/Goods/axe at ground bitmaps/axe inactiv.bmp"/>

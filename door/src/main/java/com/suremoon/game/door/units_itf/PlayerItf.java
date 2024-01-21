@@ -6,13 +6,13 @@ import com.suremoon.game.door.netabout.message.MsgCommand;
 import com.suremoon.game.door.netabout.message.MsgString;
 
 public interface PlayerItf extends UnitItf {
-  GameScreenItf getScreen();
+    GameScreenItf getScreen();
 
-  WorldItf getWorld();
+    WorldItf getWorld();
 
-  void acceptCmd(MsgCommand cmd);
+    void acceptCmd(MsgCommand cmd);
 
-  MsgString[] getMessages(int maxSize);
+    MsgString[] getMessages(int maxSize);
 
-  void addMessage(String msg);
+    void addMessage(String msg);
 }
