@@ -6,6 +6,7 @@ import com.suremoon.game.door.kernel.WorldMgrItf;
 import com.suremoon.game.door.mods.WorldModItf;
 import com.suremoon.game.door.tools.IDManager;
 import com.suremoon.game.door.units_itf.EffectItf;
+import com.suremoon.game.door.units_itf.GoodsItf;
 import com.suremoon.game.door.units_itf.PlayerItf;
 import com.suremoon.game.door.units_itf.UnitItf;
 import com.suremoon.gametest.real_game_test.ai_about.FirstFarmerAI;
@@ -44,7 +45,7 @@ public class WorldModDemo implements WorldModItf {
 
             @Override
             public void interactive(UnitItf self, PlayerItf playerItf, String input) {
-                // TODO: add to user's bag
+                playerItf.getBag().add((GoodsItf) self);
                 playerItf.addMessage("get item: " + self.getShowName());
                 self.setDrop(true);
             }

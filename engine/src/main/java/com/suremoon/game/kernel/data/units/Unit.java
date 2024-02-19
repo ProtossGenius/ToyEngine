@@ -16,8 +16,11 @@ import com.suremoon.game.door.tools.IDManager;
 import com.suremoon.game.door.units_itf.*;
 import com.suremoon.game.door.units_itf.skill_about.SkillManager;
 import com.suremoon.game.kernel.initer.state_init.StateInfManager;
+
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 /** Created by Water Moon on 2018/1/10. */
 public class Unit extends GRect implements UnitItf {
@@ -36,7 +39,7 @@ public class Unit extends GRect implements UnitItf {
   private int camp;
   private SkillManager skillManager = new SkillManager();
   private HurtCalcItf hurtCalcItf = HurtCalcItf.Null;
-
+  private List<GoodsItf> bag = new ArrayList<>();
   public Unit(int uType) {
     this.uType = uType;
   }
@@ -302,6 +305,11 @@ public class Unit extends GRect implements UnitItf {
   @Override
   public SkillManager getSkillManager() {
     return this.skillManager;
+  }
+
+  @Override
+  public List<GoodsItf> getBag() {
+    return bag;
   }
 
   @Override

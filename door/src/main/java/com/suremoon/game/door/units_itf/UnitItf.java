@@ -11,6 +11,8 @@ import com.suremoon.game.door.kernel.enums.LeaveStatus;
 import com.suremoon.game.door.save_about.SerializeAble;
 import com.suremoon.game.door.units_itf.skill_about.SkillManager;
 
+import java.util.List;
+
 public interface UnitItf extends AGTypeInf, GRectItf, SerializeAble {
 
   void setHurtCalcItf(HurtCalcItf hurtCalc);
@@ -84,6 +86,8 @@ public interface UnitItf extends AGTypeInf, GRectItf, SerializeAble {
   void setCamp(int camp);
 
   SkillManager getSkillManager();
+
+  List<GoodsItf> getBag();
 
   // ------------- 以下是default实现 ------------
   default void BeHurt(double hurt) {
