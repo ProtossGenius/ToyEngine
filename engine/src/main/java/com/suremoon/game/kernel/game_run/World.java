@@ -214,7 +214,6 @@ public class World implements WorldItf {
     @Override
     public GoodsItf productGoods(int unitId) {
         GoodsItf goods = factories.getUnitFactory().productGoods(unitId);
-        System.out.println("??????????????");
         pushGRectToCalcQueue(goods);
         return goods;
     }

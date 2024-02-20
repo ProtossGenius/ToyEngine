@@ -7,6 +7,6 @@ public class MyMainUI extends MainUI {
     public MyMainUI(AGForm agForm) {
         super(agForm);
         addChildren(new BottomUI(agForm));
-        addChildren(new BagUI(agForm));
+//        addChildren(new BagUI(agForm));
     }
 }

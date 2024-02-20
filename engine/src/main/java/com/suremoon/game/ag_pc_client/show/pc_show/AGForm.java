@@ -18,6 +18,8 @@ import com.suremoon.game.door.netabout.message.MsgEffect;
 import com.suremoon.game.door.netabout.message.MsgScreenInfo;
 import com.suremoon.game.door.netabout.message.MsgString;
 import com.suremoon.game.door.netabout.message.MsgUnit;
+import com.suremoon.game.door.observer.ObserverEnum;
+import com.suremoon.game.door.observer.ObserverMgr;
 import com.suremoon.game.kernel.data.GameConfig.GameConfiger;
 import com.suremoon.game.kernel.data.units.Effect;
 import com.suremoon.game.kernel.data.units.Unit;
@@ -145,6 +147,7 @@ public class AGForm extends JFrame implements ScreenInfoUpdateItf {
                 gs.screenMove();
                 cache.clearRect(0, 0, 1000, 1000);
                 gs.showMap(cache);
+                ObserverMgr.mgr.submit(ObserverEnum.GOODS, null);
                 for (int i = 0; i < msgs[1].length; ++i) {
                     Unit unit = new Unit((MsgUnit) msgs[1][i]);
                     UnitSAGetter.getUsag().show(cache, unit, gs.getFocusPoint());
