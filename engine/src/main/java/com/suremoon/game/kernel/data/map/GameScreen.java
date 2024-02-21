@@ -65,11 +65,11 @@ public class GameScreen implements GameScreenItf {
     }
 
     /**
-     * { {0： 玩家自身}， {1： 人物对象，ComboUnit}, {2： 效果对象， } {3： 消息列表} }
+     * { {0： 玩家自身}， {1： 人物对象，ComboUnit}, {2： 效果对象， } {3： 消息列表} {4: user bag info} }
      */
     @Override
     public AGMessage[][] getShowers() {
-        AGMessage[][] res = new AGMessage[4][];
+        AGMessage[][] res = new AGMessage[5][];
         res[0] = new AGMessage[1];
         res[1] = gameMap.getUnitMgr().getShowers(getScreenRect());
         res[2] = gameMap.getEffectMgr().getShowers(getScreenRect());

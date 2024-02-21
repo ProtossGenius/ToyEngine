@@ -5,7 +5,6 @@ import com.suremoon.game.ag_pc_client.ui.IGameUI;
 import com.suremoon.game.door.netabout.message.MsgGoods;
 import com.suremoon.game.door.observer.ObserverEnum;
 import com.suremoon.game.door.observer.ObserverMgr;
-import com.suremoon.game.door.tools.IDManager;
 import com.suremoon.game.kernel.data.GameConfig.GameConfiger;
 
 import java.awt.*;
@@ -43,7 +42,10 @@ public class BottomUI extends IGameUI implements Consumer<Object> {
     }
 
     public void accept(Object obj) {
+        var goods = (MsgGoods[]) obj;
+        for (int i = 0; i < Math.min(goods.length, this.calls.length); ++i) {
+            this.calls[i].setGoods(goods[1]);
+        }
         this.setNeedRedraw(true);
-        this.calls[0].setGoods(new MsgGoods(IDManager.getID("goods/axe"), 1, 1, 1, 1));
     }
 }

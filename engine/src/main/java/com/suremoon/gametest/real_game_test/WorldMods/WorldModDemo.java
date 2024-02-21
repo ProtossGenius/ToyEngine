@@ -47,7 +47,7 @@ public class WorldModDemo implements WorldModItf {
             public void interactive(UnitItf self, PlayerItf playerItf, String input) {
                 playerItf.getBag().add((GoodsItf) self);
                 playerItf.addMessage("get item: " + self.getShowName());
-                self.setDrop(true);
+                //self.setDrop(true);
             }
         });
         System.out.println(goods.getDirect());

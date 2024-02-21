@@ -105,6 +105,7 @@ public class ClientStartup {
                                     AGMessage[][] msg = player.getScreen().getShowers();
                                     msg[0] = new AGMessage[]{new MsgUnit(player)};
                                     msg[3] = player.getMessages(10);
+                                    msg[4] = player.getBagInfo();
                                     int index = 0;
                                     WorldItf currentWorld = player.getWorld();
                                     if (currentWorld != null) {
