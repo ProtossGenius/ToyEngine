@@ -18,6 +18,7 @@ import com.suremoon.game.door.units_itf.UnitItf;
 import com.suremoon.game.kernel.data.command_analysis.CmdAnalysis;
 import com.suremoon.game.kernel.data.units.Unit;
 import com.suremoon.game.kernel.game_run.WorldMgr;
+import com.suremoon.game.kernel.initer.cmd_init.CmdInfManager;
 import com.suremoon.game.kernel.initer.unit_init.UnitInfManager;
 import com.suremoon.game.netabout.Player;
 import com.suremoon.game.netabout.client.NetGameClient;
@@ -89,7 +90,7 @@ public class ClientStartup {
         AGForm agf = new AGForm(worldMgrCfg, 0);
         agf.setUI(new MyMainUI(agf));
         CmdMKID cmkid = new CmdMKID(agf, cmdAnalysis);
-        cmkid.setOnCmd(player::acceptCmd);
+        CmdInfManager.CIM.setOnCmd(player::acceptCmd);
         ScreenControlMKID scmkid = new ScreenControlMKID(cmkid, player, agf.getGameScreen());
         UiMKID.instace.setMkid(scmkid);
 
@@ -136,7 +137,7 @@ public class ClientStartup {
         AGForm agf = new AGForm(worldMgrCfg, 0);
         // 客户端配置，主要是控制相关
         CmdMKID cmkid = new CmdMKID(agf, cmdAnalysis);
-        cmkid.setOnCmd(cmd -> client.getMsgQueue().add(cmd));
+        CmdInfManager.CIM.setOnCmd(cmd -> client.getMsgQueue().add(cmd));
         ScreenControlMKID scmkid = new ScreenControlMKID(cmkid, unit, agf.getGameScreen());
         UiMKID.instace.setMkid(scmkid);
         agf.setVisible(true);

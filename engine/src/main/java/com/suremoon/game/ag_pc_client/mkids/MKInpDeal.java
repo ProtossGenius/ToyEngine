@@ -60,7 +60,6 @@ public class MKInpDeal implements EventIncoming {
     @Override
     public final void keyPressed(KeyEvent e) {
         for (var m = this; m != null; m = m.mkid) if (m._keyPressed(e)) return;
-
     }
 
     protected boolean _keyReleased(KeyEvent e) {

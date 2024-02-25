@@ -4,6 +4,7 @@ package com.suremoon.game.ag_pc_client.ui;
 import com.suremoon.game.ag_pc_client.show.pc_show.AGForm;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -139,5 +140,19 @@ public abstract class IGameUI {
         }
         _inDrag = false;
         return _mouseReleased(e);
+    }
+
+    protected boolean _keyPressed(KeyEvent e) {
+        return false;
+    }
+
+    public final boolean keyPressed(KeyEvent e) {
+        for (var son : children) {
+            if (son.keyPressed(e)) {
+                return true;
+            }
+        }
+
+        return _keyPressed(e);
     }
 }

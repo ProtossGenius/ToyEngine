@@ -23,6 +23,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 /**
  * Created by Water Moon on 2018/3/13. 单一世界
@@ -155,6 +156,16 @@ public class World implements WorldItf {
     @Override
     public CommandItf productCommand(int i, Point point, int i1) {
         return factories.getCommandFactory().productCommand(i, point, i1);
+    }
+
+    @Override
+    public Consumer<CommandItf> getOnCmd() {
+        return factories.getCommandFactory().getOnCmd();
+    }
+
+    @Override
+    public void setOnCmd(Consumer<CommandItf> itf) {
+        factories.getCommandFactory().setOnCmd(itf);
     }
 
     @Override

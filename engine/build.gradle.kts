@@ -20,6 +20,9 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation("com.google.guava:guava:30.1.1-jre")
+    // https://mvnrepository.com/artifact/com.alibaba/fastjson
+    implementation("com.alibaba:fastjson:2.0.46")
+
     implementation(project(":door"))
 
     implementation(fileTree(mapOf("dir" to "../libs", "include" to listOf("*.jar"))))

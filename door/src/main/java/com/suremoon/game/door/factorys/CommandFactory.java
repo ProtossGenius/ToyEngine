@@ -3,20 +3,26 @@ package com.suremoon.game.door.factorys;
 import com.suremoon.game.door.infos.CmdInformation;
 import com.suremoon.game.door.tools.IDManager;
 import com.suremoon.game.door.units_itf.CommandItf;
+
 import java.awt.*;
+import java.util.function.Consumer;
 
 public interface CommandFactory {
-  void putCmdInf(int type, CmdInformation cmdIfm);
+    void putCmdInf(int type, CmdInformation cmdIfm);
 
-  default void putCmdInf(String cmdName, CmdInformation cmdIfm) {
-    putCmdInf(IDManager.getID(cmdName), cmdIfm);
-  }
+    default void putCmdInf(String cmdName, CmdInformation cmdIfm) {
+        putCmdInf(IDManager.getID(cmdName), cmdIfm);
+    }
 
-  CmdInformation getCmdInf(int type);
+    CmdInformation getCmdInf(int type);
 
-  default CmdInformation getCmdInf(String cmdName) {
-    return getCmdInf(IDManager.getID(cmdName));
-  }
+    default CmdInformation getCmdInf(String cmdName) {
+        return getCmdInf(IDManager.getID(cmdName));
+    }
 
-  CommandItf productCommand(int type, Point tp, int target);
+    CommandItf productCommand(int type, Point tp, int target);
+
+    Consumer<CommandItf> getOnCmd();
+
+    void setOnCmd(Consumer<CommandItf> itf);
 }

@@ -11,22 +11,22 @@ import com.suremoon.game.door.netabout.message.MsgScreenInfo;
 import com.suremoon.game.door.netabout.message.MsgUnit;
 import com.suremoon.game.door.units_itf.CommandItf;
 import com.suremoon.game.kernel.data.GameConfig.GameConfiger;
+import com.suremoon.game.kernel.initer.cmd_init.CmdInfManager;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.util.function.Consumer;
 
 /**
  * Created by Water Moon on 2018/3/23.
  */
 public class CmdMKID extends MKInpDeal {
     CmdAnalysisItf cmdAnalysis;
-    OnCmdItf onCmd = null;
     AGForm form;
     int targetUnit = -1;
     GameScreenItf gameScreen;
     GameMapItf gameMap;
-
     Point lastPoint = new Point(0, 0);
 
     public CmdMKID(MKInpDeal mkid, AGForm form, CmdAnalysisItf cmdAnalysis) {
@@ -41,10 +41,9 @@ public class CmdMKID extends MKInpDeal {
         this(null, form, cmdAnalysis);
     }
 
-    public void setOnCmd(OnCmdItf onCmd) {
-        this.onCmd = onCmd;
+    private Consumer<CommandItf> onCmd() {
+        return CmdInfManager.CIM.getOnCmd();
     }
-
 
     @Override
     protected boolean _keyPressed(KeyEvent e) {
@@ -124,7 +123,7 @@ public class CmdMKID extends MKInpDeal {
             CommandItf cmd =
                     cc.productCommand(targetUnit, lastPoint)
                             .setAppendCmd(smkb.isKeyPressed(KeyEvent.VK_SHIFT));
-            this.onCmd.OnCommand(cmd);
+            this.onCmd().accept(cmd);
             return true;
         }
         return false;

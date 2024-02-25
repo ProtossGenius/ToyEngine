@@ -2,6 +2,7 @@ package com.suremoon.game.ag_pc_client.mkids;
 
 import com.suremoon.game.ag_pc_client.ui.IGameUI;
 
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 public class UiMKID extends MKInpDeal {
@@ -43,5 +44,11 @@ public class UiMKID extends MKInpDeal {
     protected boolean _mouseDragged(MouseEvent e) {
         if (ui == null) return false;
         return ui.mouseDragged(e);
+    }
+
+    @Override
+    protected boolean _keyPressed(KeyEvent e) {
+        if (ui == null) return false;
+        return ui.keyPressed(e);
     }
 }

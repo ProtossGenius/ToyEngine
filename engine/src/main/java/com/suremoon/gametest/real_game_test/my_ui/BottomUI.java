@@ -5,9 +5,12 @@ import com.suremoon.game.ag_pc_client.ui.IGameUI;
 import com.suremoon.game.door.netabout.message.MsgGoods;
 import com.suremoon.game.door.observer.ObserverEnum;
 import com.suremoon.game.door.observer.ObserverMgr;
+import com.suremoon.game.door.tools.IDManager;
 import com.suremoon.game.kernel.data.GameConfig.GameConfiger;
+import com.suremoon.game.kernel.initer.cmd_init.CmdInfManager;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.function.Consumer;
 
 
@@ -44,8 +47,18 @@ public class BottomUI extends IGameUI implements Consumer<Object> {
     public void accept(Object obj) {
         var goods = (MsgGoods[]) obj;
         for (int i = 0; i < Math.min(goods.length, this.calls.length); ++i) {
-            this.calls[i].setGoods(goods[1]);
+            this.calls[i].setGoods(goods[i]);
         }
         this.setNeedRedraw(true);
+    }
+
+    @Override
+    protected boolean _keyPressed(KeyEvent e) {
+        if (e.getKeyChar() >= '0' && e.getKeyChar() <= '9') {
+            var cmd = CmdInfManager.CIM.productCommand(IDManager.getID("CmdUseGoods"), null, (e.getKeyChar() + 10 - '1') % 10);
+            CmdInfManager.CIM.getOnCmd().accept(cmd);
+            return true;
+        }
+        return super._keyPressed(e);
     }
 }

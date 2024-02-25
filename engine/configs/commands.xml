@@ -8,5 +8,6 @@
         <Command name="CmdRandMove">com.suremoon.gametest.real_game_test.action_dealers.RandomMoveAd</Command>
         <Command name="CmdTrans">com.suremoon.gametest.real_game_test.action_dealers.TransAd</Command>
         <Command name="CmdInteractive">com.suremoon.gametest.real_game_test.action_dealers.InteractiveAD</Command>
+        <Command name="CmdUseGoods">com.suremoon.gametest.real_game_test.action_dealers.UseGoodsAd</Command>
     </Commands>
 </Root>
