@@ -9,7 +9,7 @@ public interface IObserverMgr {
      * @param en
      * @param callback
      */
-    void register(ObserverEnum en, Consumer<Object> callback);
+    void register(ObserverEnum en, FObserverAction callback);
 
     /**
      * submit message to observer.

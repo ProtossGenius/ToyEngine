@@ -74,6 +74,10 @@ public abstract class IGameUI {
         this._visible = visible;
     }
 
+    public boolean getVisible() {
+        return this._visible;
+    }
+
     public void setLocation(Point p) {
         _bundle.setLocation(p);
     }

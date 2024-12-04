@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 
 public class ObserverMgr implements IObserverMgr {
     public static ObserverMgr mgr = new ObserverMgr();
-    private final ConcurrentHashMap<ObserverEnum, List<Consumer<Object>>> registerMap = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<ObserverEnum, List<FObserverAction>> registerMap = new ConcurrentHashMap<>();
     ExecutorService es = new ThreadPoolExecutor(10, 15, 10L, TimeUnit.SECONDS, new LinkedBlockingDeque<>());
 
     private ObserverMgr() {
@@ -16,7 +16,7 @@ public class ObserverMgr implements IObserverMgr {
     }
 
     @Override
-    public void register(ObserverEnum en, Consumer<Object> callback) {
+    public void register(ObserverEnum en, FObserverAction callback) {
         this.registerMap.compute(en, (e, l) -> {
             if (l == null) {
                 return new LinkedList<>(Collections.singletonList(callback));
@@ -31,7 +31,7 @@ public class ObserverMgr implements IObserverMgr {
         var list = this.registerMap.get(en);
         if (list == null) return;
         for (var cb : list) {
-            es.submit(() -> cb.accept(obj));
+            es.submit(() -> cb.accept(en, obj));
         }
     }
 }

@@ -3,6 +3,7 @@ package com.suremoon.gametest.real_game_test.my_ui;
 import com.suremoon.game.ag_pc_client.show.pc_show.AGForm;
 import com.suremoon.game.ag_pc_client.ui.IGameUI;
 import com.suremoon.game.door.netabout.message.MsgGoods;
+import com.suremoon.game.door.observer.FObserverAction;
 import com.suremoon.game.door.observer.ObserverEnum;
 import com.suremoon.game.door.observer.ObserverMgr;
 import com.suremoon.game.door.tools.IDManager;
@@ -11,10 +12,9 @@ import com.suremoon.game.kernel.initer.cmd_init.CmdInfManager;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.function.Consumer;
 
 
-public class BottomUI extends IGameUI implements Consumer<Object> {
+public class BottomUI extends IGameUI implements FObserverAction {
     public static final int HEIGHT = 100;
     public static final int WIDTH = GameConfiger.DESIGN_SCREEN_WIDTH;
     private final GoodsCellUI[] calls = new GoodsCellUI[10];
@@ -44,12 +44,22 @@ public class BottomUI extends IGameUI implements Consumer<Object> {
         }
     }
 
-    public void accept(Object obj) {
-        var goods = (MsgGoods[]) obj;
-        for (int i = 0; i < Math.min(goods.length, this.calls.length); ++i) {
-            this.calls[i].setGoods(goods[i]);
+    @Override
+    public void accept(ObserverEnum en, Object obj) {
+        switch (en) {
+            case ObserverEnum.GOODS -> {
+                var goods = (MsgGoods[]) obj;
+                for (int i = 0; i < Math.min(goods.length, this.calls.length); ++i) {
+                    this.calls[i].setGoods(goods[i]);
+                }
+                this.setNeedRedraw(true);
+                break;
+            }
+
+            default -> {
+
+            }
         }
-        this.setNeedRedraw(true);
     }
 
     @Override
