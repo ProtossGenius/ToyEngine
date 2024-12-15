@@ -1,0 +1,2 @@
+qrun:
+	gradle run

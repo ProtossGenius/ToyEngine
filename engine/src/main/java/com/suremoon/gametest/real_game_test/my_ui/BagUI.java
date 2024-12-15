@@ -1,17 +1,23 @@
 package com.suremoon.gametest.real_game_test.my_ui;
 
-import com.suremoon.game.ag_pc_client.show.pc_show.AGForm;
-import com.suremoon.game.ag_pc_client.ui.IGameUI;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
+import com.suremoon.game.ag_pc_client.show.pc_show.AGForm;
+import com.suremoon.game.ag_pc_client.ui.DragableUI;
+import com.suremoon.game.door.netabout.message.MsgGoods;
+import com.suremoon.game.door.observer.FObserverAction;
+import com.suremoon.game.door.observer.ObserverEnum;
+import com.suremoon.game.door.observer.ObserverMgr;
 
-public class BagUI extends IGameUI {
+public class BagUI extends DragableUI implements FObserverAction {
     private Color color = Color.BLUE;
 
     public BagUI(AGForm agForm) {
         super(agForm, new Rectangle(0, 0, 500, 500));
+        ObserverMgr.mgr.register(ObserverEnum.GOODS, this);
     }
 
     @Override
@@ -37,5 +43,23 @@ public class BagUI extends IGameUI {
         color = Color.BLUE;
         setNeedRedraw(true);
         return super._mouseReleased(e);
+    }
+
+    @Override
+    public void accept(ObserverEnum en, Object obj) {
+        switch (en) {
+            case ObserverEnum.GOODS -> {
+                var goods = (MsgGoods[]) obj;
+//                for (int i = 10; i < Math.min(goods.length, this.calls.length); ++i) {
+//                    this.calls[i].setGoods(goods[i]);
+//                }
+                this.setNeedRedraw(true);
+                break;
+            }
+
+            default -> {
+
+            }
+        }
     }
 }
