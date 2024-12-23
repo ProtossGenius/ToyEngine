@@ -41,7 +41,7 @@ public class FirstFarmerAI implements UnitRemItf {
     }
 
     @Override
-    public void interactive(UnitItf self, PlayerItf playerItf, String s) {
+    public void interactive(UnitItf self, PlayerItf playerItf, WorldItf world, WorldMgrItf worldMgr, String s) {
         playerItf.addMessage("农夫妖娆的说：Kill me baby!");
     }
 }

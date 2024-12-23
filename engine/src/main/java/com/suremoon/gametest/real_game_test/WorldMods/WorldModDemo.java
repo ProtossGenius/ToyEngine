@@ -44,16 +44,16 @@ public class WorldModDemo implements WorldModItf {
             }
 
             @Override
-            public void interactive(UnitItf self, PlayerItf playerItf, String input) {
+            public void interactive(UnitItf self, PlayerItf playerItf, WorldItf world, WorldMgrItf worldMgr, String input) {
                 // 拾取
                 if ("".equals(input)) {
                     playerItf.getBag().add((GoodsItf) self);
                     playerItf.addMessage("get item: " + self.getShowName());
-                    //self.setDrop(true);
+                    self.setDrop(true);
                     return;
                 }
 
-                playerItf.addMessage("use goods ...");
+                playerItf.addMessage("use goods ..." + input);
             }
         });
         System.out.println(goods.getDirect());

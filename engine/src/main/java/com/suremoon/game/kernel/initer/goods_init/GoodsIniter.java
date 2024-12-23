@@ -38,8 +38,10 @@ public class GoodsIniter extends Initer {
         var resMap = shower.getResList();
 
         var saMap = shower.getState2action();
-        saMap.put("paused", "ground_inact");
-        saMap.put("run", "ground_act");
+        saMap.put(GoodsStatus.GROUND_INACT, "ground_inact");
+        saMap.put(GoodsStatus.GROUND_ACT, "ground_act");
+        saMap.put(GoodsStatus.BAG_INACT, "bag_inact");
+        saMap.put(GoodsStatus.BAG_ACT, "bag_act");
         for (int i = 0; i < stateCfgs.length; ++i) {
             if (stateCfgs[i] == null) continue;
             String stateName = stateCfgs[i].getValue("stateName");

@@ -27,7 +27,7 @@ public class InteractiveAD implements CmdActionItf {
             UnitItf targetUnit = gm.getUnitMgr().getUnit(unitId);
             if (targetUnit != null
                     && targetUnit.getFootPos().getDistance(cmd.getOwner().getFootPos()) < 120) {
-                targetUnit.getUnitRem().interactive(targetUnit, player, "");
+                targetUnit.getUnitRem().interactive(targetUnit, player, world, worldMgrItf, "");
 
                 return true;
             }

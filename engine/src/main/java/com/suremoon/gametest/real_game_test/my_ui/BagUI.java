@@ -1,22 +1,20 @@
 package com.suremoon.gametest.real_game_test.my_ui;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
-
 import com.suremoon.game.ag_pc_client.show.pc_show.AGForm;
-import com.suremoon.game.ag_pc_client.ui.DragableUI;
+import com.suremoon.game.ag_pc_client.ui.DraggableUI;
 import com.suremoon.game.door.netabout.message.MsgGoods;
 import com.suremoon.game.door.observer.FObserverAction;
 import com.suremoon.game.door.observer.ObserverEnum;
 import com.suremoon.game.door.observer.ObserverMgr;
 
-public class BagUI extends DragableUI implements FObserverAction {
+import java.awt.*;
+import java.awt.event.MouseEvent;
+
+public class BagUI extends DraggableUI implements FObserverAction {
     private Color color = Color.BLUE;
 
     public BagUI(AGForm agForm) {
-        super(agForm, new Rectangle(0, 0, 500, 500));
+        super(agForm, new Rectangle(0, 0, 1000, 500));
         ObserverMgr.mgr.register(ObserverEnum.GOODS, this);
     }
 

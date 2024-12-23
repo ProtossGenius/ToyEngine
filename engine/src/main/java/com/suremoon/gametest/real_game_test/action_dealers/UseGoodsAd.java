@@ -13,7 +13,7 @@ public class UseGoodsAd implements CmdActionItf {
         UnitItf player = cmd.getOwner();
         var index = cmd.getTarget();
         var goods = player.getBag().get(index);
-        goods.getUnitRem().interactive(goods, (PlayerItf) player, "{}");
+        goods.getUnitRem().interactive(goods, (PlayerItf) player, world, worldMgr, "{}");
         return true;
     }
 

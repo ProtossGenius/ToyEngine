@@ -1,14 +1,14 @@
 package com.suremoon.game.ag_pc_client.ui;
 
+import com.suremoon.game.ag_pc_client.show.pc_show.AGForm;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-import com.suremoon.game.ag_pc_client.show.pc_show.AGForm;
-
-public class DragableUI extends IGameUI {
+public class DraggableUI extends IGameUI {
     Point lastPos = null;
 
-    public DragableUI(AGForm agForm, Rectangle bundle) {
+    public DraggableUI(AGForm agForm, Rectangle bundle) {
         super(agForm, bundle);
     }
 

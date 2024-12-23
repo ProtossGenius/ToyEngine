@@ -10,7 +10,7 @@ public interface UnitRemItf {
 
     void doCalc(UnitItf self, WorldItf world, WorldMgrItf worldMgr);
 
-    void interactive(UnitItf self, PlayerItf playerItf, String input);
+    void interactive(UnitItf self, PlayerItf playerItf, WorldItf world, WorldMgrItf worldMgr, String input);
 }
 
 class UnitRemNothing implements UnitRemItf {
@@ -24,6 +24,6 @@ class UnitRemNothing implements UnitRemItf {
     }
 
     @Override
-    public void interactive(UnitItf self, PlayerItf playerItf, String input) {
+    public void interactive(UnitItf self, PlayerItf playerItf, WorldItf world, WorldMgrItf worldMgr, String input) {
     }
 }
