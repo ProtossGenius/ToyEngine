@@ -25,7 +25,7 @@ import static com.suremoon.game.door.kernel.DieDo.Default;
 /**
  * Created by Water Moon on 2018/1/10.
  */
-public class Unit extends GRect implements UnitItf {
+public abstract class Unit extends GRect implements UnitItf {
     private final List<GoodsItf> bag = new ArrayList<>();
     protected ComplexAttribute attrib = new ComplexAttribute();
     protected StateItf state;
@@ -324,4 +324,6 @@ public class Unit extends GRect implements UnitItf {
     public void setHurtCalcItf(HurtCalcItf hurtCalcItf) {
         this.hurtCalcItf = hurtCalcItf;
     }
+
+    public abstract void dropBagGoods(WorldItf world, int index);
 }

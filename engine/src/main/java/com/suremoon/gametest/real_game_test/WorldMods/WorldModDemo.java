@@ -53,6 +53,7 @@ public class WorldModDemo implements WorldModItf {
                     return;
                 }
 
+
                 playerItf.addMessage("use goods ..." + input);
             }
         });

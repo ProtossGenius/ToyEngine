@@ -80,6 +80,15 @@ public class Player extends Unit implements PlayerItf {
     }
 
     @Override
+    public void dropBagGoods(WorldItf world, int index) {
+        if (index > getBag().size()) {
+            return;
+        }
+
+        getBag().set(index, null);
+    }
+
+    @Override
     public void addMessage(String msg) {
         synchronized (this.messages) {
             if (this.messages.size() > 50) {
