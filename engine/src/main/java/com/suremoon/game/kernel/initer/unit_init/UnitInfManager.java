@@ -1,6 +1,5 @@
 package com.suremoon.game.kernel.initer.unit_init;
 
-import com.suremoon.game.door.attribute.AttributeAdapter;
 import com.suremoon.game.door.factorys.UnitFactory;
 import com.suremoon.game.door.gometry.PointF;
 import com.suremoon.game.door.infos.UnitInformation;
@@ -65,7 +64,7 @@ public class UnitInfManager implements UnitFactory {
         unit.setDirect(new PointF(1.0, 0));
         PointF footPos = unitInf.getFootPos();
         unit.setFootPosPro(footPos);
-        AttributeAdapter attr = unit.getAttribute();
+        var attr = unit.getAttribute();
         attr.setMetal(50);
         attr.setFire(50);
         attr.setMaxHp(500);

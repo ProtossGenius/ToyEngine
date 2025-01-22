@@ -1,5 +1,6 @@
 package com.suremoon.game.kernel.data.units;
 
+import com.suremoon.game.door.attribute.AttributeAdapter;
 import com.suremoon.game.door.attribute.ComplexAttribute;
 import com.suremoon.game.door.attribute.HurtCalcItf;
 import com.suremoon.game.door.gometry.GRect;
@@ -25,9 +26,9 @@ import static com.suremoon.game.door.kernel.DieDo.Default;
 /**
  * Created by Water Moon on 2018/1/10.
  */
-public abstract class Unit extends GRect implements UnitItf {
+public class Unit extends GRect implements UnitItf {
     private final List<GoodsItf> bag = new ArrayList<>();
-    protected ComplexAttribute attrib = new ComplexAttribute();
+    protected ComplexAttribute attrib = new ComplexAttribute(new AttributeAdapter());
     protected StateItf state;
     protected LinkedList<BuffItf> buffList = new LinkedList<>();
     protected LinkedList<CommandItf> cmdList = new LinkedList<>();
@@ -89,8 +90,9 @@ public abstract class Unit extends GRect implements UnitItf {
         setState(ags);
         setSize(mu.width, mu.height);
         showName = mu.showName;
-        attrib = new ComplexAttribute();
+        attrib = new ComplexAttribute(new AttributeAdapter());
         attrib.setHp(mu.hp);
+        // TODO: set max maybe drop.
         attrib.setMaxHp(mu.max_hp);
         attrib.setMp(mu.mp);
         attrib.setMaxMp(mu.max_mp);
@@ -325,5 +327,11 @@ public abstract class Unit extends GRect implements UnitItf {
         this.hurtCalcItf = hurtCalcItf;
     }
 
-    public abstract void dropBagGoods(WorldItf world, int index);
+    public void dropBagGoods(WorldItf world, int index) {
+        if (index > getBag().size()) {
+            return;
+        }
+
+        getBag().set(index, null);
+    }
 }

@@ -79,14 +79,6 @@ public class Player extends Unit implements PlayerItf {
         return getBag().stream().map(MsgGoods::new).toArray(MsgGoods[]::new);
     }
 
-    @Override
-    public void dropBagGoods(WorldItf world, int index) {
-        if (index > getBag().size()) {
-            return;
-        }
-
-        getBag().set(index, null);
-    }
 
     @Override
     public void addMessage(String msg) {

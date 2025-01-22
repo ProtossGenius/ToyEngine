@@ -15,107 +15,109 @@ import java.util.List;
 
 public interface UnitItf extends AGTypeInf, GRectItf, SerializeAble {
 
-  void setHurtCalcItf(HurtCalcItf hurtCalc);
+    void setHurtCalcItf(HurtCalcItf hurtCalc);
 
-  HurtCalcItf getHurtCalcItf();
+    HurtCalcItf getHurtCalcItf();
 
-  /**
-   * @return 是否已死亡
-   */
-  boolean isDie();
+    /**
+     * @return 是否已死亡
+     */
+    boolean isDie();
 
-  ComplexAttribute getAttribute();
+    ComplexAttribute getAttribute();
 
-  StateItf getState();
+    StateItf getState();
 
-  void setState(StateItf state);
+    void setState(StateItf state);
 
-  void acceptBuff(BuffItf buff);
+    void acceptBuff(BuffItf buff);
 
-  void acceptCmd(CommandItf cmd);
+    void acceptCmd(CommandItf cmd);
 
-  void setUnitRem(UnitRemItf itf);
+    void setUnitRem(UnitRemItf itf);
 
-  UnitRemItf getUnitRem();
+    UnitRemItf getUnitRem();
 
-  /**
-   * @return 唯一ID
-   */
-  int getGid();
+    /**
+     * @return 唯一ID
+     */
+    int getGid();
 
-  void setGid(int gid);
+    void setGid(int gid);
 
-  /**
-   * @return 动画间隔时间
-   */
-  int getIntervalTime();
+    /**
+     * @return 动画间隔时间
+     */
+    int getIntervalTime();
 
-  /**
-   * @param hel 治疗
-   */
-  void BeHeal(double hel);
+    /**
+     * @param hel 治疗
+     */
+    void BeHeal(double hel);
 
-  void setDieDo(DieDo dieDo);
+    void setDieDo(DieDo dieDo);
 
-  /** 重生 */
-  void relive();
+    /**
+     * 重生
+     */
+    void relive();
 
-  void setShowName(String showName);
+    void setShowName(String showName);
 
-  String getShowName();
+    String getShowName();
 
-  LeaveStatus getLeaveStatus();
+    LeaveStatus getLeaveStatus();
 
-  void setLeaveStatus(LeaveStatus leaveStatus);
+    void setLeaveStatus(LeaveStatus leaveStatus);
 
-  /**
-   * @param unitLeaveAction 当玩家设置为离开，被移除当前世界之后做什么
-   */
-  void setLeaveAction(UnitLeaveAction unitLeaveAction);
+    /**
+     * @param unitLeaveAction 当玩家设置为离开，被移除当前世界之后做什么
+     */
+    void setLeaveAction(UnitLeaveAction unitLeaveAction);
 
-  UnitLeaveAction getLeaveAction();
+    UnitLeaveAction getLeaveAction();
 
-  /**
-   * @return 玩家所属的阵营
-   */
-  int getCamp();
+    /**
+     * @return 玩家所属的阵营
+     */
+    int getCamp();
 
-  /**
-   * @param camp 玩家所属的阵营
-   */
-  void setCamp(int camp);
+    /**
+     * @param camp 玩家所属的阵营
+     */
+    void setCamp(int camp);
 
-  SkillManager getSkillManager();
+    SkillManager getSkillManager();
 
-  List<GoodsItf> getBag();
+    List<GoodsItf> getBag();
 
-  // ------------- 以下是default实现 ------------
-  default void BeHurt(double hurt) {
-    double hp = this.getAttribute().getHp();
-    hp = hp - hurt > 0 ? hp - hurt : 0;
-    this.getAttribute().setHp(hp);
-  }
+    // ------------- 以下是default实现 ------------
+    default void BeHurt(double hurt) {
+        double hp = this.getAttribute().getHp();
+        hp = hp - hurt > 0 ? hp - hurt : 0;
+        this.getAttribute().setHp(hp);
+    }
 
-  default void underAttack(UnitItf attacker, ElementPriorities elementPriorities) {
-    double hurt = getHurtCalcItf().underAttack(this, elementPriorities);
-    BeHurt(hurt);
-    getUnitRem().underAttack(this, attacker, hurt);
-  }
+    default void underAttack(UnitItf attacker, ElementPriorities elementPriorities) {
+        double hurt = getHurtCalcItf().underAttack(this, elementPriorities);
+        BeHurt(hurt);
+        getUnitRem().underAttack(this, attacker, hurt);
+    }
 
-  /**
-   * @param attacker 攻击者
-   * @param ad AD伤害
-   * @param ap AP伤害
-   */
-  default void underAttack(UnitItf attacker, double ad, double ap) {
-    underAttack(attacker, new ElementPriorities(ad, ap));
-  }
+    /**
+     * @param attacker 攻击者
+     * @param ad       AD伤害
+     * @param ap       AP伤害
+     */
+    default void underAttack(UnitItf attacker, double ad, double ap) {
+        underAttack(attacker, new ElementPriorities(ad, ap));
+    }
 
-  /**
-   * @param skillName 技能名
-   * @return 是否成功施放技能
-   */
-  default boolean useSkill(String skillName) {
-    return getSkillManager().useSkill(skillName, this);
-  }
+    /**
+     * @param skillName 技能名
+     * @return 是否成功施放技能
+     */
+    default boolean useSkill(String skillName) {
+        return getSkillManager().useSkill(skillName, this);
+    }
 }
