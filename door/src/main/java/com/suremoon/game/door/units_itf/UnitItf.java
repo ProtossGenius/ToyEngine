@@ -28,7 +28,11 @@ public interface UnitItf extends AGTypeInf, GRectItf, SerializeAble {
     ComplexAttribute getAttribute();
 
     default void addBuff(Buff b) {
+        getAttribute().getBuffManager().addBuff(b);
+    }
 
+    default void removeBuff(String buffName) {
+        getAttribute().getBuffManager().removeBuff(buffName);
     }
 
     StateItf getState();

@@ -52,22 +52,10 @@ public class GoodsCellUI extends IGameUI {
     @Override
     protected boolean _mouseDragged(MouseEvent e) {
         var p = e.getPoint();
-        this.setInDrag(true);
         return true;
     }
-
-    @Override
-    public boolean _mouseReleased(MouseEvent e) {
-        this.setInDrag(false);
-        return true;
-    }
-
 
     public void setSelected(boolean selected) {
         this.selected = selected;
-    }
-
-    public void setInDrag(boolean inDrag) {
-        this.inDrag = inDrag;
     }
 }

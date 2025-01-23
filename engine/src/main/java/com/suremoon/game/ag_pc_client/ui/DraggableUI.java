@@ -27,8 +27,7 @@ public class DraggableUI extends IGameUI {
     protected boolean _mouseDragged(MouseEvent e) {
         var p = e.getPoint();
         if (lastPos != null) {
-            _bundle.x += (p.x - lastPos.x);
-            _bundle.y += (p.y - lastPos.y);
+            this.onMove(p.x - lastPos.x, p.y - lastPos.y);
         }
 
         lastPos = p;

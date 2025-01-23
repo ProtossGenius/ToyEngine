@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class IGameUI {
-    protected final Rectangle _bundle;
+    // Location base parent UI.
+    private final Rectangle _bundle;
+    protected Rectangle _baseBundle;
     protected final List<IGameUI> children;
     public int _zIndex = 0;
     protected AGForm agForm;
@@ -24,8 +26,26 @@ public abstract class IGameUI {
     public IGameUI(AGForm agForm, Rectangle _bundle) {
         this.agForm = agForm;
         this._bundle = _bundle;
+        this._baseBundle = new Rectangle();
         cache = new BufferedImage(_bundle.width, _bundle.height, BufferedImage.TYPE_INT_ARGB);
         children = new ArrayList<>();
+    }
+
+    protected void onMove(int xOffset, int yOffset) {
+        _bundle.x += xOffset;
+        _bundle.y += yOffset;
+    }
+
+    protected int getWidth() {
+        return _bundle.width;
+    }
+
+    protected int getHeight() {
+        return _bundle.height;
+    }
+
+    private void setBasePosition(Rectangle p) {
+        this._baseBundle = p;
     }
 
     public int getZIndex() {
@@ -34,6 +54,7 @@ public abstract class IGameUI {
 
     public void addChildren(IGameUI ui) {
         children.add(ui);
+        ui.setBasePosition(this._bundle);
         for (int i = children.size() - 2; i >= 0; --i) {
             var son = children.get(i);
             if (ui.getZIndex() <= son.getZIndex()) {
@@ -92,6 +113,14 @@ public abstract class IGameUI {
         return false;
     }
 
+    private Rectangle getCalcBundle() {
+        var bundle = new Rectangle(this._bundle);
+        var baseLocation = this._baseBundle.getLocation();
+        bundle.x = bundle.x + baseLocation.x;
+        bundle.y = bundle.y + baseLocation.y;
+        return bundle;
+    }
+
     public final boolean mousePressed(MouseEvent e) {
         if (!_bundle.contains(e.getPoint())) return false;
         for (var son : children) {
@@ -122,7 +151,7 @@ public abstract class IGameUI {
     }
 
     public final boolean mouseDragged(MouseEvent e) {
-        if (!_inDrag && !_bundle.contains(e.getPoint())) return false;
+        if (!_inDrag && !getCalcBundle().contains(e.getPoint())) return false;
         for (var son : children) {
             if (son.mouseDragged(e)) {
                 return true;
@@ -136,7 +165,7 @@ public abstract class IGameUI {
     }
 
     public final boolean mouseReleased(MouseEvent e) {
-        if (!_bundle.contains(e.getPoint())) return false;
+        if (!getCalcBundle().contains(e.getPoint())) return false;
         for (var son : children) {
             if (son.mouseReleased(e)) {
                 return true;

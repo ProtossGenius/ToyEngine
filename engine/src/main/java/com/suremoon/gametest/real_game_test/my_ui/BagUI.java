@@ -16,12 +16,13 @@ public class BagUI extends DraggableUI implements FObserverAction {
     public BagUI(AGForm agForm) {
         super(agForm, new Rectangle(0, 0, 1000, 500));
         ObserverMgr.mgr.register(ObserverEnum.GOODS, this);
+        this.setVisible(false);
     }
 
     @Override
     protected void _draw(Graphics cache) {
         cache.setColor(color);
-        cache.fillRect(0, 0, _bundle.width, _bundle.height);
+        cache.fillRect(0, 0, getWidth(), getHeight());
     }
 
     @Override

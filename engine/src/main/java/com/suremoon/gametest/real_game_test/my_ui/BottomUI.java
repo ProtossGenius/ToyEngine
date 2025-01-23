@@ -12,6 +12,7 @@ import com.suremoon.game.kernel.initer.cmd_init.CmdInfManager;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 
 public class BottomUI extends IGameUI implements FObserverAction {
@@ -26,14 +27,8 @@ public class BottomUI extends IGameUI implements FObserverAction {
         ObserverMgr.mgr.register(ObserverEnum.GOODS, this);
         for (int i = 0; i < cells.length; ++i) {
             cells[i] = new GoodsCellUI(agForm, new Rectangle(i * 110, 0, 100, 100));
+            addChildren(cells[i]);
         }
-    }
-
-
-    @Override
-    public void addChildren(IGameUI ui) {
-        super.addChildren(ui);
-
     }
 
     @Override
@@ -73,5 +68,10 @@ public class BottomUI extends IGameUI implements FObserverAction {
             return true;
         }
         return super._keyPressed(e);
+    }
+
+    @Override
+    protected boolean _mouseDragged(MouseEvent e) {
+        return super._mouseDragged(e);
     }
 }

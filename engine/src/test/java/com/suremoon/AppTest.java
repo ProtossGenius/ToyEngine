@@ -3,14 +3,22 @@
  */
 package com.suremoon;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
+import java.awt.*;
+
+import static org.junit.Assert.assertNotNull;
+
 public class AppTest {
-  @Test
-  public void appHasAGreeting() {
-    App classUnderTest = new App();
-    assertNotNull("app should have a greeting", classUnderTest.getGreeting());
-  }
+    @Test
+    public void appHasAGreeting() {
+        App classUnderTest = new App();
+        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+        Rectangle rect = new Rectangle();
+        Point p = rect.getLocation();
+        rect.x = 100;
+        rect.y = 100;
+        System.out.println(p);
+        System.out.println(rect.getLocation());
+    }
 }
