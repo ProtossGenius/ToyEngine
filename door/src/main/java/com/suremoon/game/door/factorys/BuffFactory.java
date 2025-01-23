@@ -1,7 +1,7 @@
 package com.suremoon.game.door.factorys;
 
-import com.suremoon.game.door.units_itf.BuffItf;
+import com.suremoon.game.door.attribute.Buff;
 
 public interface BuffFactory {
-  BuffItf productBuff(String inf);
+    Buff productBuff(String inf);
 }

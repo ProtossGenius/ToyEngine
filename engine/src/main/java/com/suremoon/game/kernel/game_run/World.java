@@ -3,6 +3,7 @@ package com.suremoon.game.kernel.game_run;
 import com.springmoon.sm_form.config.EasyConfig;
 import com.springmoon.sm_form.interfaces.config.ConfigInf;
 import com.suremoon.game.configers.map_resource.file_deal.MapFileReader;
+import com.suremoon.game.door.attribute.Buff;
 import com.suremoon.game.door.code_tools.JarLoader;
 import com.suremoon.game.door.error.ErrorDeal;
 import com.suremoon.game.door.factorys.Factories;
@@ -254,7 +255,7 @@ public class World implements WorldItf {
     }
 
     @Override
-    public BuffItf productBuff(String s) {
+    public Buff productBuff(String s) {
         return this.factories.getBuffFactory().productBuff(s);
     }
 }

@@ -30,7 +30,6 @@ public class Unit extends GRect implements UnitItf {
     private final List<GoodsItf> bag = new ArrayList<>();
     protected ComplexAttribute attrib = new ComplexAttribute(new AttributeAdapter());
     protected StateItf state;
-    protected LinkedList<BuffItf> buffList = new LinkedList<>();
     protected LinkedList<CommandItf> cmdList = new LinkedList<>();
     protected boolean buffCalc = true, cmdCalc = true;
     protected boolean isDie = false;
@@ -52,7 +51,6 @@ public class Unit extends GRect implements UnitItf {
         super(u, null);
         this.attrib = u.attrib;
         this.state = u.state;
-        this.buffList = u.buffList;
         this.cmdList = u.cmdList;
         this.uType = u.uType;
         this.gid = u.gid;
@@ -67,7 +65,6 @@ public class Unit extends GRect implements UnitItf {
         this.setTransparency(u.getTransparency());
         u.attrib = null;
         u.state = null;
-        u.buffList = null;
         u.cmdList = null;
         u.dieDo = null;
         u.unitRem = null;
@@ -111,17 +108,6 @@ public class Unit extends GRect implements UnitItf {
     public void doCalc(WorldItf world, WorldMgrItf worldMgr) {
         super.doCalc(world, worldMgr);
         dieCheck();
-        if (buffCalc) {
-            synchronized (this.buffList) {
-                for (Iterator<BuffItf> itor = buffList.iterator(); itor.hasNext(); ) {
-                    BuffItf buff = itor.next();
-                    buff.doCalc(world, worldMgr);
-                    if (!buff.isAlive()) {
-                        itor.remove();
-                    }
-                }
-            }
-        }
         if (state != null) state.doCalc(world, worldMgr); // state shouldn't be null
         else
             System.err.print(
@@ -182,14 +168,6 @@ public class Unit extends GRect implements UnitItf {
     StateItf createState(StateItf state) {
         if (state == null) return null;
         return state.createState(this);
-    }
-
-    @Override
-    public void acceptBuff(BuffItf buff) {
-        if (buff == null) return;
-        synchronized (this.buffList) {
-            this.buffList.add(buff.setOwner(this));
-        }
     }
 
     @Override
