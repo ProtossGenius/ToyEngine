@@ -28,7 +28,7 @@ public class BagUI extends DraggableUI implements FObserverAction {
     @Override
     protected boolean _mousePressed(MouseEvent e) {
         color = Color.RED;
-        setNeedRedraw(true);
+        setNeedRedraw();
         return super._mousePressed(e);
     }
 
@@ -40,7 +40,7 @@ public class BagUI extends DraggableUI implements FObserverAction {
     @Override
     protected boolean _mouseReleased(MouseEvent e) {
         color = Color.BLUE;
-        setNeedRedraw(true);
+        setNeedRedraw();
         return super._mouseReleased(e);
     }
 
@@ -52,7 +52,7 @@ public class BagUI extends DraggableUI implements FObserverAction {
 //                for (int i = 10; i < Math.min(goods.length, this.calls.length); ++i) {
 //                    this.calls[i].setGoods(goods[i]);
 //                }
-                this.setNeedRedraw(true);
+                this.setNeedRedraw();
                 break;
             }
 

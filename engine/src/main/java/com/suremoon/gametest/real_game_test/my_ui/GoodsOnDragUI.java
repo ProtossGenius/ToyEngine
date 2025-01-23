@@ -22,7 +22,7 @@ public class GoodsOnDragUI extends DraggableUI {
 
     public void setGoods(GoodsItf goods) {
         this.goods = goods;
-        this.setNeedRedraw(true);
+        this.setNeedRedraw();
     }
 
     @Override

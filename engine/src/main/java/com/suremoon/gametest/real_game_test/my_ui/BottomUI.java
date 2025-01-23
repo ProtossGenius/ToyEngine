@@ -47,7 +47,7 @@ public class BottomUI extends IGameUI implements FObserverAction {
                 for (int i = 0; i < Math.min(goods.length, this.cells.length); ++i) {
                     this.cells[i].setGoods(goods[i]);
                 }
-                this.setNeedRedraw(true);
+                this.setNeedRedraw();
             }
             case ObserverEnum.SELECT_GOODS -> {
                 var i = (Integer) obj;

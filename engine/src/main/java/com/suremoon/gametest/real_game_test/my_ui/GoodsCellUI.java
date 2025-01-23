@@ -31,7 +31,7 @@ public class GoodsCellUI extends IGameUI {
         }
         this.goods = new Goods(goods.getgType());
         this.goods.setState(StateInfManager.getSM().productState(GoodsStatus.BAG_INACT));
-        this.setNeedRedraw(true);
+        this.setNeedRedraw();
     }
 
     @Override

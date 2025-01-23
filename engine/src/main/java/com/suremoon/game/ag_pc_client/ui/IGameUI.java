@@ -22,6 +22,7 @@ public abstract class IGameUI {
     private boolean _need_redraw = true;
     private boolean _always_redraw = false;
     private boolean _inDrag = false;
+    private IGameUI parent;
 
     public IGameUI(AGForm agForm, Rectangle _bundle) {
         this.agForm = agForm;
@@ -59,6 +60,7 @@ public abstract class IGameUI {
 
     public void addChildren(IGameUI ui) {
         children.add(ui);
+        ui.parent = this;
         ui.setBasePosition(this._bundle);
         for (int i = children.size() - 2; i >= 0; --i) {
             var son = children.get(i);
@@ -76,8 +78,11 @@ public abstract class IGameUI {
         _always_redraw = al;
     }
 
-    public void setNeedRedraw(boolean _need_redraw) {
-        this._need_redraw = _need_redraw;
+    public void setNeedRedraw() {
+        this._need_redraw = true;
+        if (parent != null) {
+            parent.setNeedRedraw();
+        }
     }
 
     public void draw(Graphics graphics) {
