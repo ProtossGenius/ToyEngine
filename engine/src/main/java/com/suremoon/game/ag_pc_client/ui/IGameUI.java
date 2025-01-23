@@ -62,7 +62,7 @@ public abstract class IGameUI {
         ui.setBasePosition(this._bundle);
         for (int i = children.size() - 2; i >= 0; --i) {
             var son = children.get(i);
-            if (ui.getZIndex() <= son.getZIndex()) {
+            if (ui.getZIndex() >= son.getZIndex()) {
                 break;
             }
             children.set(i + 1, son);
