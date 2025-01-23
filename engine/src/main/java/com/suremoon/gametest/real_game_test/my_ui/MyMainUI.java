@@ -6,7 +6,9 @@ import com.suremoon.game.ag_pc_client.ui.MainUI;
 public class MyMainUI extends MainUI {
     public MyMainUI(AGForm agForm) {
         super(agForm);
-        addChildren(new BottomUI(agForm));
-        addChildren(new BagUI(agForm));
+        var goodsInDrag = new GoodsOnDragUI(agForm);
+        addChildren(goodsInDrag);
+        addChildren(new BottomUI(agForm, goodsInDrag));
+        addChildren(new BagUI(agForm, goodsInDrag));
     }
 }

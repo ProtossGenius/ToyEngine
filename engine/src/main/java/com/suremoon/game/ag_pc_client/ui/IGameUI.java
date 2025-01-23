@@ -36,6 +36,11 @@ public abstract class IGameUI {
         _bundle.y += yOffset;
     }
 
+    public void setPosition(int x, int y) {
+        _bundle.x = x;
+        _bundle.y = y;
+    }
+
     protected int getWidth() {
         return _bundle.width;
     }
@@ -122,9 +127,9 @@ public abstract class IGameUI {
     }
 
     public final boolean mousePressed(MouseEvent e) {
-        if (!_bundle.contains(e.getPoint())) return false;
+        if (!getCalcBundle().contains(e.getPoint())) return false;
         for (var son : children) {
-            if (son.mousePressed(e)) {
+            if (son.getVisible() && son.mousePressed(e)) {
                 return true;
             }
         }
@@ -139,7 +144,7 @@ public abstract class IGameUI {
     public final boolean mouseMoved(MouseEvent e) {
         if (!_bundle.contains(e.getPoint())) return false;
         for (var son : children) {
-            if (son.mouseMoved(e)) {
+            if (son.getVisible() && son.mouseMoved(e)) {
                 return true;
             }
         }
@@ -151,9 +156,9 @@ public abstract class IGameUI {
     }
 
     public final boolean mouseDragged(MouseEvent e) {
-        if (!_inDrag && !getCalcBundle().contains(e.getPoint())) return false;
+        if (!_inDrag) return false;
         for (var son : children) {
-            if (son.mouseDragged(e)) {
+            if (son.getVisible() && son.mouseDragged(e)) {
                 return true;
             }
         }
@@ -165,13 +170,13 @@ public abstract class IGameUI {
     }
 
     public final boolean mouseReleased(MouseEvent e) {
+        _inDrag = false;
         if (!getCalcBundle().contains(e.getPoint())) return false;
         for (var son : children) {
-            if (son.mouseReleased(e)) {
+            if (son.getVisible() && son.mouseReleased(e)) {
                 return true;
             }
         }
-        _inDrag = false;
         return _mouseReleased(e);
     }
 
@@ -181,7 +186,7 @@ public abstract class IGameUI {
 
     public final boolean keyPressed(KeyEvent e) {
         for (var son : children) {
-            if (son.keyPressed(e)) {
+            if (son.getVisible() && son.keyPressed(e)) {
                 return true;
             }
         }

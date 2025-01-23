@@ -21,12 +21,11 @@ public class BottomUI extends IGameUI implements FObserverAction {
     private final GoodsCellUI[] cells = new GoodsCellUI[10];
     private Integer selectedCell = 0;
 
-    public BottomUI(AGForm agForm) {
+    public BottomUI(AGForm agForm, GoodsOnDragUI goodsOnDragUI) {
         super(agForm, new Rectangle(0, GameConfiger.DESIGN_SCREEN_HEIGHT - HEIGHT, WIDTH, HEIGHT));
-
         ObserverMgr.mgr.register(ObserverEnum.GOODS, this);
         for (int i = 0; i < cells.length; ++i) {
-            cells[i] = new GoodsCellUI(agForm, new Rectangle(i * 110, 0, 100, 100));
+            cells[i] = new GoodsCellUI(agForm, new Rectangle(i * 110, 0, 100, 100), goodsOnDragUI);
             addChildren(cells[i]);
         }
     }

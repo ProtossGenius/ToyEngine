@@ -10,4 +10,8 @@ public interface GoodsItf extends UnitItf {
     String getDesc();
 
     void setDesc(String desc);
+
+    boolean repeatable();
+
+    int getCount();
 }

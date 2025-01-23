@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
 public class BagUI extends DraggableUI implements FObserverAction {
     private Color color = Color.BLUE;
 
-    public BagUI(AGForm agForm) {
+    public BagUI(AGForm agForm, GoodsOnDragUI goodsOnDragUI) {
         super(agForm, new Rectangle(0, 0, 1000, 500));
         ObserverMgr.mgr.register(ObserverEnum.GOODS, this);
         this.setVisible(false);

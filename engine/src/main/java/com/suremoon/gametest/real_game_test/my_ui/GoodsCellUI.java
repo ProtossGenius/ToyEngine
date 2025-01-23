@@ -17,9 +17,11 @@ public class GoodsCellUI extends IGameUI {
     private GoodsItf goods = null;
     private boolean selected = false;
     private boolean inDrag = false;
+    private GoodsOnDragUI goodsOnDragUI;
 
-    public GoodsCellUI(AGForm agForm, Rectangle _bundle) {
+    public GoodsCellUI(AGForm agForm, Rectangle _bundle, GoodsOnDragUI goodsOnDragUI) {
         super(agForm, _bundle);
+        this.goodsOnDragUI = goodsOnDragUI;
     }
 
     public void setGoods(MsgGoods goods) {
@@ -51,7 +53,13 @@ public class GoodsCellUI extends IGameUI {
 
     @Override
     protected boolean _mouseDragged(MouseEvent e) {
+        if (this.goods == null) {
+            return true;
+        }
         var p = e.getPoint();
+        goodsOnDragUI.setPosition(p.x - 50, p.y - 50);
+        goodsOnDragUI.setGoods(this.goods);
+        goodsOnDragUI.setVisible(true);
         return true;
     }
 
