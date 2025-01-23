@@ -57,12 +57,6 @@ for key, value in ATTRIB_LIST.items():
     public double getBasic{key}() {{
         return this.basic.get{key}();
     }}
-    /**
-     * 设置Max {value}.
-     */
-    public void setMax{key}(double value) {{
-        this.max.set{key}(value);
-    }}
 
     /**
      * 获得Max {value}.
@@ -76,7 +70,13 @@ for key, value in ATTRIB_LIST.items():
     public void set{key}(double value) {{
         this.cur.set{key}(value);
     }}
-
+    /**
+     * Init {value}.
+     */
+    public void init{key}(double value) {{
+        this.cur.set{key}(value);
+        this.basic.set{key}(value);
+    }}
     /**
      * 获得 {value}.
      */

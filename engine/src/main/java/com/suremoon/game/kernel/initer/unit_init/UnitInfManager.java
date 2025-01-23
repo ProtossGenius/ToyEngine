@@ -65,10 +65,9 @@ public class UnitInfManager implements UnitFactory {
         PointF footPos = unitInf.getFootPos();
         unit.setFootPosPro(footPos);
         var attr = unit.getAttribute();
-        attr.setMetal(50);
-        attr.setFire(50);
-        attr.setMaxHp(500);
-        attr.setHp(500);
+        attr.initMetal(50);
+        attr.initFire(50);
+        attr.initHp(500);
         unit.setShowName(unitInf.getShowName());
     }
 

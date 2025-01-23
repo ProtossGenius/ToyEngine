@@ -23,7 +23,7 @@ public class TestProgress {
                         return;
                     }
 
-                    u.getAttribute().setMaxHp(total);
+                    u.getAttribute().setBasicHp(total);
                     u.getAttribute().setHp(current);
                 },
                 () -> {
@@ -38,7 +38,7 @@ public class TestProgress {
                         return;
                     }
 
-                    u.getAttribute().setMaxMp(total);
+                    u.getAttribute().setBasicHp(total);
                     u.getAttribute().setMp(current);
                 },
                 () -> {

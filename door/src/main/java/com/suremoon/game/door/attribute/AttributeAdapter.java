@@ -2,7 +2,7 @@
 package com.suremoon.game.door.attribute;
 /**
  * @Note: this file product by scripts/generate_attributes.py, you should change scripts to fix this file.
- AttributeAdapter, Or, your another change will be cover. @Author: ProtossGenius @Time: 2025-01-22 17:21:47
+ AttributeAdapter, Or, your another change will be cover. @Author: ProtossGenius @Time: 2025-01-23 10:12:06
   */
 public class AttributeAdapter extends SMAttribute {
 

@@ -92,10 +92,9 @@ public class Unit extends GRect implements UnitItf {
         showName = mu.showName;
         attrib = new ComplexAttribute(new AttributeAdapter());
         attrib.setHp(mu.hp);
-        // TODO: set max maybe drop.
-        attrib.setMaxHp(mu.max_hp);
+        attrib.setBasicHp(mu.max_hp);
         attrib.setMp(mu.mp);
-        attrib.setMaxMp(mu.max_mp);
+        attrib.setBasicMp(mu.max_mp);
     }
 
     @Override
