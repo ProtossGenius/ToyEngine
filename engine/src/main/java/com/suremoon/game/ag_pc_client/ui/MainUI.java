@@ -7,14 +7,8 @@ import java.awt.*;
 
 public class MainUI extends IGameUI {
     public MainUI(AGForm agForm) {
-        super(agForm, new Rectangle(0, 0, GameConfiger.DESIGN_SCREEN_WIDTH, GameConfiger.DESIGN_SCREEN_HEIGHT));
-    }
-
-    @Override
-    public void draw(Graphics graphics) {
-        for (var child : this.children) {
-            child.draw(graphics);
-        }
+        super(agForm, new Rectangle(0, 0, GameConfiger.DESIGN_SCREEN_WIDTH, GameConfiger.DESIGN_SCREEN_HEIGHT), false);
+        setAlwaysRedraw(true);
     }
 
     @Override

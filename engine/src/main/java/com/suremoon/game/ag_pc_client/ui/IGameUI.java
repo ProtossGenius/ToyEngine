@@ -32,6 +32,16 @@ public abstract class IGameUI {
         children = new ArrayList<>();
     }
 
+    public IGameUI(AGForm agForm, Rectangle _bundle, boolean _need_draw_self) {
+        this.agForm = agForm;
+        this._bundle = _bundle;
+        this._baseBundle = new Rectangle();
+        if (_need_draw_self) {
+            cache = new BufferedImage(_bundle.width, _bundle.height, BufferedImage.TYPE_INT_ARGB);
+        }
+        children = new ArrayList<>();
+    }
+
     protected void onMove(int xOffset, int yOffset) {
         _bundle.x += xOffset;
         _bundle.y += yOffset;
@@ -64,7 +74,7 @@ public abstract class IGameUI {
         ui.setBasePosition(this._bundle);
         for (int i = children.size() - 2; i >= 0; --i) {
             var son = children.get(i);
-            if (ui.getZIndex() >= son.getZIndex()) {
+            if (ui.getZIndex() <= son.getZIndex()) {
                 break;
             }
             children.set(i + 1, son);
@@ -85,20 +95,25 @@ public abstract class IGameUI {
         }
     }
 
-    public void draw(Graphics graphics) {
+    public final void draw(Graphics graphics) {
         if (!_visible) return;
-        var g = cache.getGraphics();
-        if (_need_redraw) {
-            g.clearRect(0, 0, _bundle.width, _bundle.height);
+        var g = cache == null ? graphics : cache.getGraphics();
+        if (_always_redraw || _need_redraw) {
+            if (this.cache != null) {
+                g.clearRect(0, 0, _bundle.width, _bundle.height);
+            }
             _draw(g);
             if (!_always_redraw) {
                 _need_redraw = false;
             }
         }
-        for (var son : children) {
+        for (int i = children.size() - 1; i >= 0; --i) {
+            var son = children.get(i);
             son.draw(g);
         }
-        graphics.drawImage(cache, _bundle.x, _bundle.y, null);
+        if (this.cache != null) {
+            graphics.drawImage(cache, _bundle.x, _bundle.y, null);
+        }
     }
 
     public void setVisible(boolean visible) {

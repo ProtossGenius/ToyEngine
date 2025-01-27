@@ -25,7 +25,7 @@ public class BottomUI extends IGameUI implements FObserverAction {
         super(agForm, new Rectangle(0, GameConfiger.DESIGN_SCREEN_HEIGHT - HEIGHT, WIDTH, HEIGHT));
         ObserverMgr.mgr.register(ObserverEnum.GOODS, this);
         for (int i = 0; i < cells.length; ++i) {
-            cells[i] = new GoodsCellUI(agForm, new Rectangle(i * 110, 0, 100, 100), goodsOnDragUI);
+            cells[i] = new GoodsCellUI(agForm, new Rectangle(i * 110, 0, 100, 100), goodsOnDragUI, i);
             addChildren(cells[i]);
         }
     }

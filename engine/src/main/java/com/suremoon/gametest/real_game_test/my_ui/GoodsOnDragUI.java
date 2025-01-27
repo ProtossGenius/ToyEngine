@@ -27,7 +27,7 @@ public class GoodsOnDragUI extends DraggableUI {
 
     @Override
     protected void _draw(Graphics cache) {
-        cache.setColor(new Color(0, 0, 0, 0));
+        cache.setColor(Color.WHITE);
         cache.fillRect(0, 0, 100, 100);
         if (this.goods == null) return;
         goods.setState(StateInfManager.getSM().productState(GoodsStatus.BAG_INACT));

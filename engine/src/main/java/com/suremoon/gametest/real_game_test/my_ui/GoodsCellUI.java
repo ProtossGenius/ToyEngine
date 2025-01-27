@@ -18,10 +18,12 @@ public class GoodsCellUI extends IGameUI {
     private boolean selected = false;
     private boolean inDrag = false;
     private GoodsOnDragUI goodsOnDragUI;
+    private Integer goodsIndex = 0;
 
-    public GoodsCellUI(AGForm agForm, Rectangle _bundle, GoodsOnDragUI goodsOnDragUI) {
+    public GoodsCellUI(AGForm agForm, Rectangle _bundle, GoodsOnDragUI goodsOnDragUI, Integer goodsIndex) {
         super(agForm, _bundle);
         this.goodsOnDragUI = goodsOnDragUI;
+        this.goodsIndex = goodsIndex;
     }
 
     public void setGoods(MsgGoods goods) {
@@ -61,6 +63,12 @@ public class GoodsCellUI extends IGameUI {
         goodsOnDragUI.setGoods(this.goods);
         goodsOnDragUI.setVisible(true);
         return true;
+    }
+
+    @Override
+    protected boolean _mouseReleased(MouseEvent e) {
+        System.out.println("!!!!!!!!!!!" + goodsIndex);
+        return super._mouseReleased(e);
     }
 
     public void setSelected(boolean selected) {
