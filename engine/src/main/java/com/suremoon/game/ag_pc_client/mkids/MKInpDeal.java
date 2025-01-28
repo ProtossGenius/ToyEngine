@@ -50,7 +50,6 @@ public class MKInpDeal implements EventIncoming {
         for (var m = this; m != null; m = m.mkid)
             if (m._keyTyped(e))
                 return;
-
     }
 
     protected boolean _keyPressed(KeyEvent e) {
@@ -69,8 +68,6 @@ public class MKInpDeal implements EventIncoming {
     @Override
     public final void keyReleased(KeyEvent e) {
         for (var m = this; m != null; m = m.mkid) if (m._keyReleased(e)) return;
-
-
     }
 
     protected boolean _mouseClicked(MouseEvent e) {

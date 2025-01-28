@@ -51,4 +51,16 @@ public class UiMKID extends MKInpDeal {
         if (ui == null) return false;
         return ui.keyPressed(e);
     }
+
+    @Override
+    protected boolean _keyReleased(KeyEvent e) {
+        if (ui == null) return false;
+        return ui.keyReleased(e);
+    }
+
+    @Override
+    protected boolean _keyTyped(KeyEvent e) {
+        if (ui == null) return false;
+        return ui.keyTyped(e);
+    }
 }

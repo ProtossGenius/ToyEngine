@@ -212,4 +212,32 @@ public abstract class IGameUI {
 
         return _keyPressed(e);
     }
+
+    protected boolean _keyReleased(KeyEvent e) {
+        return false;
+    }
+
+    public final boolean keyReleased(KeyEvent e) {
+        for (var son : children) {
+            if (son.getVisible() && son.keyReleased(e)) {
+                return true;
+            }
+        }
+
+        return _keyReleased(e);
+    }
+
+    protected boolean _keyTyped(KeyEvent e) {
+        return false;
+    }
+
+    public final boolean keyTyped(KeyEvent e) {
+        for (var son : children) {
+            if (son.getVisible() && son.keyTyped(e)) {
+                return true;
+            }
+        }
+
+        return _keyTyped(e);
+    }
 }
