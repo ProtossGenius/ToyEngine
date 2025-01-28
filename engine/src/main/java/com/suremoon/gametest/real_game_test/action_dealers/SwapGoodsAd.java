@@ -22,7 +22,7 @@ public class SwapGoodsAd implements CmdActionItf {
         if (outRange(targetPoint.y, bag.size())) {
             player.getBag().set(targetPoint.x, null);
             goods.setPos(player.getPos());
-            world.addUnit(goods);
+            world.addCalcUnit(goods);
             return true;
         }
         var targetGoods = bag.get(targetPoint.y);
