@@ -13,6 +13,8 @@ import java.awt.event.MouseEvent;
 
 public class GoodsOnDragUI extends DraggableUI {
     private GoodsItf goods = null;
+    private Integer goodsPressIndex = -1;
+    private Integer goodsReleaseIndex = -1;
 
     public GoodsOnDragUI(AGForm agForm) {
         super(agForm, new Rectangle(0, 0, 100, 100));
@@ -20,8 +22,9 @@ public class GoodsOnDragUI extends DraggableUI {
         this._zIndex = 1;
     }
 
-    public void setGoods(GoodsItf goods) {
+    public void setGoods(GoodsItf goods, Integer goodsIndex) {
         this.goods = goods;
+        this.goodsReleaseIndex = goodsIndex;
         this.setNeedRedraw();
     }
 
@@ -42,6 +45,17 @@ public class GoodsOnDragUI extends DraggableUI {
     @Override
     protected boolean _mouseReleased(MouseEvent e) {
         this.setVisible(false);
-        return super._mouseReleased(e);
+        System.out.println("When release goodsIndex = " + this.goodsReleaseIndex);
+        return false;
+    }
+
+    @Override
+    protected boolean _mouseMoved(MouseEvent e) {
+        this.goodsReleaseIndex = -1;
+        return false;
+    }
+
+    public void setReleaseIndex(Integer goodsIndex) {
+        this.goodsReleaseIndex = goodsIndex;
     }
 }

@@ -60,15 +60,15 @@ public class GoodsCellUI extends IGameUI {
         }
         var p = e.getPoint();
         goodsOnDragUI.setPosition(p.x - 50, p.y - 50);
-        goodsOnDragUI.setGoods(this.goods);
+        goodsOnDragUI.setGoods(this.goods, this.goodsIndex);
         goodsOnDragUI.setVisible(true);
         return true;
     }
 
     @Override
-    protected boolean _mouseReleased(MouseEvent e) {
-        System.out.println("!!!!!!!!!!!" + goodsIndex);
-        return super._mouseReleased(e);
+    protected boolean _mouseMoved(MouseEvent e) {
+        goodsOnDragUI.setReleaseIndex(this.goodsIndex);
+        return false;
     }
 
     public void setSelected(boolean selected) {

@@ -1,5 +1,6 @@
 package com.suremoon.gametest.real_game_test.action_dealers;
 
+import com.suremoon.game.door.configs.CommandReg;
 import com.suremoon.game.door.gometry.PointF;
 import com.suremoon.game.door.kernel.CmdActionItf;
 import com.suremoon.game.door.kernel.GameMapItf;
@@ -12,6 +13,7 @@ import com.suremoon.game.door.units_itf.UnitItf;
 import com.suremoon.game.kernel.data.units.time_tools.GameTimer;
 import com.suremoon.game.methods.cmd_about.Move;
 
+@CommandReg("CmdInteractive")
 public class InteractiveAD implements CmdActionItf {
     @Override
     public boolean actionDo(CommandItf cmd, WorldItf world, WorldMgrItf worldMgrItf) {

@@ -8,8 +8,8 @@ import com.suremoon.game.door.units_itf.CommandItf;
 import com.suremoon.game.door.units_itf.PlayerItf;
 import com.suremoon.game.door.units_itf.UnitItf;
 
-@CommandReg("CmdUseGoods")
-public class UseGoodsAd implements CmdActionItf {
+@CommandReg("SwapUseGoods")
+public class SwapGoodsAd implements CmdActionItf {
     @Override
     public boolean actionDo(CommandItf cmd, WorldItf world, WorldMgrItf worldMgr) {
         UnitItf player = cmd.getOwner();

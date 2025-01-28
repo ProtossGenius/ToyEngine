@@ -103,9 +103,7 @@ public abstract class IGameUI {
                 g.clearRect(0, 0, _bundle.width, _bundle.height);
             }
             _draw(g);
-            if (!_always_redraw) {
-                _need_redraw = false;
-            }
+            _need_redraw = false;
         }
         for (int i = children.size() - 1; i >= 0; --i) {
             var son = children.get(i);
@@ -162,7 +160,7 @@ public abstract class IGameUI {
     }
 
     public final boolean mouseMoved(MouseEvent e) {
-        if (!_bundle.contains(e.getPoint())) return false;
+        if (!getCalcBundle().contains(e.getPoint())) return false;
         for (var son : children) {
             if (son.getVisible() && son.mouseMoved(e)) {
                 return true;
@@ -176,6 +174,7 @@ public abstract class IGameUI {
     }
 
     public final boolean mouseDragged(MouseEvent e) {
+        this.mouseMoved(e);
         if (!_inDrag) return false;
         for (var son : children) {
             if (son.getVisible() && son.mouseDragged(e)) {
