@@ -32,6 +32,7 @@ public class MsgUnit implements AGMessage {
         this.mp = (int) attrib.getMp();
         this.showName = unit.getShowName();
         this.trans = unit.getTransparency();
+        this.selectedGoods = unit.getSelectedIndex();
     }
 
     public MsgUnit(ByteStream bs) {
@@ -52,6 +53,7 @@ public class MsgUnit implements AGMessage {
         this.mp = bs.getInteger();
         this.showName = bs.getString();
         this.trans = bs.getInteger();
+        this.selectedGoods = bs.getInteger();
     }
 
     public int UnitType,
@@ -70,6 +72,7 @@ public class MsgUnit implements AGMessage {
     public long StatePTime;
     public double direct_x, direct_y;
     public String showName = "";
+    public int selectedGoods;
 
     @Override
     public byte[] toBytes() {
@@ -90,7 +93,8 @@ public class MsgUnit implements AGMessage {
                 CJDeal.int2byte(max_mp),
                 CJDeal.int2byte(mp),
                 CJDeal.string2bytes(showName),
-                CJDeal.int2byte(trans));
+                CJDeal.int2byte(trans),
+                CJDeal.int2byte(selectedGoods));
     }
 
     public static MsgUnit Null = new MsgUnit();

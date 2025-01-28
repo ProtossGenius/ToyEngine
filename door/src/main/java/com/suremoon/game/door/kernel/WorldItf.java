@@ -44,11 +44,18 @@ public interface WorldItf
     void pushGRectToCalcQueue(GRectItf gRect);
 
     default void addCalcUnit(UnitItf unit) {
+        if (unit == null) {
+            return;
+        }
         pushGRectToCalcQueue(unit);
         this.getGameMap().getUnitMgr().addUnit(unit);
     }
 
-    default void addEffect(EffectItf effect) {
+    default void addCalcEffect(EffectItf effect) {
+        if (effect == null) {
+            return;
+        }
+        pushGRectToCalcQueue(effect);
         this.getGameMap().getEffectMgr().addEffect(effect);
     }
 }

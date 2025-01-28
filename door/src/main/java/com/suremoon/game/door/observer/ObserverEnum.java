@@ -2,7 +2,7 @@ package com.suremoon.game.door.observer;
 
 public enum ObserverEnum {
     GOODS(Object.class),
-    SELECT_GOODS(Integer.class),
+    SELECTED_GOODS(Integer.class),
     ;
 
     private final Class clazz;

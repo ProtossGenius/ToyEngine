@@ -13,6 +13,7 @@ import com.suremoon.game.kernel.initer.cmd_init.CmdInfManager;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.util.Set;
 
 
 public class BottomUI extends IGameUI implements FObserverAction {
@@ -24,6 +25,7 @@ public class BottomUI extends IGameUI implements FObserverAction {
     public BottomUI(AGForm agForm, GoodsOnDragUI goodsOnDragUI) {
         super(agForm, new Rectangle(0, GameConfiger.DESIGN_SCREEN_HEIGHT - HEIGHT, WIDTH, HEIGHT));
         ObserverMgr.mgr.register(ObserverEnum.GOODS, this);
+        ObserverMgr.mgr.register(ObserverEnum.SELECTED_GOODS, this);
         for (int i = 0; i < cells.length; ++i) {
             cells[i] = new GoodsCellUI(agForm, new Rectangle(i * 110, 0, 100, 100), goodsOnDragUI, i);
             addChildren(cells[i]);
@@ -49,10 +51,7 @@ public class BottomUI extends IGameUI implements FObserverAction {
                 }
                 this.setNeedRedraw();
             }
-            case ObserverEnum.SELECT_GOODS -> {
-                var i = (Integer) obj;
-                this.selectedCell = i;
-            }
+            case ObserverEnum.SELECTED_GOODS -> this.selectedCell = (Integer) obj;
             default -> {
 
             }
@@ -62,11 +61,25 @@ public class BottomUI extends IGameUI implements FObserverAction {
     @Override
     protected boolean _keyPressed(KeyEvent e) {
         if (e.getKeyChar() >= '0' && e.getKeyChar() <= '9') {
-            var cmd = CmdInfManager.CIM.productCommand(IDManager.getID("CmdUseGoods"), null, (e.getKeyChar() + 10 - '1') % 10);
+            var cmd = CmdInfManager.CIM.productCommand(IDManager.getID("CmdSelectGoods"), null, (e.getKeyChar() + 10 - '1') % 10);
             CmdInfManager.CIM.getOnCmd().accept(cmd);
             return true;
         }
         return super._keyPressed(e);
+    }
+
+    @Override
+    protected boolean _keyTyped(KeyEvent e) {
+        char key = e.getKeyChar();
+        if (!Set.of('q', 'w', 'e', 'r', 'd', 'f', 'g', 't', 'y', 'b', 'v', 'c', 'x', 'z').contains(key)) {
+            return false;
+        }
+        var gameScreen = agForm.getGameScreen();
+        Point p = gameScreen.getFocusPoint(), te = gameScreen.getLastPoint();
+        var lastPoint = new Point(p.x + te.x, p.y + te.y);
+        var cmd = CmdInfManager.CIM.productCommand(IDManager.getID("CmdUseGoods"), lastPoint, key);
+        CmdInfManager.CIM.getOnCmd().accept(cmd);
+        return true;
     }
 
     @Override

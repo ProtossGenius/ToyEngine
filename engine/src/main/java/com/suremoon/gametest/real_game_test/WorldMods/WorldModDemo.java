@@ -1,5 +1,6 @@
 package com.suremoon.gametest.real_game_test.WorldMods;
 
+import com.suremoon.game.door.kernel.GoodsUseDetail;
 import com.suremoon.game.door.kernel.UnitRemItf;
 import com.suremoon.game.door.kernel.WorldItf;
 import com.suremoon.game.door.kernel.WorldMgrItf;
@@ -44,7 +45,7 @@ public class WorldModDemo implements WorldModItf {
             }
 
             @Override
-            public void interactive(UnitItf self, PlayerItf playerItf, WorldItf world, WorldMgrItf worldMgr, String input) {
+            public void interactive(UnitItf self, PlayerItf playerItf, WorldItf world, WorldMgrItf worldMgr, Object input) {
                 // 拾取
                 if ("".equals(input)) {
                     playerItf.getBag().add((GoodsItf) self);
@@ -53,7 +54,15 @@ public class WorldModDemo implements WorldModItf {
                     return;
                 }
 
-
+                var use = (GoodsUseDetail) input;
+                switch (use.getKey()) {
+                    case 'q' -> {
+                        self.setPutPos(use.getTargetPoint());
+                        var bag = playerItf.getBag();
+                        bag.set(use.getSelectedIndex(), null);
+                        world.addCalcUnit(self);
+                    }
+                }
                 playerItf.addMessage("use goods ..." + input);
             }
         });

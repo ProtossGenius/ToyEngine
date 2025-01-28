@@ -42,6 +42,7 @@ public class Unit extends GRect implements UnitItf {
     private int camp;
     private SkillManager skillManager = new SkillManager();
     private HurtCalcItf hurtCalcItf = HurtCalcItf.Null;
+    private Integer selectedIndex = 0;
 
     public Unit(int uType) {
         this.uType = uType;
@@ -92,6 +93,7 @@ public class Unit extends GRect implements UnitItf {
         attrib.setBasicHp(mu.max_hp);
         attrib.setMp(mu.mp);
         attrib.setBasicMp(mu.max_mp);
+        setSelectedIndex(mu.selectedGoods);
     }
 
     @Override
@@ -304,11 +306,13 @@ public class Unit extends GRect implements UnitItf {
         this.hurtCalcItf = hurtCalcItf;
     }
 
-    public void dropBagGoods(WorldItf world, int index) {
-        if (index > getBag().size()) {
-            return;
-        }
+    @Override
+    public Integer getSelectedIndex() {
+        return selectedIndex;
+    }
 
-        getBag().set(index, null);
+    @Override
+    public void setSelectedIndex(int index) {
+        this.selectedIndex = index;
     }
 }

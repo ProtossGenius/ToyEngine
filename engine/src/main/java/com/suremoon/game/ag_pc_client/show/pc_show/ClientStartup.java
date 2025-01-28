@@ -51,8 +51,8 @@ public class ClientStartup {
                 },
                 "CmdAttack");
 
-        ca.addState(new int[]{KeyEvent.VK_Q}, "CmdPutMagic");
-        ca.addState(new int[]{KeyEvent.VK_T}, "CmdTrans");
+//        ca.addState(new int[]{KeyEvent.VK_Q}, "CmdPutMagic");
+//        ca.addState(new int[]{KeyEvent.VK_T}, "CmdTrans");
     }
 
     private static void initCmdAnalysis(CmdAnalysisItf ca, CmdAnalysisInitItf initor) {

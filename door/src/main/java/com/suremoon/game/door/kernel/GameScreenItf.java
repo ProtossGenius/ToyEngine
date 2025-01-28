@@ -61,6 +61,8 @@ public interface GameScreenItf {
      */
     GameMapItf getGameMap();
 
+    Point getLastPoint();
+
     /**
      * @param gm 所属的Map
      */

@@ -122,6 +122,10 @@ public class GameScreen implements GameScreenItf {
         return this.gameMap;
     }
 
+    public Point getLastPoint() {
+        return lastPoint;
+    }
+
     @Override
     public void setGameMap(GameMapItf gm) {
         this.gameMap = gm;

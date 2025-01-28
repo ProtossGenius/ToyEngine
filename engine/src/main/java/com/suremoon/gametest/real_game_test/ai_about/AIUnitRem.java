@@ -49,7 +49,7 @@ public class AIUnitRem implements UnitRemItf {
     }
 
     @Override
-    public void interactive(UnitItf self, PlayerItf playerItf, WorldItf world, WorldMgrItf worldMgr, String s) {
+    public void interactive(UnitItf self, PlayerItf playerItf, WorldItf world, WorldMgrItf worldMgr, Object s) {
         playerItf.addMessage("瑕疵必报！");
     }
 }

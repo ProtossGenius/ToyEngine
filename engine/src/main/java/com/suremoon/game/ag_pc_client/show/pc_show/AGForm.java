@@ -148,6 +148,9 @@ public class AGForm extends JFrame implements ScreenInfoUpdateItf {
                 cache.clearRect(0, 0, 1000, 1000);
                 gs.showMap(cache);
                 ObserverMgr.mgr.submit(ObserverEnum.GOODS, msgs[4]);
+                if (msgs[0].length != 0) {
+                    ObserverMgr.mgr.submit(ObserverEnum.SELECTED_GOODS, ((MsgUnit) msgs[0][0]).selectedGoods);
+                }
                 for (int i = 0; i < msgs[1].length; ++i) {
                     Unit unit = new Unit((MsgUnit) msgs[1][i]);
                     UnitSAGetter.getUsag().show(cache, unit, gs.getFocusPoint());

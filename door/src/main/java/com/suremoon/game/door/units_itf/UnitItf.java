@@ -127,4 +127,8 @@ public interface UnitItf extends AGTypeInf, GRectItf, SerializeAble {
     default boolean useSkill(String skillName) {
         return getSkillManager().useSkill(skillName, this);
     }
+
+    void setSelectedIndex(int index);
+
+    Integer getSelectedIndex();
 }

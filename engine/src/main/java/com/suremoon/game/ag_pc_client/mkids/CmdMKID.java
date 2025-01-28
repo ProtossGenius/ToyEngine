@@ -98,7 +98,7 @@ public class CmdMKID extends MKInpDeal {
     @Override
     public boolean _mouseMoved(MouseEvent e) {
         Point p = gameScreen.getFocusPoint(), te = GameConfiger.gc.getDesignPos(e.getPoint());
-        gameScreen.setLastPoint(GameConfiger.gc.getDesignPos(e.getPoint()));
+        gameScreen.setLastPoint(te);
         setLastPoint(new Point(p.x + te.x, p.y + te.y));
         return choiceUnit();
 

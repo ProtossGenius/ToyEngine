@@ -36,6 +36,10 @@ public class GoodsCellUI extends IGameUI {
         this.goods.setState(StateInfManager.getSM().productState(GoodsStatus.BAG_INACT));
     }
 
+    public GoodsItf getGoods() {
+        return goods;
+    }
+
     @Override
     protected void _draw(Graphics cache) {
         cache.setColor(Color.WHITE);
