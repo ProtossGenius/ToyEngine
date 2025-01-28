@@ -27,13 +27,13 @@ public class GoodsCellUI extends IGameUI {
     }
 
     public void setGoods(MsgGoods goods) {
+        this.setNeedRedraw();
         if (goods.getGid() == -1) {
             this.goods = null;
             return;
         }
         this.goods = new Goods(goods.getgType());
         this.goods.setState(StateInfManager.getSM().productState(GoodsStatus.BAG_INACT));
-        this.setNeedRedraw();
     }
 
     @Override

@@ -3,8 +3,10 @@ package com.suremoon.gametest.real_game_test.my_ui;
 import com.suremoon.game.ag_pc_client.show.adapters.unit.UnitSAGetter;
 import com.suremoon.game.ag_pc_client.show.pc_show.AGForm;
 import com.suremoon.game.ag_pc_client.ui.DraggableUI;
+import com.suremoon.game.door.tools.IDManager;
 import com.suremoon.game.door.units_itf.GoodsItf;
 import com.suremoon.game.kernel.data.units.Unit;
+import com.suremoon.game.kernel.initer.cmd_init.CmdInfManager;
 import com.suremoon.game.kernel.initer.goods_init.GoodsStatus;
 import com.suremoon.game.kernel.initer.state_init.StateInfManager;
 
@@ -24,7 +26,7 @@ public class GoodsOnDragUI extends DraggableUI {
 
     public void setGoods(GoodsItf goods, Integer goodsIndex) {
         this.goods = goods;
-        this.goodsReleaseIndex = goodsIndex;
+        this.goodsPressIndex = goodsIndex;
         this.setNeedRedraw();
     }
 
@@ -46,6 +48,7 @@ public class GoodsOnDragUI extends DraggableUI {
     protected boolean _mouseReleased(MouseEvent e) {
         this.setVisible(false);
         System.out.println("When release goodsIndex = " + this.goodsReleaseIndex);
+        CmdInfManager.CIM.getOnCmd().accept(CmdInfManager.getCIM().productCommand(IDManager.getID("CmdSwapGoods"), new Point(goodsPressIndex, goodsReleaseIndex), -1));
         return false;
     }
 
