@@ -6,11 +6,13 @@ public class Buff {
     private String id;
     private Integer level;
     private List<BuffEffect> buffEffects;
+    private final Integer maxCount;
 
-    public Buff(String id, Integer level, List<BuffEffect> buffEffects) {
+    public Buff(String id, Integer level, List<BuffEffect> buffEffects, Integer maxCount) {
         this.id = id;
         this.level = level;
         this.buffEffects = buffEffects;
+        this.maxCount = maxCount;
     }
 
     public String getId() {

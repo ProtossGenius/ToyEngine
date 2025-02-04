@@ -14,4 +14,6 @@ public interface GoodsItf extends UnitItf {
     boolean repeatable();
 
     int getCount();
+
+    int getGoodsType();
 }

@@ -7,7 +7,7 @@ import com.suremoon.game.door.tools.CJDeal;
 
 /**
  * @Note: this file product by scripts/generate_complex_attribute.py, you should change scripts to fix this file.
- * , Or, your another change will be cover. @Author: ProtossGenius @Time: 2025-01-23 10:12:06
+ * , Or, your another change will be cover. @Author: ProtossGenius @Time: 2025-02-04 16:30:59
  */
 public class ComplexAttribute implements SerializeAble {
     AttributeAdapter basic;

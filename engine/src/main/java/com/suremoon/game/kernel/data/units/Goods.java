@@ -38,4 +38,10 @@ public class Goods extends Unit implements GoodsItf {
     public int getCount() {
         return count;
     }
+
+    @Override
+    public int getGoodsType() {
+        // TODO: goods Type should config.
+        return 0;
+    }
 }
