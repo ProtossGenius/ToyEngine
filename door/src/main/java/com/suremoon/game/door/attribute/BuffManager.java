@@ -3,22 +3,39 @@ package com.suremoon.game.door.attribute;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.function.Function;
 
 public class BuffManager {
     private Map<String, Buff> buffMap;
     private Map<String, BuffEffect>[] buffs;
     private SMAttribute basic;
     private SMAttribute after;
+    private Function<String, Buff> buffGetter;
 
-    public BuffManager(SMAttribute basic, SMAttribute after) {
+    public BuffManager(SMAttribute basic, SMAttribute after, Function<String, Buff> buffGetter) {
         this.basic = basic;
         this.after = after;
         buffMap = new HashMap<>();
         buffs = new Map[100];
         basic.setOnChange(attr -> this.recalcAttrib());
+        this.buffGetter = buffGetter;
     }
 
-    public synchronized void addBuff(Buff b) {
+    public synchronized boolean containsBuff(String buffName) {
+        return buffMap.containsKey(buffName);
+    }
+
+    public synchronized void addBuff(String buffName) {
+        var buff = buffMap.get(buffName);
+        if (buff == null) {
+            addBuff(buffGetter.apply(buffName));
+        }
+    }
+
+    private synchronized void addBuff(Buff b) {
+        if (b == null) {
+            return;
+        }
         if (buffs[b.getLevel()] == null) {
             buffs[b.getLevel()] = new TreeMap<>();
         }
@@ -31,7 +48,6 @@ public class BuffManager {
             totalBe.add(be);
             buffEffectMap.put(be.getKey(), totalBe);
         });
-        recalcAttrib();
     }
 
     public synchronized void removeBuff(String buffName) {

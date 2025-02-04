@@ -82,6 +82,17 @@ public abstract class IGameUI {
         }
     }
 
+    public void clearCacheToZero() {
+        for (int i = 0; i < cache.getWidth(); ++i) {
+            for (int j = 0; j < cache.getHeight(); ++j) {
+                int rgb = cache.getRGB(i, j);
+                if ((rgb | 0x00ffffff) == 0x00ffffff) continue;
+                cache.setRGB(i, j, 0);
+                // Mark the alpha bits as zero - transparent
+            }
+        }
+    }
+
     protected abstract void _draw(Graphics cache);
 
     public void setAlwaysRedraw(boolean al) {

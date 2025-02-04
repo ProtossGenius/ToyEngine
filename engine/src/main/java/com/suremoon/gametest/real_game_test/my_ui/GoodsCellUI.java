@@ -60,7 +60,7 @@ public class GoodsCellUI extends IGameUI {
     @Override
     protected boolean _mouseDragged(MouseEvent e) {
         if (this.goods == null) {
-            return true;
+            return false;
         }
         var p = e.getPoint();
         goodsOnDragUI.setPosition(p.x - 50, p.y - 50);

@@ -32,9 +32,8 @@ public class GoodsOnDragUI extends DraggableUI {
 
     @Override
     protected void _draw(Graphics cache) {
-        cache.setColor(Color.WHITE);
-        cache.fillRect(0, 0, 100, 100);
         if (this.goods == null) return;
+        clearCacheToZero();
         goods.setState(StateInfManager.getSM().productState(GoodsStatus.BAG_INACT));
         goods.setSize(100, 100);
         try {
@@ -47,7 +46,6 @@ public class GoodsOnDragUI extends DraggableUI {
     @Override
     protected boolean _mouseReleased(MouseEvent e) {
         this.setVisible(false);
-        System.out.println("When release goodsIndex = " + this.goodsReleaseIndex);
         CmdInfManager.CIM.getOnCmd().accept(CmdInfManager.getCIM().productCommand(IDManager.getID("CmdSwapGoods"), new Point(goodsPressIndex, goodsReleaseIndex), -1));
         return false;
     }

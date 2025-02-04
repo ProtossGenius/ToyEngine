@@ -1,9 +1,10 @@
-
 package com.suremoon.game.door.attribute;
 
 import com.suremoon.game.door.save_about.SerializeAble;
 import com.suremoon.game.door.tools.ByteStream;
 import com.suremoon.game.door.tools.CJDeal;
+
+import java.util.function.Function;
 
 /**
  * @Note: this file product by scripts/generate_complex_attribute.py, you should change scripts to fix this file.
@@ -15,11 +16,11 @@ public class ComplexAttribute implements SerializeAble {
     AttributeAdapter cur;
     BuffManager buffManager;
 
-    public ComplexAttribute(AttributeAdapter basic) {
+    public ComplexAttribute(AttributeAdapter basic, Function<String, Buff> buffGetter) {
         this.basic = basic;
         this.max = new AttributeAdapter(basic);
         this.cur = new AttributeAdapter(basic);
-        buffManager = new BuffManager(basic, max);
+        this.buffManager = new BuffManager(this.basic, this.max, buffGetter);
     }
 
     public BuffManager getBuffManager() {
@@ -59,12 +60,14 @@ public class ComplexAttribute implements SerializeAble {
     public double getMaxHp() {
         return this.max.getHp();
     }
+
     /**
      * 设置 血量.
      */
     public void setHp(double value) {
         this.cur.setHp(value);
     }
+
     /**
      * Init 血量.
      */
@@ -72,6 +75,7 @@ public class ComplexAttribute implements SerializeAble {
         this.cur.setHp(value);
         this.basic.setHp(value);
     }
+
     /**
      * 获得 血量.
      */
@@ -100,12 +104,14 @@ public class ComplexAttribute implements SerializeAble {
     public double getMaxMp() {
         return this.max.getMp();
     }
+
     /**
      * 设置 蓝量.
      */
     public void setMp(double value) {
         this.cur.setMp(value);
     }
+
     /**
      * Init 蓝量.
      */
@@ -113,6 +119,7 @@ public class ComplexAttribute implements SerializeAble {
         this.cur.setMp(value);
         this.basic.setMp(value);
     }
+
     /**
      * 获得 蓝量.
      */
@@ -141,12 +148,14 @@ public class ComplexAttribute implements SerializeAble {
     public double getMaxSpd() {
         return this.max.getSpd();
     }
+
     /**
      * 设置 速度.
      */
     public void setSpd(double value) {
         this.cur.setSpd(value);
     }
+
     /**
      * Init 速度.
      */
@@ -154,6 +163,7 @@ public class ComplexAttribute implements SerializeAble {
         this.cur.setSpd(value);
         this.basic.setSpd(value);
     }
+
     /**
      * 获得 速度.
      */
@@ -182,12 +192,14 @@ public class ComplexAttribute implements SerializeAble {
     public double getMaxMetal() {
         return this.max.getMetal();
     }
+
     /**
      * 设置 金.
      */
     public void setMetal(double value) {
         this.cur.setMetal(value);
     }
+
     /**
      * Init 金.
      */
@@ -195,6 +207,7 @@ public class ComplexAttribute implements SerializeAble {
         this.cur.setMetal(value);
         this.basic.setMetal(value);
     }
+
     /**
      * 获得 金.
      */
@@ -223,12 +236,14 @@ public class ComplexAttribute implements SerializeAble {
     public double getMaxWood() {
         return this.max.getWood();
     }
+
     /**
      * 设置 木.
      */
     public void setWood(double value) {
         this.cur.setWood(value);
     }
+
     /**
      * Init 木.
      */
@@ -236,6 +251,7 @@ public class ComplexAttribute implements SerializeAble {
         this.cur.setWood(value);
         this.basic.setWood(value);
     }
+
     /**
      * 获得 木.
      */
@@ -264,12 +280,14 @@ public class ComplexAttribute implements SerializeAble {
     public double getMaxWater() {
         return this.max.getWater();
     }
+
     /**
      * 设置 水.
      */
     public void setWater(double value) {
         this.cur.setWater(value);
     }
+
     /**
      * Init 水.
      */
@@ -277,6 +295,7 @@ public class ComplexAttribute implements SerializeAble {
         this.cur.setWater(value);
         this.basic.setWater(value);
     }
+
     /**
      * 获得 水.
      */
@@ -305,12 +324,14 @@ public class ComplexAttribute implements SerializeAble {
     public double getMaxFire() {
         return this.max.getFire();
     }
+
     /**
      * 设置 火.
      */
     public void setFire(double value) {
         this.cur.setFire(value);
     }
+
     /**
      * Init 火.
      */
@@ -318,6 +339,7 @@ public class ComplexAttribute implements SerializeAble {
         this.cur.setFire(value);
         this.basic.setFire(value);
     }
+
     /**
      * 获得 火.
      */
@@ -346,12 +368,14 @@ public class ComplexAttribute implements SerializeAble {
     public double getMaxEarth() {
         return this.max.getEarth();
     }
+
     /**
      * 设置 土.
      */
     public void setEarth(double value) {
         this.cur.setEarth(value);
     }
+
     /**
      * Init 土.
      */
@@ -359,6 +383,7 @@ public class ComplexAttribute implements SerializeAble {
         this.cur.setEarth(value);
         this.basic.setEarth(value);
     }
+
     /**
      * 获得 土.
      */
@@ -387,12 +412,14 @@ public class ComplexAttribute implements SerializeAble {
     public double getMaxThunder() {
         return this.max.getThunder();
     }
+
     /**
      * 设置 雷.
      */
     public void setThunder(double value) {
         this.cur.setThunder(value);
     }
+
     /**
      * Init 雷.
      */
@@ -400,6 +427,7 @@ public class ComplexAttribute implements SerializeAble {
         this.cur.setThunder(value);
         this.basic.setThunder(value);
     }
+
     /**
      * 获得 雷.
      */
@@ -428,12 +456,14 @@ public class ComplexAttribute implements SerializeAble {
     public double getMaxWind() {
         return this.max.getWind();
     }
+
     /**
      * 设置 风.
      */
     public void setWind(double value) {
         this.cur.setWind(value);
     }
+
     /**
      * Init 风.
      */
@@ -441,6 +471,7 @@ public class ComplexAttribute implements SerializeAble {
         this.cur.setWind(value);
         this.basic.setWind(value);
     }
+
     /**
      * 获得 风.
      */
@@ -469,12 +500,14 @@ public class ComplexAttribute implements SerializeAble {
     public double getMaxIce() {
         return this.max.getIce();
     }
+
     /**
      * 设置 冰.
      */
     public void setIce(double value) {
         this.cur.setIce(value);
     }
+
     /**
      * Init 冰.
      */
@@ -482,6 +515,7 @@ public class ComplexAttribute implements SerializeAble {
         this.cur.setIce(value);
         this.basic.setIce(value);
     }
+
     /**
      * 获得 冰.
      */

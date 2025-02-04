@@ -14,6 +14,7 @@ import com.suremoon.game.door.netabout.message.MsgUnit;
 import com.suremoon.game.door.tools.IDManager;
 import com.suremoon.game.door.units_itf.*;
 import com.suremoon.game.door.units_itf.skill_about.SkillManager;
+import com.suremoon.game.kernel.initer.buff_init.BuffInfManager;
 import com.suremoon.game.kernel.initer.state_init.StateInfManager;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ import static com.suremoon.game.door.kernel.DieDo.Default;
  */
 public class Unit extends GRect implements UnitItf {
     private final List<GoodsItf> bag = new ArrayList<>();
-    protected ComplexAttribute attrib = new ComplexAttribute(new AttributeAdapter());
+    protected ComplexAttribute attrib;
     protected StateItf state;
     protected LinkedList<CommandItf> cmdList = new LinkedList<>();
     protected boolean buffCalc = true, cmdCalc = true;
@@ -42,10 +43,11 @@ public class Unit extends GRect implements UnitItf {
     private int camp;
     private SkillManager skillManager = new SkillManager();
     private HurtCalcItf hurtCalcItf = HurtCalcItf.Null;
-    private Integer selectedIndex = 0;
+    private Integer selectedIndex = -1;
 
     public Unit(int uType) {
         this.uType = uType;
+        this.attrib = new ComplexAttribute(new AttributeAdapter(), BuffInfManager.bim::productBuff);
     }
 
     public Unit(Unit u, Object move) {
@@ -88,7 +90,7 @@ public class Unit extends GRect implements UnitItf {
         setState(ags);
         setSize(mu.width, mu.height);
         showName = mu.showName;
-        attrib = new ComplexAttribute(new AttributeAdapter());
+        attrib = new ComplexAttribute(new AttributeAdapter(), BuffInfManager.bim::productBuff);
         attrib.setHp(mu.hp);
         attrib.setBasicHp(mu.max_hp);
         attrib.setMp(mu.mp);

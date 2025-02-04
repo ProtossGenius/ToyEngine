@@ -11,7 +11,7 @@
         <State stateName="bag_act" resource="resource/Goods/axe at ground bitmaps/axe activ.bmp"/>
         <State stateName="bag_inact" resource="resource/Goods/axe at ground bitmaps/axe inactiv.bmp"/>
     </States>
-    <Actions>
-        <Action key="q">Drop axe to attack enemy.</Action>
-    </Actions>
+    <Buffs>
+        <Buff>Lv1StrengthBuff</Buff>
+    </Buffs>
 </Root>

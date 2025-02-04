@@ -1,6 +1,5 @@
 package com.suremoon.game.door.units_itf;
 
-import com.suremoon.game.door.attribute.Buff;
 import com.suremoon.game.door.attribute.ComplexAttribute;
 import com.suremoon.game.door.attribute.ElementPriorities;
 import com.suremoon.game.door.attribute.HurtCalcItf;
@@ -27,7 +26,7 @@ public interface UnitItf extends AGTypeInf, GRectItf, SerializeAble {
 
     ComplexAttribute getAttribute();
 
-    default void addBuff(Buff b) {
+    default void addBuff(String b) {
         getAttribute().getBuffManager().addBuff(b);
     }
 
