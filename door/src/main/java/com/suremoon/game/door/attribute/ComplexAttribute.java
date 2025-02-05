@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 /**
  * @Note: this file product by scripts/generate_complex_attribute.py, you should change scripts to fix this file.
- * , Or, your another change will be cover. @Author: ProtossGenius @Time: 2025-02-04 16:30:59
+ * , Or, your another change will be cover. @Author: ProtossGenius @Time: 2025-02-04 21:49:52
  */
 public class ComplexAttribute implements SerializeAble {
     AttributeAdapter basic;
@@ -20,7 +20,7 @@ public class ComplexAttribute implements SerializeAble {
         this.basic = basic;
         this.max = new AttributeAdapter(basic);
         this.cur = new AttributeAdapter(basic);
-        this.buffManager = new BuffManager(this.basic, this.max, buffGetter);
+        buffManager = new BuffManager(basic, max, buffGetter);
     }
 
     public BuffManager getBuffManager() {

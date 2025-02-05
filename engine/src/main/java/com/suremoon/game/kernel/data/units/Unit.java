@@ -28,7 +28,7 @@ import static com.suremoon.game.door.kernel.DieDo.Default;
  * Created by Water Moon on 2018/1/10.
  */
 public class Unit extends GRect implements UnitItf {
-    private final List<GoodsItf> bag = new ArrayList<>();
+    private List<GoodsItf> bag = new ArrayList<>();
     protected ComplexAttribute attrib;
     protected StateItf state;
     protected LinkedList<CommandItf> cmdList = new LinkedList<>();

@@ -34,6 +34,4 @@ public class DraggableUI extends IGameUI {
 
         return true;
     }
-
-
 }
