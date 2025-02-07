@@ -13,26 +13,10 @@ public class SwapGoodsAd implements CmdActionItf {
     public boolean actionDo(CommandItf cmd, WorldItf world, WorldMgrItf worldMgr) {
         PlayerItf player = (PlayerItf) cmd.getOwner();
         var targetPoint = cmd.getTargetPoint();
-        var bag = player.getBag();
-        if (outRange(targetPoint.x, bag.size())) {
-            player.addMessage("error in CmdSwapGoods" + targetPoint.x);
-            return true;
-        }
-        var goods = bag.get(targetPoint.x);
-        if (outRange(targetPoint.y, bag.size())) {
-            player.getBag().set(targetPoint.x, null);
-            goods.setPos(player.getPos());
-            world.addCalcUnit(goods);
-            return true;
-        }
-        var targetGoods = bag.get(targetPoint.y);
-        bag.set(targetPoint.x, targetGoods);
-        bag.set(targetPoint.y, goods);
+        var begin = targetPoint.x;
+        var end = targetPoint.y;
+        player.getBagManager().swap(begin, end, world);
         return true;
-    }
-
-    private static boolean outRange(int index, int size) {
-        return index < 0 || index >= size;
     }
 
     @Override

@@ -1,12 +1,12 @@
 #!python3
 from attribs import ATTRIB_LIST
 from datetime import datetime
-print(f"""
-package com.suremoon.game.door.attribute;
+print(f"""package com.suremoon.game.door.attribute;
 
 import com.suremoon.game.door.save_about.SerializeAble;
 import com.suremoon.game.door.tools.ByteStream;
 import com.suremoon.game.door.tools.CJDeal;
+import java.util.function.Function;
 
 /**
  * @Note: this file product by scripts/generate_complex_attribute.py, you should change scripts to fix this file.
@@ -18,11 +18,11 @@ public class ComplexAttribute implements SerializeAble {{
     AttributeAdapter cur;
     BuffManager buffManager;
 
-    public ComplexAttribute(AttributeAdapter basic) {{
+    public ComplexAttribute(AttributeAdapter basic, Function<String, Buff> buffGetter) {{
         this.basic = basic;
         this.max = new AttributeAdapter(basic);
         this.cur = new AttributeAdapter(basic);
-        buffManager = new BuffManager(basic, max);
+        buffManager = new BuffManager(basic, max, buffGetter);
     }}
 
     public BuffManager getBuffManager() {{

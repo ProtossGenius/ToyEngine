@@ -8,6 +8,7 @@ import com.suremoon.game.door.netabout.message.MsgCommand;
 import com.suremoon.game.door.netabout.message.MsgGoods;
 import com.suremoon.game.door.netabout.message.MsgString;
 import com.suremoon.game.door.netabout.message.MsgUnit;
+import com.suremoon.game.door.units_itf.BagManager;
 import com.suremoon.game.door.units_itf.PlayerItf;
 import com.suremoon.game.kernel.data.map.GameScreen;
 import com.suremoon.game.kernel.data.units.Command;
@@ -21,6 +22,7 @@ public class Player extends Unit implements PlayerItf {
     private WorldItf world;
     private GameScreenItf screen;
     private GameMapItf gm;
+    private BagManager bagManager;
 
     public Player(MsgUnit mu) {
         super(mu);
@@ -32,6 +34,10 @@ public class Player extends Unit implements PlayerItf {
 
     public Player(Unit u) {
         super(u, null);
+        for (int i = 0; i < BagManager.MAX_BAG_VALUE; ++i) {
+            getBag().add(null);
+        }
+        this.bagManager = new BagManager(this);
     }
 
     @Override
@@ -89,5 +95,10 @@ public class Player extends Unit implements PlayerItf {
 
             this.messages.add(msg);
         }
+    }
+
+    @Override
+    public BagManager getBagManager() {
+        return this.bagManager;
     }
 }

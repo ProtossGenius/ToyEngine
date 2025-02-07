@@ -93,7 +93,7 @@ print("""public class BagManager {
         if (index > bag.getBag().size()) {
             return null;
         }
-        return bag.getBag().get(pos % 10000);
+        return bag.getBag().get(index);
     }""")
 
 index = 10
@@ -121,7 +121,7 @@ for key, value in EQUIP_LIST.items():
     print(f"""  /**
     * {key} {value[Desc]}.
     */
-  int {key}= {index};
+    public static final int {key}= {index};
 """)
     index = index + 1
 print(" // ################### const goods for special bag. #######################")
@@ -131,11 +131,11 @@ for key, value in BAG_LIST.items():
     print(f"""  /**
   * {key} {value[Desc]}.
   */
-  public int {key}= {index};
+  public static final int {key}= {index};
 """)
     index = index + 1
 
-print(f"    public int MAX_BAG_VALUE = {index};")
+print(f"    public static final int MAX_BAG_VALUE = {index};")
 for key, value in EQUIP_LIST.items():
     print(f"""
   /**

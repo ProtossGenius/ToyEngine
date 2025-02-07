@@ -18,4 +18,6 @@ public interface PlayerItf extends UnitItf {
     MsgGoods[] getBagInfo();
 
     void addMessage(String msg);
+
+    BagManager getBagManager();
 }
