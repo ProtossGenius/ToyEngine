@@ -10,6 +10,7 @@ import com.suremoon.game.door.units_itf.EffectItf;
 import com.suremoon.game.door.units_itf.GoodsItf;
 import com.suremoon.game.door.units_itf.PlayerItf;
 import com.suremoon.game.door.units_itf.UnitItf;
+import com.suremoon.game.netabout.MessageUtil;
 import com.suremoon.gametest.real_game_test.ai_about.FirstFarmerAI;
 import com.suremoon.gametest.real_game_test.diedos.MonsterDieDo;
 
@@ -49,7 +50,7 @@ public class WorldModDemo implements WorldModItf {
                 // 拾取
                 if ("".equals(input)) {
                     playerItf.getBagManager().pick((GoodsItf) self, world);
-                    playerItf.addMessage("get item: " + self.getShowName());
+                    playerItf.addMessage(MessageUtil.userChatMessage("get item: " + self.getShowName()));
                     self.setDrop(true);
                     return;
                 }
@@ -63,7 +64,7 @@ public class WorldModDemo implements WorldModItf {
                         world.addCalcUnit(self);
                     }
                 }
-                playerItf.addMessage("use goods ..." + input);
+                playerItf.addMessage(MessageUtil.userChatMessage("use goods ..." + input));
             }
         });
         System.out.println(goods.getDirect());

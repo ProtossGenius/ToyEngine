@@ -7,6 +7,7 @@ import com.suremoon.game.door.kernel.WorldMgrItf;
 import com.suremoon.game.door.kernel.manager.UnitMgrItf;
 import com.suremoon.game.door.units_itf.PlayerItf;
 import com.suremoon.game.door.units_itf.UnitItf;
+import com.suremoon.game.netabout.MessageUtil;
 
 import java.awt.*;
 
@@ -17,7 +18,7 @@ public class FirstFarmerAI implements UnitRemItf {
     @Override
     public void underAttack(UnitItf owner, UnitItf unitItf, double v) {
         if (unitItf instanceof PlayerItf player) {
-            player.addMessage("农夫说：小子，你竟敢打老子？");
+            player.addMessage(MessageUtil.userChatMessage("农夫说：小子，你竟敢打老子？"));
         }
     }
 
@@ -34,7 +35,7 @@ public class FirstFarmerAI implements UnitRemItf {
                         pos.getIntX() - 500, pos.getIntY() - 500, pos.getIntX() + 500, pos.getIntY() + 500),
                 unit -> {
                     if (unit instanceof PlayerItf player) {
-                        player.addMessage("农夫大声喊：滚开，莫挨老子。");
+                        player.addMessage(MessageUtil.userChatMessage("农夫大声喊：滚开，莫挨老子。"));
                     }
                     return false;
                 });
@@ -42,6 +43,6 @@ public class FirstFarmerAI implements UnitRemItf {
 
     @Override
     public void interactive(UnitItf self, PlayerItf playerItf, WorldItf world, WorldMgrItf worldMgr, Object s) {
-        playerItf.addMessage("农夫妖娆的说：Kill me baby!");
+        playerItf.addMessage(MessageUtil.userChatMessage("农夫妖娆的说：Kill me baby!"));
     }
 }

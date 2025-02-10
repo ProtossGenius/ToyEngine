@@ -11,6 +11,7 @@ import com.suremoon.game.door.units_itf.PlayerItf;
 import com.suremoon.game.door.units_itf.UnitItf;
 import com.suremoon.game.kernel.data.GameConfig.GameConfiger;
 import com.suremoon.game.kernel.initer.state_init.StateInfManager;
+import com.suremoon.game.netabout.MessageUtil;
 
 import java.util.Random;
 
@@ -50,6 +51,6 @@ public class AIUnitRem implements UnitRemItf {
 
     @Override
     public void interactive(UnitItf self, PlayerItf playerItf, WorldItf world, WorldMgrItf worldMgr, Object s) {
-        playerItf.addMessage("瑕疵必报！");
+        playerItf.addMessage(MessageUtil.userChatMessage("瑕疵必报！"));
     }
 }

@@ -16,6 +16,7 @@ import com.suremoon.game.kernel.data.units.Unit;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.function.Supplier;
 
 public class Player extends Unit implements PlayerItf {
     private final Queue<String> messages = new LinkedList<>();
@@ -87,13 +88,13 @@ public class Player extends Unit implements PlayerItf {
 
 
     @Override
-    public void addMessage(String msg) {
+    public void addMessage(Supplier<String> msg) {
         synchronized (this.messages) {
-            if (this.messages.size() > 50) {
+            if (this.messages.size() > 5000) {
                 this.messages.poll();
             }
 
-            this.messages.add(msg);
+            this.messages.add(msg.get());
         }
     }
 

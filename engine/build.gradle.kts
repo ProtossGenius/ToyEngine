@@ -10,6 +10,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 repositories {
@@ -46,4 +47,11 @@ application {
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
+}
+
+// Set the main class (important!)
+tasks.named<Jar>("jar") {
+    manifest {
+        attributes(mapOf("Main-Class" to "com.suremoon.gametest.real_game_test.Run3AGame")) // Replace with your main class
+    }
 }
