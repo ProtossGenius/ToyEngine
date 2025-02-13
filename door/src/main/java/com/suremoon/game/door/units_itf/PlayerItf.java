@@ -6,6 +6,8 @@ import com.suremoon.game.door.netabout.message.MsgCommand;
 import com.suremoon.game.door.netabout.message.MsgGoods;
 import com.suremoon.game.door.netabout.message.MsgString;
 
+import java.util.function.Supplier;
+
 public interface PlayerItf extends UnitItf {
     GameScreenItf getScreen();
 
@@ -17,7 +19,7 @@ public interface PlayerItf extends UnitItf {
 
     MsgGoods[] getBagInfo();
 
-    void addMessage(String msg);
+    void addMessage(Supplier<String> msg);
 
     BagManager getBagManager();
 }
