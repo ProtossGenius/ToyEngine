@@ -23,6 +23,7 @@ public abstract class IGameUI {
     private boolean _always_redraw = false;
     private boolean _inDrag = false;
     private IGameUI parent;
+    private IGameUI focusUi;
 
     public IGameUI(AGForm agForm, Rectangle _bundle) {
         this.agForm = agForm;
@@ -147,7 +148,7 @@ public abstract class IGameUI {
         return false;
     }
 
-    private Rectangle getCalcBundle() {
+    protected Rectangle getCalcBundle() {
         var bundle = new Rectangle(this._bundle);
         var baseLocation = this._baseBundle.getLocation();
         bundle.x = bundle.x + baseLocation.x;
@@ -156,6 +157,11 @@ public abstract class IGameUI {
     }
 
     public final boolean mousePressed(MouseEvent e) {
+        if (this.focusUi != null) {
+            if (this.focusUi._mousePressed(e)) {
+                return true;
+            }
+        }
         if (!getCalcBundle().contains(e.getPoint())) return false;
         for (var son : children) {
             if (son.getVisible() && son.mousePressed(e)) {
@@ -171,6 +177,11 @@ public abstract class IGameUI {
     }
 
     public final boolean mouseMoved(MouseEvent e) {
+        if (this.focusUi != null) {
+            if (this.focusUi._mouseMoved(e)) {
+                return true;
+            }
+        }
         if (!getCalcBundle().contains(e.getPoint())) return false;
         for (var son : children) {
             if (son.getVisible() && son.mouseMoved(e)) {
@@ -185,6 +196,11 @@ public abstract class IGameUI {
     }
 
     public final boolean mouseDragged(MouseEvent e) {
+        if (this.focusUi != null) {
+            if (this.focusUi._mouseDragged(e)) {
+                return true;
+            }
+        }
         this.mouseMoved(e);
         if (!_inDrag) return false;
         for (var son : children) {
@@ -200,6 +216,11 @@ public abstract class IGameUI {
     }
 
     public final boolean mouseReleased(MouseEvent e) {
+        if (this.focusUi != null) {
+            if (this.focusUi._mouseReleased(e)) {
+                return true;
+            }
+        }
         _inDrag = false;
         if (!getCalcBundle().contains(e.getPoint())) return false;
         for (var son : children) {
@@ -215,6 +236,11 @@ public abstract class IGameUI {
     }
 
     public final boolean keyPressed(KeyEvent e) {
+        if (this.focusUi != null) {
+            if (this.focusUi._keyPressed(e)) {
+                return true;
+            }
+        }
         for (var son : children) {
             if (son.getVisible() && son.keyPressed(e)) {
                 return true;
@@ -229,6 +255,11 @@ public abstract class IGameUI {
     }
 
     public final boolean keyReleased(KeyEvent e) {
+        if (this.focusUi != null) {
+            if (this.focusUi._keyReleased(e)) {
+                return true;
+            }
+        }
         for (var son : children) {
             if (son.getVisible() && son.keyReleased(e)) {
                 return true;
@@ -243,6 +274,11 @@ public abstract class IGameUI {
     }
 
     public final boolean keyTyped(KeyEvent e) {
+        if (this.focusUi != null) {
+            if (this.focusUi._keyTyped(e)) {
+                return true;
+            }
+        }
         for (var son : children) {
             if (son.getVisible() && son.keyTyped(e)) {
                 return true;
@@ -250,5 +286,12 @@ public abstract class IGameUI {
         }
 
         return _keyTyped(e);
+    }
+
+    protected void setFocus(IGameUI ui) {
+        this.focusUi = ui;
+        if (parent != null) {
+            parent.setFocus(ui);
+        }
     }
 }

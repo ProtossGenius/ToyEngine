@@ -6,9 +6,9 @@ import com.suremoon.game.ag_pc_client.show.FrequencyCollector;
 import com.suremoon.game.ag_pc_client.show.adapters.effect.EffectSAGetter;
 import com.suremoon.game.ag_pc_client.show.adapters.unit.UnitSAGetter;
 import com.suremoon.game.ag_pc_client.show.showable_rect.string_show.RollingString;
-import com.suremoon.game.ag_pc_client.show.showable_rect.string_show.StringShow;
 import com.suremoon.game.ag_pc_client.ui.IGameUI;
 import com.suremoon.game.ag_pc_client.ui.NoneUI;
+import com.suremoon.game.ag_pc_client.ui.format.StringShow;
 import com.suremoon.game.door.client.ScreenInfoUpdateItf;
 import com.suremoon.game.door.kernel.GameScreenItf;
 import com.suremoon.game.door.kernel.WorldItf;
@@ -59,7 +59,7 @@ public class AGForm extends JFrame implements ScreenInfoUpdateItf {
                                 "",
                                 new Rectangle(
                                         GameConfiger.DESIGN_SCREEN_WIDTH - 500,
-                                        50,
+                                        0,
                                         500,
                                         GameConfiger.DESIGN_SCREEN_HEIGHT - 50)));
         bi =
@@ -169,7 +169,7 @@ public class AGForm extends JFrame implements ScreenInfoUpdateItf {
                                         + "\n"
                                         + "Nps : "
                                         + nps.See(),
-                                new Rectangle(GameConfiger.DESIGN_SCREEN_WIDTH - 230, 30, 200, 800));
+                                new Rectangle(GameConfiger.DESIGN_SCREEN_WIDTH - 230, 0, 200, 800));
                 clientInfo.drawOn(cache);
 //        Point mousePos = mkid.getLastPoint();
 //        StringShow showMousePos =

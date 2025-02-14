@@ -2,6 +2,7 @@ package com.suremoon.gametest.real_game_test.my_ui;
 
 import com.suremoon.game.ag_pc_client.show.pc_show.AGForm;
 import com.suremoon.game.ag_pc_client.ui.DraggableUI;
+import com.suremoon.game.ag_pc_client.ui.format.TextInput;
 import com.suremoon.game.door.netabout.message.MsgGoods;
 import com.suremoon.game.door.observer.FObserverAction;
 import com.suremoon.game.door.observer.ObserverEnum;
@@ -16,6 +17,7 @@ public class BagUI extends DraggableUI implements FObserverAction {
     public BagUI(AGForm agForm, GoodsOnDragUI goodsOnDragUI) {
         super(agForm, new Rectangle(0, 0, 1000, 500));
         ObserverMgr.mgr.register(ObserverEnum.GOODS, this);
+        this.addChildren(new TextInput(agForm, new Rectangle(0, 0, 500, 500)));
         this.setVisible(false);
     }
 

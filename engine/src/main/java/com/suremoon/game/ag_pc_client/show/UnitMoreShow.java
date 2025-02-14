@@ -1,6 +1,6 @@
 package com.suremoon.game.ag_pc_client.show;
 
-import com.suremoon.game.ag_pc_client.show.showable_rect.string_show.StringShow;
+import com.suremoon.game.ag_pc_client.ui.format.StringShow;
 import com.suremoon.game.door.attribute.ComplexAttribute;
 import com.suremoon.game.kernel.data.units.Unit;
 
