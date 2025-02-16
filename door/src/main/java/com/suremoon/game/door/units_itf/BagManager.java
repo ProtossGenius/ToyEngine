@@ -2,7 +2,7 @@ package com.suremoon.game.door.units_itf;
 import com.suremoon.game.door.kernel.WorldItf;
 import com.suremoon.game.door.utils.Assert;
 // This interface is product by scripts/generate_bag.py, You should change scripts to fix this file.
-// @Author: ProtossGenius @Time: 2025-02-07 17:01:47
+// @Author: ProtossGenius @Time: 2025-02-16 14:39:32
 
 public class BagManager {
     PlayerItf playerItf;
@@ -27,16 +27,11 @@ public class BagManager {
      * @param worldItf
      */
     public void pick(GoodsItf goods, WorldItf worldItf) {
-        var goodsOnHand = getBagOnHand();
-        var bag = getUserBag().getBag();
-        // put the goods on Hand to bag.
-        goodsOnHand = addToBag(goodsOnHand);
-        if (goodsOnHand != null) {
-            dropGoods(goods, worldItf);
+        if (addToBag(goods) == null){
+            return;
         }
-
-        getPlayer().getBag().set(BAG_ON_HAND, goods);
-    }
+        dropGoods(goods, worldItf);
+     }
 
     private void dropGoods(GoodsItf goods, WorldItf worldItf) {
         goods.setPos(getPlayer().getPos());

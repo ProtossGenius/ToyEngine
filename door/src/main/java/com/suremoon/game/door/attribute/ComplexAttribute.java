@@ -7,7 +7,7 @@ import java.util.function.Function;
 
 /**
  * @Note: this file product by scripts/generate_complex_attribute.py, you should change scripts to fix this file.
- * , Or, your another change will be cover. @Author: ProtossGenius @Time: 2025-02-07 17:01:47
+ * , Or, your another change will be cover. @Author: ProtossGenius @Time: 2025-02-16 14:39:32
  */
 public class ComplexAttribute implements SerializeAble {
     AttributeAdapter basic;

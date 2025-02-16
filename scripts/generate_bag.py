@@ -29,16 +29,11 @@ print("""public class BagManager {
      * @param worldItf
      */
     public void pick(GoodsItf goods, WorldItf worldItf) {
-        var goodsOnHand = getBagOnHand();
-        var bag = getUserBag().getBag();
-        // put the goods on Hand to bag.
-        goodsOnHand = addToBag(goodsOnHand);
-        if (goodsOnHand != null) {
-            dropGoods(goods, worldItf);
+        if (addToBag(goods) == null){
+            return;
         }
-
-        getPlayer().getBag().set(BAG_ON_HAND, goods);
-    }
+        dropGoods(goods, worldItf);
+     }
 
     private void dropGoods(GoodsItf goods, WorldItf worldItf) {
         goods.setPos(getPlayer().getPos());
