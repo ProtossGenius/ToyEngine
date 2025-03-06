@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<ResFile>resource\terrains\shiro_atmp008c3.xml</ResFile>
+	<IsDecorate>false</IsDecorate>
+	<AverageColor>0x797e8e</AverageColor>
+	<Buffs>
+ 	</Buffs>
+	<Walkable>{"Type":"WalkableOI","WalkableO":"false","WalkableI":"true"}</Walkable>
+</Root>

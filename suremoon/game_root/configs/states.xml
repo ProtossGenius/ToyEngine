@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Root>
+	<States>
+		<State name="paused" isLoop="true"/>
+		<State name="attack" isLoop="true"/>
+		<State name="walk" isLoop="true"/>
+		<State name="run" isLoop="true"/>
+		<State name="die" isLoop="false"/>
+	</States>
+</Root>

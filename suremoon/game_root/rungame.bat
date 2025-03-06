@@ -1,0 +1,1 @@
+java -cp ./jars/ToyEngine.jar;./jars/suremoon.jar  com.suremoon.suremoon.forms.PlayerSetter

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Root>
+	<ResFile>resource\Human\T_lumberjack\config.xml</ResFile>
+	<FootPos x="0.4898" y="0.7577"/>
+	<ShowName>农民</ShowName>
+	<Width>100</Width>
+	<Height>100</Height>
+	<States>
+		<State stateName="die" actionName="lumberjack with axe 128x bitmaps\lay down axe" />
+		<State stateName="paused" actionName="lumberjack with axe 96x bitmaps\talking" />
+		<State stateName="attack" actionName="lumberjack with axe 128x bitmaps\felling tree" />
+		<State stateName="run" actionName="lumberjack with axe 96x bitmaps\walking" />
+		<State stateName="walk" actionName="lumberjack with axe 96x bitmaps\walking" />
+	</States>
+	<InitMsg>{"ad":0.1,"ap":0.1,"a":-1,"b":0,"c":1}</InitMsg>
+</Root>

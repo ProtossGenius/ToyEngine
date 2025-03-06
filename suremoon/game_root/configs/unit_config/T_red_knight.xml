@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Root>
+	<ResFile>resource\Human\T red knight\config.xml</ResFile>
+	<FootPos x="0.5101" y="0.8247"/>
+	<Width>150</Width>
+	<Height>150</Height>
+	<States>
+		<State stateName="die" actionName="red knight bitmaps\battlefield tipping over animation\tipping over" />
+		<State stateName="run" actionName="red knight bitmaps\red knight battlefield bitmaps\running" />
+		<State stateName="walk" actionName="red knight bitmaps\red knight battlefield bitmaps\walking" />
+		<State stateName="attack" actionName="red knight bitmaps\red knight battlefield bitmaps\attack" />
+		<State stateName="paused" actionName="red knight bitmaps\red knight battlefield bitmaps\paused" />
+	</States>
+	<InitMsg>{"ad":0.1,"ap":0.1,"a":-1,"b":0,"c":1}</InitMsg>
+</Root>

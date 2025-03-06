@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+    <ResPath>resource/Effect/FlowerFireSA.xml</ResPath>
+    <FootPos x="0.5" y="0.5"/>
+    <Width>300</Width>
+    <Height>300</Height>
+    <AdHurt>0.001</AdHurt>
+    <ApHurt>0.001</ApHurt>
+    <IsLoop>false</IsLoop>
+    <EffectActionInf>com.suremoon.gametest.real_game_test.effect_actions.FireHoneActionDo</EffectActionInf>
+</Root>

@@ -12,9 +12,9 @@
             <option value="$PROJECT_DIR$/door" />
             <option value="$PROJECT_DIR$/engine" />
             <option value="$PROJECT_DIR$/init_temp" />
+            <option value="$PROJECT_DIR$/suremoon" />
           </set>
         </option>
-        <option name="resolveExternalAnnotations" value="false" />
       </GradleProjectSettings>
     </option>
     <option name="parallelModelFetch" value="true" />

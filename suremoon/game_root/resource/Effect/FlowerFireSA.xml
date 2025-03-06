@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<Describe>null</Describe>
+	<Type>SA</Type>
+	<ResConfList>
+		<ResConfig ConfId = "0" ConfPath = "resource/Effect/FlowerFire.xml"/>
+	</ResConfList>
+	<PAList>
+		<PicArea ConfId="0" SRId = "1"/>
+		<PicArea ConfId="0" SRId = "2"/>
+		<PicArea ConfId="0" SRId = "3"/>
+		<PicArea ConfId="0" SRId = "4"/>
+		<PicArea ConfId="0" SRId = "5"/>
+		<PicArea ConfId="0" SRId = "6"/>
+		<PicArea ConfId="0" SRId = "7"/>
+		<PicArea ConfId="0" SRId = "8"/>
+		<PicArea ConfId="0" SRId = "9"/>
+		<PicArea ConfId="0" SRId = "10"/>
+		<PicArea ConfId="0" SRId = "11"/>
+		<PicArea ConfId="0" SRId = "12"/>
+		<PicArea ConfId="0" SRId = "13"/>
+		<PicArea ConfId="0" SRId = "14"/>
+		<PicArea ConfId="0" SRId = "15"/>
+		<PicArea ConfId="0" SRId = "16"/>
+		<PicArea ConfId="0" SRId = "17"/>
+		<PicArea ConfId="0" SRId = "18"/>
+		<PicArea ConfId="0" SRId = "19"/>
+		<PicArea ConfId="0" SRId = "20"/>
+		<PicArea ConfId="0" SRId = "21"/>
+		<PicArea ConfId="0" SRId = "22"/>
+		<PicArea ConfId="0" SRId = "23"/>
+		<PicArea ConfId="0" SRId = "24"/>
+		<PicArea ConfId="0" SRId = "25"/>
+		<PicArea ConfId="0" SRId = "26"/>
+		<PicArea ConfId="0" SRId = "27"/>
+		<PicArea ConfId="0" SRId = "28"/>
+		<PicArea ConfId="0" SRId = "29"/>
+		<PicArea ConfId="0" SRId = "30"/>
+	</PAList>
+</Root>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+    <ResPath>resource/Effect/heal.xml</ResPath>
+	<FootPos x="0.5" y="0.5"/>
+	<Interval>60</Interval>
+    <Width>500</Width>
+    <Height>500</Height>
+	<AdHurt>0.2</AdHurt>
+	<ApHurt>0.2</ApHurt>
+	<IsLoop>true</IsLoop>
+	<EffectActionInf></EffectActionInf>
+</Root>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+    <MapPath>./resource/maps/output.tam</MapPath>
+    <Name>失落之地</Name>
+    <ModList>
+        <Mod>com.suremoon.suremoon.mods.world.index_1.WorldMod</Mod>
+    </ModList>
+</Root>

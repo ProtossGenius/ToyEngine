@@ -1,0 +1,1 @@
+java -cp ./ToyEngine.jar com.suremoon.gametest.real_game_test.Run3AGame -classpath ./jars

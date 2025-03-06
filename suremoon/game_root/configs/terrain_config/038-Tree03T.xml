@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<ResFile>resource\terrains\038-Tree03.xml</ResFile>
+	<IsDecorate>true</IsDecorate>
+	<AverageColor>0x718781</AverageColor>
+	<Buffs>
+ 	</Buffs>
+	<Walkable>{"Type":"WalkableOI","WalkableO":"false","WalkableI":"false"}</Walkable>
+</Root>

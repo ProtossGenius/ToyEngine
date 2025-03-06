@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+    <Type>RLSRL</Type>
+	<ResName>resource/Effect/heal.jpg</ResName>
+	<trans_color>0x010101</trans_color>
+	<Rows>5</Rows>
+	<Cols>5</Cols>
+	<Size>21</Size>
+	<Row>0</Row>
+	<Col>0</Col>
+</Root>

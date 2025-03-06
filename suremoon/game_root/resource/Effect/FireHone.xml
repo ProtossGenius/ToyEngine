@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+    <Type>RLSRL</Type>
+	<ResName>resource/Effect/FireHone.png</ResName>
+	<trans_color>0xffffff</trans_color>
+	<Rows>4</Rows>
+	<Cols>4</Cols>
+	<Size>16</Size>
+	<Row>0</Row>
+	<Col>0</Col>
+</Root>

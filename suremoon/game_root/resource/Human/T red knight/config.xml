@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <Root>
+	<Type>NADN</Type>
+	<Ext>bmp</Ext>
+	<trans_color>0x6f4f33</trans_color>
+	<Actions>
+		<action name="red knight bitmaps\battlefield tipping over animation\tipping over" action_nums="8" directs="8" numlength="4"/>
+		<action name="red knight bitmaps\red knight battlefield bitmaps\attack" action_nums="13" directs="8" numlength="4"/>
+		<action name="red knight bitmaps\red knight battlefield bitmaps\been hit" action_nums="9" directs="8" numlength="4"/>
+		<action name="red knight bitmaps\red knight battlefield bitmaps\greeting" action_nums="9" directs="8" numlength="4"/>
+		<action name="red knight bitmaps\red knight battlefield bitmaps\paused" action_nums="9" directs="8" numlength="4"/>
+		<action name="red knight bitmaps\red knight battlefield bitmaps\running" action_nums="8" directs="8" numlength="4"/>
+		<action name="red knight bitmaps\red knight battlefield bitmaps\walking" action_nums="7" directs="8" numlength="4"/>
+		<action name="red knight bitmaps\red knight town bitmaps\talking" action_nums="8" directs="8" numlength="4"/>
+		<action name="red knight bitmaps\red knight town bitmaps\walking" action_nums="7" directs="8" numlength="4"/>
+	</Actions>
+</Root>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+    <Port>7777</Port>
+    <WorldMgr>./configs/world_mgr_config/my_world.xml</WorldMgr>
+    <ModList>
+        <WorldMgrMod>com.suremoon.gametest.real_game_test.ServerMods.ServerModDemo</WorldMgrMod>
+    </ModList>
+</Root>
