@@ -16,7 +16,7 @@ public class ClientInputAnalysis {
     public static void defaultCmdAnalysis(CmdAnalysisItf ca){
         ca.addState(new int[] {-MouseEvent.BUTTON3}, "CmdInteractive");
         ca.addState(new int[] {KeyEvent.VK_M, -MouseEvent.BUTTON1}, "CmdWalk");
-        ca.addState(new int[] {KeyEvent.VK_A, -MouseEvent.BUTTON1}, "CmdAttack");
+        ca.addState(new int[] {KeyEvent.VK_A}, "CmdAttack");
 
         ca.addState(new int[]{KeyEvent.VK_Q}, "CmdCreateMonster");
     }

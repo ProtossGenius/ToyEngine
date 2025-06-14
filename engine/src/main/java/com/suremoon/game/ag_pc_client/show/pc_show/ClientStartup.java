@@ -38,8 +38,8 @@ public class ClientStartup {
         ca.addState(
                 new ActionData[]{
                         new ActionData(0, KeyEvent.VK_A, VALUE_TYPE_PRESS),
-                        new ActionData(DATA_TYPE_MOUSE, MouseEvent.BUTTON1, VALUE_TYPE_PRESS),
-                        new ActionData(DATA_TYPE_MOUSE, MouseEvent.BUTTON1, VALUE_TYPE_REPLASE)
+//                        new ActionData(DATA_TYPE_MOUSE, MouseEvent.BUTTON1, VALUE_TYPE_PRESS),
+//                        new ActionData(DATA_TYPE_MOUSE, MouseEvent.BUTTON1, VALUE_TYPE_REPLASE)
                 },
                 "CmdAttack");
         ca.addState(

@@ -10,6 +10,5 @@ build
 .classpath
 .settings
 bin/
-
 ./.idea/
 __pycache__/
