@@ -93,13 +93,14 @@ public class UnitMoreShow {
                 (int) (unit.getWidth() * mp),
                 (int) (hc * 5),
                 null);
+        var nameLen = StringShow.getStringWidth(gp, StringShow.DEFAULT_FONT, unit.getShowName());
         StringShow ss =
                 new StringShow(
                         unit.getShowName(),
                         new Rectangle(
-                                (int) unit.getPos().getX() - focusPoint.x,
-                                (int) (unit.getPos().getY()) - focusPoint.y,
-                                unit.getWidth(),
+                                (int) unit.getPos().getX() - focusPoint.x + (unit.getWidth() - nameLen) / 2,
+                                (int) (unit.getPos().getY()) - focusPoint.y - 40,
+                                nameLen,
                                 50));
         ss.setColor(transColor(Color.YELLOW, unit.getTransparency()));
         ss.drawOn(gp);

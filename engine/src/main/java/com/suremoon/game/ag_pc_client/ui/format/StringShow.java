@@ -17,9 +17,10 @@ public class StringShow {
     LineSpacing ls = new FixedLineSpacing();
     int charHeight = 1;
     int startIndex = 0;
+    public static Font DEFAULT_FONT = new Font("宋体", Font.BOLD, 24);
 
     public StringShow(String str, Rectangle showArea) {
-        this(str, showArea, new Font("宋体", Font.BOLD, 24));
+        this(str, showArea, DEFAULT_FONT);
     }
 
     public StringShow(String str, Rectangle showArea, Font font) {
@@ -59,6 +60,10 @@ public class StringShow {
         if (!tmp.isEmpty()) {
             ssls.add(tmp.toString());
         }
+    }
+
+    public static int getStringWidth(Graphics gp, Font font, String str) {
+        return gp.getFontMetrics(font).stringWidth(str);
     }
 
     public boolean drawOn(Graphics gp) {
